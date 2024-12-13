@@ -1,0 +1,12 @@
+.stepVisualizerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 800px;
+  width: 100vw;
+  max-width: 100%;
+
+  background-color: darkgray;
+}

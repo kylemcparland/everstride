@@ -1,0 +1,19 @@
+.step-visualizer {
+  position: relative;
+
+  color: black;
+  background-color: lightgray;
+  width: 95%;
+  height: 90%;
+
+  margin: 1em;
+}
+
+.step-visualizer-character {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+
+  font-size: 50px;
+}
