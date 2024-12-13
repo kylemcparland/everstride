@@ -4,7 +4,7 @@ import { fetchUserAndFriends } from "../helpers/fetchUserAndFriends";
 
 export default async function StepVisualizerTestPage() {
   // Fetch user & friends data dynamically on the server-side before rendering the page...
-  const username = "Ben Hallam";
+  const username = "Ben Hallam"; /* Update this name to set a different user as the current user for testing */
   const usersArray = await fetchUserAndFriends(username);
   const currentUser = usersArray.splice(usersArray[0], 1);
 
