@@ -1,25 +1,22 @@
 import styles from "./page.module.css";
 import StepVisualizer from "@/components/step_visualizer";
-import { fetchUserByName } from "@/app/helpers/api";
+import { fetchUserAndFriends } from "../helpers/fetchUserAndFriends";
 
-export default async function Test() {
-  // Fetch user data on the server-side before rendering the page...
-  const userCharacter = await fetchUserByName("Kyle McParland");
-  const userCharacter2 = await fetchUserByName("Ben Hallam");
-  const userCharacter3 = await fetchUserByName("Jon Hiebert");
+export default async function StepVisualizerTestPage() {
+  // Fetch user & friends data dynamically on the server-side before rendering the page...
+  const username = "Ben Hallam";
+  const usersArray = await fetchUserAndFriends(username);
+  const currentUser = usersArray.splice(usersArray[0], 1);
+
   // Render StepVisualizer component and pass it the user's data...
   return (
     <main className={styles.stepVisualizerContainer}>
-      <StepVisualizer userCharacter={userCharacter} />
-      <StepVisualizer userCharacter={userCharacter2} />
-      <StepVisualizer userCharacter={userCharacter3} />
+      {/* Render current user at top */}
+      <StepVisualizer userCharacter={currentUser[0]} key={currentUser.id} />
+      {/* Render user's friends below */}
+      {usersArray.map((user) => (
+        <StepVisualizer userCharacter={user} key={user.id} />
+      ))}
     </main>
   );
 }
-
-/* TO DO:
-- Create a fetchUserAndFriends helper function to efficiently
-query the database one time and render each StepVisualizer
-using the relevant data, depending on how many friends
-the user has
-*/

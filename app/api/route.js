@@ -1,7 +1,7 @@
 import db from "@/db/connection";
 import { NextResponse } from "next/server";
 
-// Generic GET for "users" table:
+// Generic GET to DB:
 export async function GET(req) {
   try {
     // Parse query string from req URL...
@@ -16,7 +16,7 @@ export async function GET(req) {
         status: 400,
       });
     }
-    
+
     // Success! Execute the given query...
     const result = await db.query(query);
     return NextResponse.json({ success: true, data: result.rows, status: 200 });
