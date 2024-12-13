@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness Data</title>
+  </head>
+  <body>
+    <h1 id="title">Fitness Data</h1>
+    <div id="data">
+      <p id="distance-this-week">Total distance this week:</p>
+      <p id="distance-today">Total distance today:</p>
+    </div>
+
+    <script type="module">
+      import { loadUserData, getUserName } from "./strava.js";
+
+      const userName = getUserName();
+      document.getElementById(
+        "title"
+      ).textContent = `${userName}'s Fitness Data`;
+
+      loadUserData();
+    </script>
+  </body>
+</html>
