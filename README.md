@@ -14,4 +14,6 @@ Workflow for db usage:
 2. Create or use existing helper function inside helpers/api to fetch.
 3. Import helper function into component you wish to make db queries (will need to be client side to pull from a form to make queries).
 
+Run "npm run db" to reset the DB and fully seed it.
+
 If page isn't changing even after modifying, you may need to delete the ".next" folder at the top of the directory, which stores all cache.
