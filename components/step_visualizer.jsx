@@ -10,7 +10,7 @@ const StepVisualizer = ({ userCharacter }) => {
   }
 
   // Calculate the position of the character based on distance travelled...
-  const position = 10 + (distance_travelled / 1000) * 80; // Maps 0/1000 to 10% and 1000/1000 to 90%
+  const position = 10 + (distance_travelled / 1000) * 80; // 0/1000 = left:10% and 1000/1000 = left:90%
 
   // Render character's distance travelled...
   return (
@@ -21,7 +21,8 @@ const StepVisualizer = ({ userCharacter }) => {
         className="step-visualizer-character"
         style={{ left: `${position}%` }}
       >
-        🚹
+        🚹 
+        {/* Replace above emoji with avatar */}
       </div>
     </div>
   );
