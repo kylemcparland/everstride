@@ -1,13 +1,13 @@
-import "./Navbar.css";
+import "./NavBar.css";
 import NavLinks from "./NavLinks";
 
-const Navbar = () => {
+const NavBar = () => {
   return (
-    <div className="Navbar">
+    <div className="NavBar">
       <h1 className="Logo">Everstride</h1>
       <NavLinks />
     </div>
   );
 };
 
-export default Navbar;
+export default NavBar;
