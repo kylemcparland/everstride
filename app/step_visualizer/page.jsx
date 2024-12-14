@@ -1,6 +1,6 @@
 import "./page.css";
 import StepVisualizer from "@/components/step_visualizer";
-import { fetchUserAndFriends } from "../helpers/fetchUserAndFriends";
+import { fetchUserAndFriends } from "../helpers/userHelpers";
 
 export default async function StepVisualizerTestPage() {
   // Fetch user & friends data dynamically on the server-side before rendering the page...

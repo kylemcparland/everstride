@@ -1,4 +1,4 @@
-import { fetchAllUsers, fetchUserByName } from "./helpers/fetchData";
+import { fetchAllUsers, fetchUserByName } from "./helpers/userHelpers";
 import HomeClient from "./page.client";
 
 export default async function Page() {
