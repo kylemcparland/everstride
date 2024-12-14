@@ -10,4 +10,16 @@ const db = new Pool({
   port: 5432,
 });
 
+db.updateDistance = async (userName, distance) => {
+  console.log(
+    `Updating distance for user: ${userName} with distance: ${distance}`
+  );
+  const updateQuery = `
+    UPDATE users
+    SET distance_travelled = $1
+    WHERE name = $2;
+  `;
+  await db.query(updateQuery, [distance, userName]);
+};
+
 module.exports = db;

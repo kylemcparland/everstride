@@ -35,14 +35,38 @@ export function getTotalDistanceToday(activities) {
 }
 
 export async function loadUserData() {
+  console.log("Starting loadUserData");
+
   await newAccessToken(); // Wait for the new access token to be fetched
+  console.log("Access token fetched:", accessToken);
 
   const dataLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`;
+  console.log("Data link:", dataLink);
+
   fetch(dataLink)
     .then((res) => res.json())
     .then((activities) => {
-      const totalDistanceThisWeek = getTotalDistanceThisWeek(activities);
-      const totalDistanceToday = getTotalDistanceToday(activities);
+      console.log("Activities fetched:", activities);
+
+      const totalDistanceThisWeek = Math.round(getTotalDistanceThisWeek(activities));
+      const totalDistanceToday = Math.round(getTotalDistanceToday(activities));
+
+      console.log("Total distance this week:", totalDistanceThisWeek);
+      console.log("Total distance today:", totalDistanceToday);
+
+      // Update distance travelled in the database
+      fetch("/api/updateDistance", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userName, distance: totalDistanceToday }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Update distance response:", data.message);
+        })
+        .catch((error) => console.error("Error updating distance:", error));
 
       document.getElementById(
         "distance-this-week"
@@ -51,8 +75,7 @@ export async function loadUserData() {
         "distance-today"
       ).textContent = `Total distance today: ${totalDistanceToday} meters`;
 
-      console.log("Total distance this week:", totalDistanceThisWeek);
-      console.log("Total distance today:", totalDistanceToday);
+      console.log("Displayed total distance this week and today");
     })
     .catch((error) => console.error("Error fetching data:", error));
 }
