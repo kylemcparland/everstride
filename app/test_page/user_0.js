@@ -1,10 +1,10 @@
+require("dotenv").config();
+
 export const userName = "Jon Hiebert";
 
-require("dotenv").config();
-const refreshToken = "";
-const clientSecret = "";
-const clientId = "";
-
+const refreshToken = process.env.REFRESH_TOKEN;
+const clientSecret = process.env.CLIENT_SECRET;
+const clientId = process.env.CLIENT_ID;
 
 export let accessToken = "";
 
