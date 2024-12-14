@@ -1,0 +1,17 @@
+.NavLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  margin-right: 1em;
+}
+
+.NavLinks-button {
+  font-size: 1.7em;
+  padding: 0.5em;
+  margin: 0.5em;
+
+  border-radius: 10px;
+
+  background-color: grey;
+}

@@ -1,11 +1,11 @@
-import "./page.css";
+import "./PageBody.css";
 import StepVisualizer from "@/components/StepVisualizer";
-import { fetchUserAndFriends } from "../helpers/userHelpers";
+import { fetchUserAndFriends } from "@/app/helpers/userHelpers";
 
-export default async function StepVisualizerTestPage() {
+export default async function PageBody() {
   // Fetch user & friends data dynamically on the server-side before rendering the page...
   // Update this name to set a different user as the current user for testing:
-  const username = "Ben Hallam";
+  const username = "Jon Hiebert";
   const userAndFriends = await fetchUserAndFriends(username);
 
   // Separate current user from friends...
@@ -14,7 +14,7 @@ export default async function StepVisualizerTestPage() {
 
   // Render StepVisualizer components and pass it the user's data...
   return (
-    <main className="step-visualizer-container">
+    <main className="PageBody">
       {/* Render current user at top */}
       <StepVisualizer userCharacter={user} key={user.id} />
 

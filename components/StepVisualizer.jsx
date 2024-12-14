@@ -1,4 +1,4 @@
-import "./step_visualizer.css";
+import "./StepVisualizer.css";
 
 const StepVisualizer = ({ userCharacter }) => {
   // Deconstruct stats from userCharacter...

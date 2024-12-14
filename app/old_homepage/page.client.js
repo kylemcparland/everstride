@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./page.module.css";
-import StepVisualizer from "@/components/step_visualizer";
+import StepVisualizer from "@/components/StepVisualizer";
 
 export default function HomeClient({ allUsers, oneUser }) {
   return (

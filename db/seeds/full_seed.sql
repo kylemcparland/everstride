@@ -38,4 +38,6 @@ VALUES
 
 INSERT INTO user_friends (user_id_1, user_id_2) 
 VALUES
-    (2, 3); -- Ben is friends with Jon
+    (2, 1), -- Ben is friends with Kyle
+    (2, 3), -- Ben is friends with Jon
+    (3, 1); -- Jon is friends with Kyle
