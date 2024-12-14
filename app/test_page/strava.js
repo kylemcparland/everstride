@@ -1,4 +1,4 @@
-import { accessToken, newAccessToken, userName } from "./user_0.js";
+import { accessToken, newAccessToken, userName } from "./stravaUserInfo.js";
 
 export function getUserName() {
   return userName;

@@ -1,10 +1,12 @@
 require("dotenv").config();
 
+// This is just hardcoded for now
 export const userName = "Jon Hiebert";
 
-const refreshToken = process.env.REFRESH_TOKEN;
-const clientSecret = process.env.CLIENT_SECRET;
-const clientId = process.env.CLIENT_ID;
+// Need to add the tokens here to connect to strava
+const refreshToken = "";
+const clientSecret = "";
+const clientId = "";
 
 export let accessToken = "";
 
