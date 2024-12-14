@@ -19,7 +19,7 @@ const Avatar = ({ hat, shirt, pants, boots, weapon, colour }) => {
         {shirt && (
           <img
             src={`assets/shirts/${shirt.image}`}
-            alt={hat.name}
+            alt={shirt.name}
             className="equipment-layer shirt"
           />
         )}
