@@ -1,14 +1,15 @@
 import "./NavLinks.css";
+import Link from "next/link";
 
 const NavLinks = () => {
   return (
     <div className="NavLinks">
-      <a className="NavLinks-button" href="/avatar_editor">
-        Avatar Editor
-      </a>
-      <a className="NavLinks-button" href="/test_page">
-        Strava Test Page
-      </a>
+      <Link href="/avatar_editor">
+        <div className="NavLinks-button">Avatar Editor</div>
+      </Link>
+      <Link href="/test_page">
+        <div className="NavLinks-button">Strava Test Page</div>
+      </Link>
     </div>
   );
 };
