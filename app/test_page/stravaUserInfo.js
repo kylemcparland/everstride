@@ -4,9 +4,9 @@ require("dotenv").config();
 export const userName = "Jon Hiebert";
 
 // Need to add the tokens here to connect to strava
-const refreshToken = "";
-const clientSecret = "";
-const clientId = "";
+// const refreshToken = "";
+// const clientSecret = "";
+// const clientId = "";
 
 export let accessToken = "";
 
@@ -19,9 +19,9 @@ export async function newAccessToken() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        client_id: clientId,
-        client_secret: clientSecret,
-        refresh_token: refreshToken,
+        client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
+        client_secret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
+        refresh_token: process.env.NEXT_PUBLIC_REFRESH_TOKEN,
         grant_type: "refresh_token",
       }),
     });
