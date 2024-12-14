@@ -21,7 +21,7 @@ const StepVisualizer = ({ userCharacter }) => {
         className="step-visualizer-character"
         style={{ left: `${position}%` }}
       >
-        🚹 
+        🚹
         {/* Replace above emoji with avatar */}
       </div>
     </div>
