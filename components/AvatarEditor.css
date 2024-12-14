@@ -1,0 +1,55 @@
+.avatar-editor-container {
+  text-align: center;
+}
+
+.avatar-display {
+  position: relative;
+  display: inline-block;
+  height: 200px;
+  width: auto;
+}
+
+.equipment-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hat {
+  z-index: 2; /* Hat should be above the base avatar */
+}
+
+.shirt {
+  z-index: 3; /* Shirt is in front of hat, pants, and boots */
+}
+
+.pants {
+  z-index: 0; /* Pants are behind the shirt */
+}
+
+.boots {
+  z-index: 1; /* Boots are behind the pants */
+}
+
+.weapon {
+  z-index: 4; /* Weapon should be in front of all the other equipment */
+}
+
+.equipment-selection {
+  margin-top: 20px;
+}
+
+.equipment-category {
+  margin-bottom: 15px;
+}
+
+.equipment-thumbnail {
+  width: 50px;
+  height: auto;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.equipment-thumbnail:hover {
+  opacity: 0.7;
+}

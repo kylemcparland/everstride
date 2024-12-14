@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import { fetchAllUsers } from "./helpers/fetchAllUsers";
 import { fetchUserByName } from "./helpers/fetchUserByName";
 import { fetchItemsByType } from "./helpers/fetchItemsByType";
+import AvatarEditor from "@/components/AvatarEditor";
 
 // Reusable list component
 const ItemList = ({ title, items }) => (
@@ -36,6 +37,14 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
+      <AvatarEditor 
+        hats={hats}
+        shirts={shirts}
+        pants={pants}
+        boots={boots}
+        weapons={weapons}
+      />
+      
       <ul>
         <h3>Example of all users' data from the DB:</h3>
         {allUsers.map((user) => (
