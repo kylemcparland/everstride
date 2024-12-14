@@ -17,8 +17,10 @@ CREATE TABLE users (
 CREATE TABLE items (
     id SERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
-    price INT NOT NULL DEFAULT 1
+    price INT NOT NULL DEFAULT 1,
+    image VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE user_items (
