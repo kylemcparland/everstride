@@ -1,8 +1,11 @@
+import './Avatar.css';  // Assuming you're using an external CSS file
+
+
 const Avatar = ({ hat, shirt, pants, boots, weapon, colour }) => {
   return (
       <div className="avatar-display">
         <img
-          src="/assets/avatars/avatar_base.png"
+          src={colour == null ? `/assets/avatars/avatar_base.png` : `/assets/avatars/avatar_${colour}.png`}
           alt="Avatar base"
           className="avatar-base"
         />

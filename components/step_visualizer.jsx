@@ -1,6 +1,11 @@
-import "./step_visualizer.css";
+"use client"
 
-const StepVisualizer = ({ userCharacter }) => {
+import "./step_visualizer.css";
+import Avatar from "components/Avatar.js"
+
+
+const StepVisualizer = ({ userCharacter, hat, shirt }) => {
+
   // Deconstruct stats from userCharacter...
   let { name, distance_travelled } = userCharacter;
 
@@ -21,7 +26,10 @@ const StepVisualizer = ({ userCharacter }) => {
         className="step-visualizer-character"
         style={{ left: `${position}%` }}
       >
-        🚹
+        <Avatar
+          hat={hat}
+          shirt={shirt}
+        />
         {/* Replace above emoji with avatar */}
       </div>
     </div>

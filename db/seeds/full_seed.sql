@@ -34,8 +34,22 @@ VALUES
 INSERT INTO user_items (user_id, item_id) 
 VALUES
     (3, 1), -- Jon owns the Hat of Wisdom
-    (2, 2); -- Ben owns the Cap of Agility
+    (2, 2), -- Ben owns the Cap of Agility
+    (2, 5); -- Ben owns the tunic of the adventurer
 
 INSERT INTO user_friends (user_id_1, user_id_2) 
 VALUES
     (2, 3); -- Ben is friends with Jon
+
+
+UPDATE users 
+SET equipped_hat = 1
+WHERE id = 3;
+
+UPDATE users
+SET equipped_hat = 2
+WHERE id = 2;
+
+UPDATE users
+SET equipped_shirt = 3
+WHERE id = 2;
