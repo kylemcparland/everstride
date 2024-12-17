@@ -1,10 +1,23 @@
 import "./PageBody.css";
 import StepVisualizer from "@/components/StepVisualizer";
 import { fetchUserAndFriends } from "@/app/helpers/userHelpers";
+import { fetchEquippedHat, fetchEquippedShirt, fetchEquippedPants, fetchEquippedBoots, fetchEquippedWeapon } from "@/app/helpers/equippedItemHelpers";
+
+// Helper function to fetch all equipment for a user
+async function fetchEquipmentForUser(userId) {
+  const [hat, shirt, pants, boots, weapon] = await Promise.all([
+    fetchEquippedHat(userId),
+    fetchEquippedShirt(userId),
+    fetchEquippedPants(userId),
+    fetchEquippedBoots(userId),
+    fetchEquippedWeapon(userId),
+  ]);
+  
+  return { hat, shirt, pants, boots, weapon };
+}
 
 export default async function PageBody() {
   // Fetch user & friends data dynamically on the server-side before rendering the page...
-  // Update this name to set a different user as the current user for testing:
   const username = "Jon Hiebert";
   const userAndFriends = await fetchUserAndFriends(username);
 
@@ -12,15 +25,34 @@ export default async function PageBody() {
   const user = userAndFriends[0];
   const friends = userAndFriends.slice(1);
 
-  // Render StepVisualizer components and pass it the user's data...
+  // Fetch the user's equipment
+  const userEquipment = await fetchEquipmentForUser(user.id);
+
+  // Fetch equipment for each friend
+  const friendsEquipment = await Promise.all(
+    friends.map(async (friend) => ({
+      ...friend,
+      equipment: await fetchEquipmentForUser(friend.id),
+    }))
+  );
+
+  // Render StepVisualizer components and pass the user's data...
   return (
     <main className="PageBody">
       {/* Render current user at top */}
-      <StepVisualizer userCharacter={user} key={user.id} />
+      <StepVisualizer 
+        userCharacter={user} 
+        key={user.id} 
+        {...userEquipment}
+      />
 
       {/* Render friends below */}
-      {friends.map((friend) => (
-        <StepVisualizer userCharacter={friend} key={friend.id} />
+      {friendsEquipment.map((friendData) => (
+        <StepVisualizer 
+          userCharacter={friendData} 
+          key={friendData.id}
+          {...friendData.equipment} 
+        />
       ))}
     </main>
   );

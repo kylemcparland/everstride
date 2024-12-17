@@ -1,4 +1,8 @@
-const Avatar = ({ hat, shirt, pants, boots, weapon, colour }) => {
+import './Avatar.css';  // Assuming you're using an external CSS file
+
+
+const Avatar = ({ hat, shirt, pants, boots, weapon }) => {
+
   return (
       <div className="avatar-display">
         <img
