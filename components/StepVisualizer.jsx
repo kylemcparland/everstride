@@ -2,7 +2,7 @@ import "./StepVisualizer.css";
 
 const StepVisualizer = ({ userCharacter }) => {
   // Deconstruct stats from userCharacter...
-  let { name, distance_travelled_today } = userCharacter;
+  let { name, distance_travelled_today, gold } = userCharacter;
 
   // Protect against over-max distance travelled...
   if (distance_travelled_today > 1000) {
@@ -21,7 +21,7 @@ const StepVisualizer = ({ userCharacter }) => {
         className="step-visualizer-character"
         style={{ left: `${position}%` }}
       >
-        🚹
+        🚹 {gold}🪙
         {/* Replace above emoji with avatar */}
       </div>
     </div>

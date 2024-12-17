@@ -1,8 +1,9 @@
-INSERT INTO users (name, email, distance_travelled_today, gold, colour)
+INSERT INTO users (name, email, distance_travelled_today, total_distance_travelled, last_total_distance, gold, colour)
 VALUES 
-    ('Kyle McParland', 'k@k.com', 100, 5, 'GREY'),
-    ('Ben Hallam', 'b@b.com', 700, 10, 'RED'),
-    ('Jon Hiebert', 'j@j.com', 900, 3, 'GREEN');
+    ('Kyle McParland', 'k@k.com', 0, 0, 0, 0, 'GREY'),
+    ('Ben Hallam', 'b@b.com', 0, 0, 0, 0, 'RED'),
+    ('Jon Hiebert', 'j@j.com', 0, 0, 0, 0, 'GREEN');
+
 
 
 INSERT INTO items (name, type, description, price, image) 

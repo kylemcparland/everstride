@@ -4,13 +4,16 @@ import { fetchUserAndFriends } from "@/app/helpers/userHelpers";
 
 export default async function PageBody() {
   // Fetch user & friends data dynamically on the server-side before rendering the page...
-  // Update this name to set a different user as the current user for testing:
   const username = "Jon Hiebert";
   const userAndFriends = await fetchUserAndFriends(username);
 
   // Separate current user from friends...
   const user = userAndFriends[0];
   const friends = userAndFriends.slice(1);
+
+  // Log the fetched data for debugging
+  console.log("User:", user);
+  console.log("Friends:", friends);
 
   // Render StepVisualizer components and pass it the user's data...
   return (

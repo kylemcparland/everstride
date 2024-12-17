@@ -8,8 +8,12 @@ export default function Page() {
     const userName = getUserName();
     document.getElementById("title").textContent = `${userName}'s Fitness Data`;
 
+    document.title = `Strava Test Page`;
+    // Add a log to confirm useEffect execution
+    console.log("useEffect triggered in Page component");
+
     loadUserData();
-  }, []);
+  }, []); // Ensure useEffect runs only once
 
   return (
     <div>

@@ -8,7 +8,7 @@ export function getUserName() {
 export function getTotalDistanceThisWeek(activities) {
   const today = new Date();
   const startOfWeek = new Date(today);
-  startOfWeek.setDate(today.getDate() - today.getDay()); // Set to the start of the week (Sunday)
+  startOfWeek.setDate(today.getDate() - today.getDay());
 
   return activities
     .filter((activity) => {
@@ -22,9 +22,9 @@ export function getTotalDistanceThisWeek(activities) {
 export function getTotalDistanceToday(activities) {
   const today = new Date();
   const startOfToday = new Date(today);
-  startOfToday.setHours(0, 0, 0, 0); // Set to the start of today
+  startOfToday.setHours(0, 0, 0, 0);
   const endOfToday = new Date(today);
-  endOfToday.setHours(23, 59, 59, 999); // Set to the end of today
+  endOfToday.setHours(23, 59, 59, 999);
 
   return activities
     .filter((activity) => {
@@ -37,7 +37,7 @@ export function getTotalDistanceToday(activities) {
 export async function loadUserData() {
   console.log("Starting loadUserData");
 
-  await newAccessToken(); // Wait for the new access token to be fetched
+  await newAccessToken();
   console.log("Access token fetched:", accessToken);
 
   const dataLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`;
@@ -48,13 +48,16 @@ export async function loadUserData() {
     .then((activities) => {
       console.log("Activities fetched:", activities);
 
-      const totalDistanceThisWeek = Math.round(getTotalDistanceThisWeek(activities));
+      const totalDistanceThisWeek = Math.round(
+        getTotalDistanceThisWeek(activities)
+      );
       const totalDistanceToday = Math.round(getTotalDistanceToday(activities));
 
       console.log("Total distance this week:", totalDistanceThisWeek);
       console.log("Total distance today:", totalDistanceToday);
 
-      // Update distance travelled in the database
+      // Ensure only one call to updateDistance
+      console.log("Calling updateDistance for the first time");
       fetch("/api/updateDistance", {
         method: "POST",
         headers: {
