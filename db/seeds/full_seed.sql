@@ -28,7 +28,8 @@ INSERT INTO user_items (user_id, item_id) VALUES
     (2, 11), (2, 14), (3, 17), (2, 15);
 
 INSERT INTO user_friends (user_id_1, user_id_2) VALUES 
-    (2, 3);
+    (2, 3),
+    (3, 1);
 
 UPDATE users SET 
     equipped_hat = 1, 
