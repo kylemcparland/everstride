@@ -5,8 +5,9 @@ CREATE TABLE users (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    distance_travelled INT DEFAULT 0,
+    distance_travelled_today INT DEFAULT 0,
+    total_distance_travelled INT DEFAULT 0,
+    last_total_distance INT DEFAULT 0,
     gold INT DEFAULT 0,
     colour VARCHAR(12)
 );

@@ -1,4 +1,4 @@
-INSERT INTO users (name, email, distance_travelled, gold, colour)
+INSERT INTO users (name, email, distance_travelled_today, gold, colour)
 VALUES 
     ('Kyle McParland', 'k@k.com', 100, 5, 'GREY'),
     ('Ben Hallam', 'b@b.com', 700, 10, 'RED'),

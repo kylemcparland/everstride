@@ -16,7 +16,7 @@ db.updateDistance = async (userName, distance) => {
   );
   const updateQuery = `
     UPDATE users
-    SET distance_travelled = $1
+    SET distance_travelled_today = $1
     WHERE name = $2;
   `;
   await db.query(updateQuery, [distance, userName]);
