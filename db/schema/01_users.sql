@@ -6,7 +6,7 @@ CREATE TABLE users (
     email VARCHAR(255) UNIQUE NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    distance_travelled INT DEFAULT 0,
+    distance_travelled_today INT DEFAULT 0,
     gold INT DEFAULT 0,
     colour VARCHAR(12)
 );

@@ -3,16 +3,19 @@ DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS user_items CASCADE;
 DROP TABLE IF EXISTS user_friends CASCADE;
 
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    distance_travelled INT DEFAULT 0,
+    distance_travelled_today INT DEFAULT 0,
+    total_distance_travelled INT DEFAULT 0,
+    last_total_distance INT DEFAULT 0,
     gold INT DEFAULT 0,
     colour VARCHAR(12)
 );
+
 
 CREATE TABLE items (
     id SERIAL PRIMARY KEY NOT NULL,
