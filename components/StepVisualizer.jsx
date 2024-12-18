@@ -64,7 +64,9 @@ export default function StepVisualizer({
             {name}'s progress: {distance_travelled_today}/{goal_distance}
           </h2>
         )}
-      <h2>{gold}🪙</h2>
+        {/* This is just a initial position / layout for the users gold since I didn't know where else to place it*/}
+        <h3>[🪙{gold}]</h3>
+      
       </div>
 
       <div
