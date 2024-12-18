@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { fetchUserAndFriends } from "./helpers/userHelpers";
 
 export default async function HomePage() {
-  // Fetch user & friends data dynamically on the server-side before rendering the page...
+  // Fetch user & friends data dynamically on the server-side before rendering the homepage...
   const username = "Kyle McParland";
   const userAndFriends = await fetchUserAndFriends(username);
 
