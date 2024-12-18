@@ -9,7 +9,7 @@ import { cookies } from "next/headers";
 export default async function HomePage() {
   // Retrieve login info if any. Set is as current username...
   const cookieSession = (await cookies()).get("session")?.value;
-  const username = cookieSession ? cookieSession : "Kyle McParland";
+  const username = cookieSession ? cookieSession : undefined;
 
   // DB QUERY: Fetch user & friends data dynamically on the server-side before rendering the homepage...
   const userAndFriends = await fetchUserAndFriends(username);
@@ -38,11 +38,23 @@ export default async function HomePage() {
         allWeapons={allWeapons}
         cookieSession={cookieSession}
       />
-      <PageBody user={user} friends={friends} goal_distance={goal_distance} />
-      <Footer
-        distance_today={user.distance_travelled_today}
-        goal_distance={goal_distance}
-      />
+
+      {username ? (
+        <>
+          <PageBody
+            user={user}
+            friends={friends}
+            goal_distance={goal_distance}
+          />
+          <Footer
+            distance_today={user.distance_travelled_today}
+            goal_distance={goal_distance}
+            username={username}
+          />
+        </>
+      ) : (
+        <Footer />
+      )}
     </main>
   );
 }
