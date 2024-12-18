@@ -1,8 +1,14 @@
 .avatar-display {
   position: relative;
   display: inline-block;
-  height: 200px;
+  height: 250px;
   width: auto;
+}
+
+/* Added inherited height to all images. Change .avatar-display's height to change all. */
+
+.avatar-base {
+  height: inherit;
 }
 
 .equipment-layer {
@@ -13,20 +19,25 @@
 
 .hat {
   z-index: 4; /* Hat should be above the base avatar */
+  height: inherit;
 }
 
 .shirt {
   z-index: 3; /* Shirt is in front of hat, pants, and boots */
+  height: inherit;
 }
 
 .pants {
   z-index: 0; /* Pants are behind the shirt */
+  height: inherit;
 }
 
 .boots {
   z-index: 1; /* Boots are behind the pants */
+  height: inherit;
 }
 
 .weapon {
   z-index: 3; /* Weapon should be in front of all the other equipment */
+  height: inherit;
 }
