@@ -21,7 +21,10 @@ export default async function handler(req, res) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const goldEarned = totalDistance - user.last_total_distance;
+    // Set last_total_distance to 0 if it's not set yet. Prevents the gold duplication issue.
+    
+    const lastTotalDistance = user.last_total_distance || 0;
+    const goldEarned = totalDistance - lastTotalDistance;
 
     const updateQuery = `
       UPDATE users

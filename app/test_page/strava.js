@@ -45,7 +45,7 @@ export async function loadUserData() {
   const dataLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`;
   console.log("Data link:", dataLink);
 
-  fetch(dataLink)
+  return fetch(dataLink)
     .then((res) => res.json())
     .then((activities) => {
       console.log("Activities fetched:", activities);
@@ -56,12 +56,8 @@ export async function loadUserData() {
       const totalDistanceToday = Math.round(getTotalDistanceToday(activities));
       const totalDistance = Math.round(getTotalDistance(activities));
 
-      console.log("Total distance this week:", totalDistanceThisWeek);
-      console.log("Total distance today:", totalDistanceToday);
-      console.log("Total distance:", totalDistance);
-
-      // Update distance travelled today in the database
-      fetch("/api/updateDistance", {
+      // Update total_distance_today in the database
+      return fetch("/api/updateDistance", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +68,7 @@ export async function loadUserData() {
         .then((data) => {
           console.log("Update distance today response:", data.message);
 
-          // Update total distance and gold in the database
+          // Update total_distance and gold in the database
           return fetch("/api/updateTotalDistance", {
             method: "POST",
             headers: {
@@ -84,19 +80,19 @@ export async function loadUserData() {
         .then((res) => res.json())
         .then((data) => {
           console.log("Update total distance response:", data.message);
+          return { totalDistanceThisWeek, totalDistanceToday, totalDistance };
         })
-        .catch((error) =>
-          console.error("Error updating total distance:", error)
-        );
-
-      document.getElementById(
-        "distance-this-week"
-      ).textContent = `Total distance this week: ${totalDistanceThisWeek} meters`;
-      document.getElementById(
-        "distance-today"
-      ).textContent = `Total distance today: ${totalDistanceToday} meters`;
-
-      console.log("Displayed total distance this week and today");
+        .catch((error) => {
+          console.error("Error updating total distance:", error);
+          return { totalDistanceThisWeek, totalDistanceToday, totalDistance };
+        });
     })
-    .catch((error) => console.error("Error fetching data:", error));
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+      return {
+        totalDistanceThisWeek: 0,
+        totalDistanceToday: 0,
+        totalDistance: 0,
+      };
+    });
 }
