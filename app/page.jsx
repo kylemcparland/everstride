@@ -17,7 +17,7 @@ export default async function HomePage() {
     <main className="HomePage">
       <NavBar />
       <PageBody user={user} friends={friends}/>
-      <Footer />
+      <Footer distance_today={user.distance_travelled_today}/>
     </main>
   );
 }

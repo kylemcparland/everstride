@@ -10,6 +10,7 @@
 
   color: black;
   background-color: lightgray;
+  overflow: hidden;
 }
 
 .step-visualizer-character {
@@ -19,4 +20,6 @@
   transform: translate(-50%, -50%); /* Center horizontally and vertically */
 
   height: 100%;
+  margin-left: 3em;
+  margin-right: 3em;
 }

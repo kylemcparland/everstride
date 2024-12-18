@@ -1,10 +1,10 @@
 import "./Footer.css";
 import QuestInfo from "./QuestInfo";
 
-const Footer = () => {
+const Footer = ({ distance_today }) => {
   return (
     <div className="Footer">
-      <QuestInfo />
+      <QuestInfo distance_today={distance_today}/>
     </div>
   );
 };

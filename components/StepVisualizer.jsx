@@ -18,7 +18,7 @@ const StepVisualizer = ({
   }
 
   // Calculate the position of the character based on distance travelled...
-  const position = 10 + (distance_travelled_today / 1000) * 80; // 0/1000 = left:10% and 1000/1000 = left:90%
+  const position = 10 + (distance_travelled_today / 1000) * 80;
 
   // Render character's distance travelled...
   return (
@@ -27,7 +27,7 @@ const StepVisualizer = ({
       <h2>{distance_travelled_today}/1000</h2>
       <div
         className="step-visualizer-character"
-        style={{ left: `${position}%` }}
+        style={{ left: `calc(${position}% - 3em)` }}
       >
         <Avatar
           hat={hat}
