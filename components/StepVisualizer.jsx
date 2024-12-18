@@ -2,17 +2,17 @@ import "./StepVisualizer.css";
 import Avatar from "./Avatar";
 
 const StepVisualizer = ({
-  name,
+  isMainUser,
   userCharacter,
   hat,
   shirt,
   pants,
   boots,
   weapon,
-  goal_distance
+  goal_distance,
 }) => {
   // Deconstruct stats from userCharacter...
-  let { distance_travelled_today } = userCharacter;
+  let { name, distance_travelled_today } = userCharacter;
 
   // Protect against over-max distance travelled...
   if (distance_travelled_today > goal_distance) {
@@ -26,9 +26,15 @@ const StepVisualizer = ({
   return (
     <div className="StepVisualizer">
       <div className="StepVisualizer-progress">
-        <h2>
-          {name} Progress: {distance_travelled_today}/{goal_distance}
-        </h2>
+        {isMainUser ? (
+          <h2>
+            Your progress: {distance_travelled_today}/{goal_distance}
+          </h2>
+        ) : (
+          <h2>
+            {name}'s progress: {distance_travelled_today}/{goal_distance}
+          </h2>
+        )}
       </div>
 
       <div

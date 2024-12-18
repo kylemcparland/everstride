@@ -1,6 +1,5 @@
 import "./PageBody.css";
 import StepVisualizer from "@/components/StepVisualizer";
-import { fetchUserAndFriends } from "@/app/helpers/userHelpers";
 import {
   fetchEquippedHat,
   fetchEquippedShirt,
@@ -39,7 +38,7 @@ export default async function PageBody({ user, friends, goal_distance }) {
     <main className="PageBody">
       {/* Render current user at top */}
       <StepVisualizer
-        name={"Your"}
+        isMainUser="true"
         userCharacter={user}
         key={user.id}
         {...userEquipment}
@@ -49,7 +48,6 @@ export default async function PageBody({ user, friends, goal_distance }) {
       {/* Render friends below */}
       {friendsEquipment.map((friendData) => (
         <StepVisualizer
-          name={user.name}
           userCharacter={friendData}
           key={friendData.id}
           {...friendData.equipment}

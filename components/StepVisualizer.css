@@ -11,6 +11,8 @@
   color: black;
   background-color: lightgray;
   overflow: hidden;
+
+  font-size: calc(0.5rem + 1vh);
 }
 
 .StepVisualizer-character {
@@ -25,5 +27,8 @@
 }
 
 .StepVisualizer-progress {
+  display: flex;
+  flex-direction: row;
   align-self: center;
+  flex-direction: row;
 }
