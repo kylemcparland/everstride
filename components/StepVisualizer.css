@@ -1,12 +1,14 @@
 .step-visualizer {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  width: 95%;
+  margin-top: 1em;
 
   color: black;
   background-color: lightgray;
-  width: 95%;
-  height: 250px;
-
-  margin: 1em;
 }
 
 .step-visualizer-character {
@@ -15,5 +17,5 @@
   top: 50%;
   transform: translate(-50%, -50%); /* Center horizontally and vertically */
 
-  font-size: 50px;
+  height: 100%;
 }

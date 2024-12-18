@@ -1,12 +1,13 @@
 .PageBody {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   height: 100%;
-  width: 100vw;
-  max-width: 100%;
+  margin-bottom: 150px;
+  padding-bottom: 1em;
 
   background-color: darkgray;
 }

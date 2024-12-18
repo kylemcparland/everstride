@@ -1,7 +1,8 @@
 .avatar-display {
   position: relative;
+  flex-grow: 1;
   display: inline-block;
-  height: 250px;
+  height: inherit;
   width: auto;
 }
 
