@@ -1,10 +1,10 @@
 import "./QuestInfo.css";
 
-const QuestInfo = ({ distance_today }) => {
+const QuestInfo = ({ distance_today, goal_distance }) => {
   return (
     <div className="QuestInfo">
       {/* Conditionally display upon reaching goal. */}
-      {distance_today < 1000 ? (
+      {distance_today < goal_distance ? (
         <div>
           <b>Current Quest: The Trail of the Everstride</b>
           <br />
@@ -13,7 +13,7 @@ const QuestInfo = ({ distance_today }) => {
           Sanctuary of Vitality and claim the title of Everstride Champion!
           <br />
           <br />
-          <b>Keep going! Only {1000 - distance_today} more to go!</b>
+          <b>Keep going! Only {goal_distance - distance_today} more to go!</b>
         </div>
       ) : (
         <div>QUEST COMPLETE!!!!</div>

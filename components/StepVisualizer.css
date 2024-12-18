@@ -1,4 +1,4 @@
-.step-visualizer {
+.StepVisualizer {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.step-visualizer-character {
+.StepVisualizer-character {
   position: absolute;
   left: 10%;
   top: 50%;
@@ -22,4 +22,8 @@
   height: 100%;
   margin-left: 3em;
   margin-right: 3em;
+}
+
+.StepVisualizer-progress {
+  align-self: center;
 }

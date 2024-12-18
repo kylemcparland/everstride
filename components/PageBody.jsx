@@ -22,7 +22,7 @@ async function fetchEquipmentForUser(userId) {
   return { hat, shirt, pants, boots, weapon };
 }
 
-export default async function PageBody({ user, friends }) {
+export default async function PageBody({ user, friends, goal_distance }) {
   // Fetch the user's equipment
   const userEquipment = await fetchEquipmentForUser(user.id);
 
@@ -38,14 +38,22 @@ export default async function PageBody({ user, friends }) {
   return (
     <main className="PageBody">
       {/* Render current user at top */}
-      <StepVisualizer userCharacter={user} key={user.id} {...userEquipment} />
+      <StepVisualizer
+        name={"Your"}
+        userCharacter={user}
+        key={user.id}
+        {...userEquipment}
+        goal_distance={goal_distance}
+      />
 
       {/* Render friends below */}
       {friendsEquipment.map((friendData) => (
         <StepVisualizer
+          name={user.name}
           userCharacter={friendData}
           key={friendData.id}
           {...friendData.equipment}
+          goal_distance={goal_distance}
         />
       ))}
     </main>
