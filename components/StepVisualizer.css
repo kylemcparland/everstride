@@ -32,3 +32,10 @@
   align-self: center;
   flex-direction: row;
 }
+
+.StepVisualizer-goal {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: calc(1em + 4vh);
+}

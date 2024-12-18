@@ -1,5 +1,6 @@
 import "./StepVisualizer.css";
 import Avatar from "./Avatar";
+import GoalIcon from "./GoalIcon";
 
 const StepVisualizer = ({
   isMainUser,
@@ -21,6 +22,7 @@ const StepVisualizer = ({
 
   // Calculate the position of the character based on distance travelled...
   const position = 10 + (distance_travelled_today / goal_distance) * 80;
+  const goalPosition = 10 + 1 * 80;
 
   // Render character's distance travelled...
   return (
@@ -48,6 +50,12 @@ const StepVisualizer = ({
           boots={boots}
           weapon={weapon}
         />
+      </div>
+      <div
+        className="StepVisualizer-goal"
+        style={{ left: `calc(${goalPosition}% - 0.8em)` }}
+      >
+        <GoalIcon />
       </div>
     </div>
   );

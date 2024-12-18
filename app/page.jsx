@@ -14,13 +14,16 @@ export default async function HomePage() {
   const friends = userAndFriends.slice(1);
 
   // Goal distance set (will make this dynamic but for now will be static and passed down...):
-  const goal_distance = 1001;
+  const goal_distance = 1000;
 
   return (
     <main className="HomePage">
       <NavBar />
       <PageBody user={user} friends={friends} goal_distance={goal_distance} />
-      <Footer distance_today={user.distance_travelled_today} goal_distance={goal_distance} />
+      <Footer
+        distance_today={user.distance_travelled_today}
+        goal_distance={goal_distance}
+      />
     </main>
   );
 }
