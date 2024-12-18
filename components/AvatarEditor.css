@@ -1,12 +1,18 @@
 .avatar-editor-container {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  height: inherit;
 }
 
 .avatar-display {
   position: relative;
   display: inline-block;
-  height: 200px;
   width: auto;
+}
+
+.avatar-editor-title {
+  position: absolute;
 }
 
 .equipment-layer {
@@ -36,12 +42,17 @@
 }
 
 .equipment-selection {
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 20px;
 }
 
-.equipment-category {
+/* .equipment-category {
   margin-bottom: 15px;
-}
+} */
 
 .equipment-thumbnail {
   width: 50px;
