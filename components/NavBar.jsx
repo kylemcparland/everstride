@@ -2,6 +2,7 @@ import "./NavBar.css";
 import NavLinks from "./NavLinks";
 import Link from "next/link";
 import Login from "./Login";
+import Logout from "./Logout";
 
 const NavBar = ({
   allHats,
@@ -25,6 +26,10 @@ const NavBar = ({
             allBoots={allBoots}
             allWeapons={allWeapons}
           />
+          <div>
+            Logged in as {cookieSession}
+            <Logout />
+          </div>
         </>
       ) : (
         <>

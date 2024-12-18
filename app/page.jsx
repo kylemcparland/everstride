@@ -7,12 +7,11 @@ import { fetchItemsByType } from "app/helpers/itemHelpers.js";
 import { cookies } from "next/headers";
 
 export default async function HomePage() {
-  // Retrieve login info if any...
+  // Retrieve login info if any. Set is as current username...
   const cookieSession = (await cookies()).get("session")?.value;
-  console.log(cookieSession);
+  const username = cookieSession ? cookieSession : "Kyle McParland";
 
   // DB QUERY: Fetch user & friends data dynamically on the server-side before rendering the homepage...
-  const username = "Jon Hiebert";
   const userAndFriends = await fetchUserAndFriends(username);
 
   // Separate current user from friends...
