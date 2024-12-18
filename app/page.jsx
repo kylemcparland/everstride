@@ -4,8 +4,13 @@ import PageBody from "@/components/PageBody";
 import Footer from "@/components/Footer";
 import { fetchUserAndFriends } from "./helpers/userHelpers";
 import { fetchItemsByType } from "app/helpers/itemHelpers.js";
+import { cookies } from "next/headers";
 
 export default async function HomePage() {
+  // Retrieve login info if any...
+  const cookieSession = (await cookies()).get("session")?.value;
+  console.log(cookieSession);
+
   // DB QUERY: Fetch user & friends data dynamically on the server-side before rendering the homepage...
   const username = "Jon Hiebert";
   const userAndFriends = await fetchUserAndFriends(username);
@@ -32,6 +37,7 @@ export default async function HomePage() {
         allPants={allPants}
         allBoots={allBoots}
         allWeapons={allWeapons}
+        cookieSession={cookieSession}
       />
       <PageBody user={user} friends={friends} goal_distance={goal_distance} />
       <Footer

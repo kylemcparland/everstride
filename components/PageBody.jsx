@@ -38,7 +38,6 @@ export default async function PageBody({ user, friends, goal_distance }) {
     <main className="PageBody">
       {/* Render current user at top */}
       <StepVisualizer
-        isMainUser="true"
         userCharacter={user}
         key={user.id}
         {...userEquipment}

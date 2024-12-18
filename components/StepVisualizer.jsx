@@ -3,7 +3,6 @@ import Avatar from "./Avatar";
 import GoalIcon from "./GoalIcon";
 
 export default function StepVisualizer({
-  isMainUser,
   userCharacter,
   hat,
   shirt,
@@ -13,7 +12,7 @@ export default function StepVisualizer({
   goal_distance,
 }) {
   // Deconstruct stats from userCharacter...
-  let { name, distance_travelled_today } = userCharacter;
+  let { name, distance_travelled_today, user_tag } = userCharacter;
 
   // Protect against over-max distance travelled...
   if (distance_travelled_today > goal_distance) {
@@ -28,7 +27,7 @@ export default function StepVisualizer({
   return (
     <div className="StepVisualizer">
       <div className="StepVisualizer-progress">
-        {isMainUser ? (
+        {user_tag === "current_user" ? (
           <h2>
             Your progress: {distance_travelled_today}/{goal_distance} [💰
             {userCharacter.gold}]
