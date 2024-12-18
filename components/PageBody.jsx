@@ -1,7 +1,13 @@
 import "./PageBody.css";
 import StepVisualizer from "@/components/StepVisualizer";
 import { fetchUserAndFriends } from "@/app/helpers/userHelpers";
-import { fetchEquippedHat, fetchEquippedShirt, fetchEquippedPants, fetchEquippedBoots, fetchEquippedWeapon } from "@/app/helpers/equippedItemHelpers";
+import {
+  fetchEquippedHat,
+  fetchEquippedShirt,
+  fetchEquippedPants,
+  fetchEquippedBoots,
+  fetchEquippedWeapon,
+} from "@/app/helpers/equippedItemHelpers";
 
 // Helper function to fetch all equipment for a user
 async function fetchEquipmentForUser(userId) {
@@ -12,19 +18,11 @@ async function fetchEquipmentForUser(userId) {
     fetchEquippedBoots(userId),
     fetchEquippedWeapon(userId),
   ]);
-  
+
   return { hat, shirt, pants, boots, weapon };
 }
 
-export default async function PageBody() {
-  // Fetch user & friends data dynamically on the server-side before rendering the page...
-  const username = "Jon Hiebert";
-  const userAndFriends = await fetchUserAndFriends(username);
-
-  // Separate current user from friends...
-  const user = userAndFriends[0];
-  const friends = userAndFriends.slice(1);
-
+export default async function PageBody({ user, friends }) {
   // Fetch the user's equipment
   const userEquipment = await fetchEquipmentForUser(user.id);
 
@@ -40,18 +38,14 @@ export default async function PageBody() {
   return (
     <main className="PageBody">
       {/* Render current user at top */}
-      <StepVisualizer 
-        userCharacter={user} 
-        key={user.id} 
-        {...userEquipment}
-      />
+      <StepVisualizer userCharacter={user} key={user.id} {...userEquipment} />
 
       {/* Render friends below */}
       {friendsEquipment.map((friendData) => (
-        <StepVisualizer 
-          userCharacter={friendData} 
+        <StepVisualizer
+          userCharacter={friendData}
           key={friendData.id}
-          {...friendData.equipment} 
+          {...friendData.equipment}
         />
       ))}
     </main>

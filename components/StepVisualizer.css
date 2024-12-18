@@ -4,7 +4,8 @@
   flex-direction: column;
   flex-grow: 1;
 
-  width: 95%;
+  width: calc(100% - 2em);
+  max-height: 350px;
   margin-top: 1em;
 
   color: black;

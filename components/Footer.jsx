@@ -1,10 +1,10 @@
 import "./Footer.css";
+import QuestInfo from "./QuestInfo";
 
 const Footer = () => {
   return (
     <div className="Footer">
-      <h2>This is the footer</h2>
-      <p>Contains quest info/week info...</p>
+      <QuestInfo />
     </div>
   );
 };

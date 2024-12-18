@@ -6,8 +6,8 @@
   align-items: center;
 
   height: 100%;
-  margin-bottom: 150px;
+  margin-bottom: 200px;
   padding-bottom: 1em;
 
-  background-color: darkgray;
+  background-color: rgb(100, 100, 100);
 }
