@@ -1,0 +1,31 @@
+.Modal {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+
+  height: 80%;
+  max-width: 900px;
+  width: 80%;
+  z-index: 100;
+
+  background-color: lightgray;
+  box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.7);
+}
+
+.Modal-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  font-size: 2em;
+  height: 1.5em;
+  width: 1.5em;
+  z-index: 101;
+}
+
+.Modal-content {
+  height: 100%;
+}

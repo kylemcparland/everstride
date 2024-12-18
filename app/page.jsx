@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar";
 import PageBody from "@/components/PageBody";
 import Footer from "@/components/Footer";
 import { fetchUserAndFriends } from "./helpers/userHelpers";
+import { fetchItemsByType } from "app/helpers/itemHelpers.js";
 
 export default async function HomePage() {
   // DB QUERY: Fetch user & friends data dynamically on the server-side before rendering the homepage...
@@ -16,9 +17,22 @@ export default async function HomePage() {
   // Goal distance set (will make this dynamic but for now will be static and passed down...):
   const goal_distance = 1000;
 
+  // Fetch the avatar items (hats, shirts, etc.)
+  const allHats = await fetchItemsByType("hat");
+  const allShirts = await fetchItemsByType("shirt");
+  const allPants = await fetchItemsByType("pants");
+  const allBoots = await fetchItemsByType("boots");
+  const allWeapons = await fetchItemsByType("weapon");
+
   return (
     <main className="HomePage">
-      <NavBar />
+      <NavBar
+        allHats={allHats}
+        allShirts={allShirts}
+        allPants={allPants}
+        allBoots={allBoots}
+        allWeapons={allWeapons}
+      />
       <PageBody user={user} friends={friends} goal_distance={goal_distance} />
       <Footer
         distance_today={user.distance_travelled_today}
