@@ -1,8 +1,11 @@
+"use client"; // Mark this component as a Client Component
+
 import "./StepVisualizer.css";
 import Avatar from "./Avatar";
 import GoalIcon from "./GoalIcon";
+import { useEffect, useState } from "react";
 
-const StepVisualizer = ({
+export default function StepVisualizer({
   isMainUser,
   userCharacter,
   hat,
@@ -11,7 +14,7 @@ const StepVisualizer = ({
   boots,
   weapon,
   goal_distance,
-}) => {
+}) {
   // Deconstruct stats from userCharacter...
   let { name, distance_travelled_today } = userCharacter;
 
@@ -19,6 +22,30 @@ const StepVisualizer = ({
   if (distance_travelled_today > goal_distance) {
     distance_travelled_today = goal_distance;
   }
+
+  // fetchGold to fetch gold amount from the database
+  const [gold, setGold] = useState(0);
+
+  useEffect(() => {
+    fetch("/api/fetchGold", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userName: name }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.gold !== undefined) {
+          setGold(data.gold);
+        } else {
+          console.error("Failed to fetch gold value");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching gold value:", error);
+      });
+  }, [name]);
 
   // Calculate the position of the character based on distance travelled...
   const position = 10 + (distance_travelled_today / goal_distance) * 80;
@@ -37,6 +64,7 @@ const StepVisualizer = ({
             {name}'s progress: {distance_travelled_today}/{goal_distance}
           </h2>
         )}
+      <h2>{gold}🪙</h2>
       </div>
 
       <div
@@ -59,6 +87,4 @@ const StepVisualizer = ({
       </div>
     </div>
   );
-};
-
-export default StepVisualizer;
+}
