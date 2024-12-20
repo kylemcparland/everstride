@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
 import "./AvatarEditor.css"; // Assuming you're using an external CSS file
 import Avatar from "./Avatar.js";
+import React, { useState } from "react";
 
-const AvatarEditor = ({ hats, shirts, pants, boots, weapons }) => {
-  // State for selected equipment
+const AvatarEditor = ({ hats, shirts, pants, boots, weapons, userId, user }) => {
+  // State for selected items
   const [selectedHat, setSelectedHat] = useState(null);
   const [selectedShirt, setSelectedShirt] = useState(null);
   const [selectedPants, setSelectedPants] = useState(null);
@@ -56,10 +56,36 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons }) => {
     }
   };
 
+const handleEquip = async () => {
+  const response = await fetch("/api/updateEquipment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId: user.id, // Ensure this is correct
+      hatId: selectedHat?.id || null,
+      shirtId: selectedShirt?.id || null,
+      pantsId: selectedPants?.id || null,
+      bootsId: selectedBoots?.id || null,
+      weaponId: selectedWeapon?.id || null,
+    }),
+  });
+
+  const data = await response.json();
+  if (data.message === "Equipment updated successfully!") {
+    console.log("Equipment updated!");
+    window.location.reload();
+  } else {
+    console.error("Error updating equipment:", data.message);
+  }
+};
+
   return (
     <div className="avatar-editor-container">
       <h3 className="avatar-editor-title">Avatar Editor</h3>
 
+      {/* Display the Avatar */}
       <Avatar
         hat={selectedHat}
         shirt={selectedShirt}
@@ -70,8 +96,6 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons }) => {
 
       {/* Equipment Selection */}
       <div className="equipment-selection">
-        <h4>Select Equipment:</h4>
-
         {/* Hats */}
         <div className="equipment-category">
           <h5>Hats</h5>
@@ -141,10 +165,7 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons }) => {
           <h5>Weapons</h5>
           <button onClick={() => handleDeselect("weapon")}>None</button>
           {weapons.map((weapon) => (
-            <button
-              key={weapon.id}
-              onClick={() => handleSelect("weapon", weapon)}
-            >
+            <button key={weapon.id} onClick={() => handleSelect("weapon", weapon)}>
               <img
                 src={`assets/weapons/${weapon.image}`}
                 alt={weapon.name}
@@ -155,6 +176,11 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons }) => {
           ))}
         </div>
       </div>
+
+      {/* Equip Button */}
+      <button className="equip-button" onClick={handleEquip}>
+        Equip
+      </button>
     </div>
   );
 };

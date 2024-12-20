@@ -5,8 +5,7 @@ const fetchEquippedItem = async (userId, equippedField) => {
   const query = encodeURIComponent(`
     SELECT items.*
     FROM items
-    JOIN user_items ON items.id = user_items.item_id
-    JOIN users ON user_items.id = users.${equippedField}
+    JOIN users ON items.id = users.${equippedField}
     WHERE users.id = '${userId}'
   `);
 
