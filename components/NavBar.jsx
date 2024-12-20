@@ -11,6 +11,8 @@ const NavBar = ({
   allBoots,
   allWeapons,
   cookieSession,
+  user,
+  userItems
 }) => {
   return (
     <div className="NavBar">
@@ -25,6 +27,8 @@ const NavBar = ({
             allPants={allPants}
             allBoots={allBoots}
             allWeapons={allWeapons}
+            user={user}
+            userItems={userItems}
           />
           <div>
             Logged in as {cookieSession}

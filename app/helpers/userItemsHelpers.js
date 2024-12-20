@@ -1,6 +1,6 @@
 import db from "@/db/connection";
 
-export const fetchUserItems = async (userId) => {
+export const fetchUserItems = async (userId, userItemType) => {
   try {
     // Validate input
     if (!userId) {
@@ -19,19 +19,18 @@ export const fetchUserItems = async (userId) => {
     // Execute the query with parameterized values to prevent SQL injection
     const result = await db.query(query, [userId]);
 
-    // Return the user's items
-    return {
-      success: true,
-      data: result.rows,
-    };
+    // Filter the results to only include items with the type 'hat'
+    const data = result.rows.filter(item => item.type === userItemType); // Adjust 'type' if needed
+
+    // Return the user's items of type 'hat'
+    return data;
   } catch (error) {
     console.error("Error fetching user items:", error);
-    return {
-      success: false,
-      message: error.message,
-    };
+    return error.message;
   }
-}
+};
+
+
 
 export const addUserItem = async (userId, itemId) => {
   try {

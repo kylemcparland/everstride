@@ -7,6 +7,7 @@ import {
   fetchEquippedBoots,
   fetchEquippedWeapon,
 } from "@/app/helpers/equippedItemHelpers";
+import { fetchUserItems } from "@/app/helpers/userItemsHelpers";
 
 // Helper function to fetch all equipment for a user
 async function fetchEquipmentForUser(userId) {
@@ -32,7 +33,7 @@ export default async function PageBody({ user, friends, goal_distance }) {
       equipment: await fetchEquipmentForUser(friend.id),
     }))
   );
-
+  
   // Render StepVisualizer components and pass the user's data...
   return (
     <main className="PageBody">

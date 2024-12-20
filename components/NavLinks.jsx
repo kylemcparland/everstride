@@ -6,13 +6,12 @@ import Link from "next/link";
 import Modal from "./Modal";
 import AvatarEditor from "./AvatarEditor";
 
-const NavLinks = ({ allHats, allShirts, allPants, allBoots, allWeapons }) => {
+const NavLinks = ({ allHats, allShirts, allPants, allBoots, allWeapons, user, userItems }) => {
   const [isAvatarModalOpen, setAvatarModalOpen] = useState(false);
 
   const toggleModal = () => {
     setAvatarModalOpen(!isAvatarModalOpen);
   };
-
   return (
     <div className="NavLinks">
       <button onClick={toggleModal} className="NavLinks-button">
@@ -25,11 +24,12 @@ const NavLinks = ({ allHats, allShirts, allPants, allBoots, allWeapons }) => {
         {isAvatarModalOpen && (
           <Modal toggleModal={toggleModal}>
             <AvatarEditor
-              hats={allHats}
-              shirts={allShirts}
-              pants={allPants}
-              boots={allBoots}
-              weapons={allWeapons}
+              hats={userItems.hat}
+              shirts={userItems.shirt}
+              pants={userItems.pants}
+              boots={userItems.boots}
+              weapons={userItems.weapon}
+              user={user}
             />
           </Modal>
         )}
