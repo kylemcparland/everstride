@@ -4,7 +4,7 @@ import PageBody from "@/components/PageBody";
 import Footer from "@/components/Footer";
 import { fetchUserAndFriends } from "./helpers/userHelpers";
 import { fetchItemsByType } from "app/helpers/itemHelpers.js";
-import { fetchUserItems} from "./helpers/userItemsHelpers"
+import { fetchAllUserItems } from "./helpers/userItemsHelpers"
 import { cookies } from "next/headers";
 
 export default async function HomePage() {
@@ -29,25 +29,8 @@ export default async function HomePage() {
   const allBoots = await fetchItemsByType("boots");
   const allWeapons = await fetchItemsByType("weapon");
 
-  // Function to fetch user items by type
-  const fetchUserItemsByType = async (userId, itemType) => {
-    return await fetchUserItems(userId, itemType);
-  };
-
-  // Object to store user items by type
-  const fetchAllUserItems = async (userId) => {
-    const itemTypes = ['hat', 'shirt', 'pants', 'boots', 'weapon']; // List of item types
-    const userItems = {};
-
-    // Loop over each item type and fetch the items dynamically
-    for (const type of itemTypes) {
-      userItems[type] = await fetchUserItemsByType(userId, type);
-    }
-
-    return userItems;
-  };
-
-  const userItems = await fetchAllUserItems(user.id)
+  // Usage example with check for undefined user
+  const userItems = await fetchAllUserItems(user?.id); // Use optional chaining to handle undefined user
 
   return (
     <main className="HomePage">

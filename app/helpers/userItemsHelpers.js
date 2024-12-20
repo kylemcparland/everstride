@@ -31,6 +31,30 @@ export const fetchUserItems = async (userId, userItemType) => {
 };
 
 
+// Function to fetch all user items
+export const fetchAllUserItems = async (userId) => {
+  if (!userId) {
+    // Return an empty object if userId is undefined
+    return {
+      hat: [],
+      shirt: [],
+      pants: [],
+      boots: [],
+      weapon: []
+    };
+  }
+
+  const itemTypes = ['hat', 'shirt', 'pants', 'boots', 'weapon']; // List of item types
+  const userItems = {};
+
+  // Loop over each item type and fetch the items dynamically
+  for (const type of itemTypes) {
+    userItems[type] = await fetchUserItems(userId, type);
+  }
+
+  return userItems;
+};
+
 
 export const addUserItem = async (userId, itemId) => {
   try {
