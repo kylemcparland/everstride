@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { fetchUserAndFriends } from "./helpers/userHelpers";
 import { fetchItemsByType } from "app/helpers/itemHelpers.js";
 import { fetchAllUserItems } from "./helpers/userItemsHelpers"
+import { fetchEquipmentForUser } from "./helpers/equippedItemHelpers";
 import { cookies } from "next/headers";
 
 export default async function HomePage() {
@@ -22,27 +23,18 @@ export default async function HomePage() {
   // Goal distance set (will make this dynamic but for now will be static and passed down...):
   const goal_distance = 1000;
 
-  // Fetch the avatar items (hats, shirts, etc.)
-  const allHats = await fetchItemsByType("hat");
-  const allShirts = await fetchItemsByType("shirt");
-  const allPants = await fetchItemsByType("pants");
-  const allBoots = await fetchItemsByType("boots");
-  const allWeapons = await fetchItemsByType("weapon");
+  // Get the user's items and equipped items to pass on as props
+  const userItems = await fetchAllUserItems(user?.id);
+  const userEquipment = await fetchEquipmentForUser(user?.id);
 
-  // Usage example with check for undefined user
-  const userItems = await fetchAllUserItems(user?.id); // Use optional chaining to handle undefined user
 
   return (
     <main className="HomePage">
       <NavBar
-        allHats={allHats}
-        allShirts={allShirts}
-        allPants={allPants}
-        allBoots={allBoots}
-        allWeapons={allWeapons}
         cookieSession={cookieSession}
         user={user}
         userItems={userItems}
+        userEquipment={userEquipment}
       />
 
       {username ? (

@@ -4,13 +4,13 @@ import "./AvatarEditor.css"; // Assuming you're using an external CSS file
 import Avatar from "./Avatar.js";
 import React, { useState } from "react";
 
-const AvatarEditor = ({ hats, shirts, pants, boots, weapons, userId, user }) => {
+const AvatarEditor = ({ hats, shirts, pants, boots, weapons, user, userEquipment }) => {
   // State for selected items
-  const [selectedHat, setSelectedHat] = useState(null);
-  const [selectedShirt, setSelectedShirt] = useState(null);
-  const [selectedPants, setSelectedPants] = useState(null);
-  const [selectedBoots, setSelectedBoots] = useState(null);
-  const [selectedWeapon, setSelectedWeapon] = useState(null);
+  const [selectedHat, setSelectedHat] = useState(userEquipment.hat);
+  const [selectedShirt, setSelectedShirt] = useState(userEquipment.shirt);
+  const [selectedPants, setSelectedPants] = useState(userEquipment.pants);
+  const [selectedBoots, setSelectedBoots] = useState(userEquipment.boots);
+  const [selectedWeapon, setSelectedWeapon] = useState(userEquipment.weapon);
 
   const handleSelect = (type, item) => {
     switch (type) {
@@ -56,30 +56,36 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons, userId, user }) => 
     }
   };
 
-const handleEquip = async () => {
-  const response = await fetch("/api/updateEquipment", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      userId: user.id, // Ensure this is correct
-      hatId: selectedHat?.id || null,
-      shirtId: selectedShirt?.id || null,
-      pantsId: selectedPants?.id || null,
-      bootsId: selectedBoots?.id || null,
-      weaponId: selectedWeapon?.id || null,
-    }),
-  });
-
-  const data = await response.json();
-  if (data.message === "Equipment updated successfully!") {
-    console.log("Equipment updated!");
-    window.location.reload();
-  } else {
-    console.error("Error updating equipment:", data.message);
-  }
-};
+  const handleEquip = async () => {
+    // Check if user is available and has an id
+    if (!user || !user.id) {
+      console.error("User or user.id is undefined");
+      return;
+    }
+  
+    const response = await fetch("/api/updateEquipment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: user.id, // Ensure this is correct
+        hatId: selectedHat?.id || null,
+        shirtId: selectedShirt?.id || null,
+        pantsId: selectedPants?.id || null,
+        bootsId: selectedBoots?.id || null,
+        weaponId: selectedWeapon?.id || null,
+      }),
+    });
+  
+    const data = await response.json();
+    if (data.message === "Equipment updated successfully!") {
+      console.log("Equipment updated!");
+      window.location.reload();
+    } else {
+      console.error("Error updating equipment:", data.message);
+    }
+  };
 
   return (
     <div className="avatar-editor-container">

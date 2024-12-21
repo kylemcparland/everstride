@@ -6,7 +6,7 @@ import Link from "next/link";
 import Modal from "./Modal";
 import AvatarEditor from "./AvatarEditor";
 
-const NavLinks = ({ user, userItems }) => {
+const NavLinks = ({ user, userItems, userEquipment }) => {
   const [isAvatarModalOpen, setAvatarModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -30,6 +30,7 @@ const NavLinks = ({ user, userItems }) => {
               boots={userItems.boots}
               weapons={userItems.weapon}
               user={user}
+              userEquipment={userEquipment}
             />
           </Modal>
         )}

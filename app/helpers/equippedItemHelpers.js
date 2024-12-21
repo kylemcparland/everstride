@@ -31,3 +31,27 @@ export const fetchEquippedShirt = (userId) => fetchEquippedItem(userId, 'equippe
 export const fetchEquippedPants = (userId) => fetchEquippedItem(userId, 'equipped_pants');
 export const fetchEquippedBoots = (userId) => fetchEquippedItem(userId, 'equipped_boots');
 export const fetchEquippedWeapon = (userId) => fetchEquippedItem(userId, 'equipped_weapon');
+
+// Helper function to fetch all equipment for a user
+export const fetchEquipmentForUser = async (userId) => {
+  if (!userId) {
+    // Return an empty object if userId is undefined
+    return {
+      hat: null,
+      shirt: null,
+      pants: null,
+      boots: null,
+      weapon: null
+    };
+  }
+
+  const [hat, shirt, pants, boots, weapon] = await Promise.all([
+    fetchEquippedHat(userId),
+    fetchEquippedShirt(userId),
+    fetchEquippedPants(userId),
+    fetchEquippedBoots(userId),
+    fetchEquippedWeapon(userId),
+  ]);
+
+  return { hat, shirt, pants, boots, weapon };
+}
