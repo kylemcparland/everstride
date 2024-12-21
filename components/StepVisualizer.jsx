@@ -50,6 +50,7 @@ export default function StepVisualizer({
           pants={pants}
           boots={boots}
           weapon={weapon}
+          colour={userCharacter.colour}
         />
       </div>
       <div

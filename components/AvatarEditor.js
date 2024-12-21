@@ -98,6 +98,7 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons, user, userEquipment
         pants={selectedPants}
         boots={selectedBoots}
         weapon={selectedWeapon}
+        colour={user.colour}
       />
 
       {/* Equipment Selection */}
