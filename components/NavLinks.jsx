@@ -6,7 +6,7 @@ import Link from "next/link";
 import Modal from "./Modal";
 import AvatarEditor from "./AvatarEditor";
 
-const NavLinks = ({ allHats, allShirts, allPants, allBoots, allWeapons, user, userItems }) => {
+const NavLinks = ({ user, userItems }) => {
   const [isAvatarModalOpen, setAvatarModalOpen] = useState(false);
 
   const toggleModal = () => {
