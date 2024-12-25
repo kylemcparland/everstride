@@ -17,9 +17,23 @@ const NavLinks = ({ user, userItems, userEquipment }) => {
       <button onClick={toggleModal} className="NavLinks-button">
         Avatar Editor
       </button>
-      <Link href="/test_page">
-        <div className="NavLinks-button">Strava Test Page</div>
+      
+      <Link href="/">
+        <div className="NavLinks-button">Gold Market</div>
       </Link>
+
+      <Link href="/">
+        <div className="NavLinks-button">My Friends</div>
+      </Link>
+
+      <Link href="/">
+        <div className="NavLinks-button">World Progress</div>
+      </Link>
+
+      <Link href="/test_page">
+        <div className="NavLinks-button">Dev Tools</div>
+      </Link>
+
       <div>
         {isAvatarModalOpen && (
           <Modal toggleModal={toggleModal}>
