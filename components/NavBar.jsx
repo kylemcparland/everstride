@@ -20,7 +20,7 @@ const NavBar = ({
   return (
     <div className="NavBar">
       <Link href="/">
-        <h1 className="Logo">Everstride</h1>
+        <h2 className="Logo">Everstride</h2>
       </Link>
       {cookieSession ? (
         <>
@@ -29,10 +29,11 @@ const NavBar = ({
             userEquipment={userEquipment}
             user={user}
           />
-          <div>
-            Logged in as {cookieSession}
+          <div className="UserLogOutContainer">
+            {cookieSession}
             <Logout />
           </div>
+          
         </>
       ) : (
         <>

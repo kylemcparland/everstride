@@ -1,11 +1,10 @@
 .NavLinks-button,
 .NavLinks,
-.button,
-a {
+a{
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .button,
@@ -22,7 +21,7 @@ a {
   z-index: 1;
 }
 
-/* The hover effect was always the wrong size until I wrapped the button in a Link tag in NavLinks.jsx to just match the rest of the buttons.*/
+/* The hover effect was always the wrong size until I wrapped the button (Avatar Editor) in a Link tag in NavLinks.jsx to just match the rest of the buttons.*/
 
 /* .button:hover::before {
   width: 7em;
@@ -32,7 +31,7 @@ a {
 } */
 
 .NavLinks a:hover::before {
-  width: 12em;
+  width: 10em;
   height: stretch;
   background-color: rgb(172, 200, 237);
   z-index: 1;
