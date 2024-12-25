@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import { loadUserData, getUserName } from "./strava.js";
 
 export default function Page() {
+  
   const [totalDistanceToday, setTotalDistanceToday] = useState(0);
   const [totalDistanceThisWeek, setTotalDistanceThisWeek] = useState(0);
   const [totalDistance, setTotalDistance] = useState(0);
 
   useEffect(() => {
     const userName = getUserName();
-    document.getElementById("title").textContent = `${userName}'s Fitness Data`;
+    document.getElementById("title").textContent = `Strava (API) user: (${userName})`;
 
     loadUserData()
       .then((data) => {
@@ -30,15 +31,15 @@ export default function Page() {
   return (
     <div>
       <NavBar />
-      <h1 id="title">Fitness Data</h1>
+      <p id="title"></p>
       <div id="data">
-        <p id="distance-today">
+        <li id="distance-today">
           Total distance today: {totalDistanceToday} meters
-        </p>
-        <p id="distance-this-week">
+        </li>
+        <li id="distance-this-week">
           Total distance this week: {totalDistanceThisWeek} meters
-        </p>
-        <p id="total-distance">Total distance: {totalDistance} meters</p>{" "}
+        </li>
+        <li id="total-distance">Total distance since sign-up: {totalDistance} meters</li>{" "}
       </div>
     </div>
   );
