@@ -13,8 +13,8 @@ export default function Page() {
     const userName = getUserName();
     document.getElementById(
       "title"
-    ).textContent = `Strava data for user: (${userName})`;
-    // Getting userName from strava.js
+    ).textContent = `API Strava Connected: (${userName})`;
+    // Getting userName from stravaUserInfo.js
 
     loadUserData()
       .then((data) => {
@@ -36,7 +36,7 @@ export default function Page() {
     <div>
       <NavBar showLogin={false} />
       <div id="data">
-        <li>(API user is read from strava.js)</li>
+        <li>API user located in stravaUserInfo.js</li>
         <li id="title"></li>
         <li id="distance-today">
           Total distance today: {totalDistanceToday} meters
