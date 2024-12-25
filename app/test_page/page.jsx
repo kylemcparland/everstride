@@ -8,9 +8,9 @@ export default function Page() {
   const [totalDistanceToday, setTotalDistanceToday] = useState(0);
   const [totalDistanceThisWeek, setTotalDistanceThisWeek] = useState(0);
   const [totalDistance, setTotalDistance] = useState(0);
-  const [users, setUsers] = useState([]); // State for users list
-  const [selectedUser, setSelectedUser] = useState(""); // State for selected user
-  const [distanceToAdd, setDistanceToAdd] = useState(""); // State for distance to add
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState("");
+  const [distanceToAdd, setDistanceToAdd] = useState("");
 
   useEffect(() => {
     const userName = getUserName();
@@ -33,10 +33,15 @@ export default function Page() {
         console.error("loadUserData error:", error);
       });
 
-    // Fetch the list of users from the API
+    // Fetch the list of users from the API EXCLUDING Jon Hiebert
     fetch("/api/getAllUsers")
       .then((response) => response.json())
-      .then((users) => setUsers(users))
+      .then((users) => {
+        const filteredUsers = users.filter(
+          (user) => user.name !== "Jon Hiebert"
+        );
+        setUsers(filteredUsers);
+      })
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
@@ -45,7 +50,7 @@ export default function Page() {
     if (selectedUser && distanceToAdd) {
       console.log(`User: ${selectedUser}, Distance to add: ${distanceToAdd}`);
 
-      // Update total distance and distance today for the selected user
+      // Update total distance and distance today
       fetch("/api/updateTotalDistance", {
         method: "POST",
         headers: {
@@ -89,7 +94,23 @@ export default function Page() {
           Total distance since sign-up: {totalDistance} meters
         </li>
       </div>
-      {/* Add the form below */}
+
+      {/* New form for adding data to your user. Adds distance which is calculated into gold */}
+
+      <p>Mock API Data (Beta)</p>
+      <li>
+        There are console errors because it's trying to update the database for
+        the Strava user
+      </li>
+      <li>
+        Stava user updates seperatly on page load, and I excluded it from the
+        user select list
+      </li>
+      <li>
+        Strava user will update the first time the home page is reloaded too
+      </li>
+      <li>So the console error is fine but would be nice to fix eventually</li>
+
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="user-select">Select User</label>
