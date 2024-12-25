@@ -14,10 +14,12 @@ const NavLinks = ({ user, userItems, userEquipment }) => {
   };
   return (
     <div className="NavLinks">
-      <button onClick={toggleModal} className="NavLinks-button">
-        Avatar Editor
-      </button>
+
       
+      
+      <Link href=""><button onClick={toggleModal} className="NavLinks-button"> <p className="a">Avatar Editor</p> </button>
+      </Link>{/* The only way to make the styling match in the nav bar was to wrap this buttin in a link to nothing */}
+
       <Link href="/">
         <div className="NavLinks-button">Gold Market</div>
       </Link>

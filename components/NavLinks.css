@@ -1,17 +1,52 @@
-.NavLinks {
+.NavLinks-button,
+.NavLinks,
+.button,
+a {
   display: flex;
   align-items: center;
   justify-content: space-around;
-
-  margin-right: 1em;
+  padding: 1em;
 }
 
+.button,
 .NavLinks-button {
-  font-size: 1.3em;
-  padding: 0.5em;
-  margin: 0.5em;
+  background-color: transparent;
+  font-family: sans-serif;
+  color: rgb(50, 147, 227);
+  border: none;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
 
+/* The hover effect was always the wrong size until I wrapped the button in a Link tag in NavLinks.jsx to just match the rest of the buttons.*/
+
+/* .button:hover::before {
+  width: 7em;
+  height: stretch;
+  background-color: rgb(172, 200, 237);
+  z-index: -1;
+} */
+
+.NavLinks a:hover::before {
+  width: 12em;
+  height: stretch;
+  background-color: rgb(172, 200, 237);
+  z-index: 1;
+}
+
+.button::before,
+.NavLinks a::before {
+  content: "";
   border-radius: 10px;
-
-  background-color: darkgrey;
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: rgb(172, 200, 237);
+  cursor: pointer;
+  transition: 0.1s;
+  z-index: 1;
 }

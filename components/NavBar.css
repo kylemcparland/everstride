@@ -1,14 +1,16 @@
 .NavBar {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
-  height: 80px;
+  height: 90px;
   background-color: lightgray;
 }
 
 .Logo {
-  margin-left: 1em;
-  text-decoration: none;
+  margin: 1em;
+  color: rgb(113, 117, 229);
 }
+/* The following allows to remove the underline from hyperlinks */
+a { text-decoration: none;
+} 
