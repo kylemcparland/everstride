@@ -1,10 +1,13 @@
+/* The 'a' here affects the Everstride logo. To compensate, add padding to the Login / Logout css to the right.*/
+
 .NavLinks-button,
 .NavLinks,
-a{
+.button,
+a {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0.5em;
+  padding: 1em;
 }
 
 .button,
@@ -22,13 +25,6 @@ a{
 }
 
 /* The hover effect was always the wrong size until I wrapped the button (Avatar Editor) in a Link tag in NavLinks.jsx to just match the rest of the buttons.*/
-
-/* .button:hover::before {
-  width: 7em;
-  height: stretch;
-  background-color: rgb(172, 200, 237);
-  z-index: -1;
-} */
 
 .NavLinks a:hover::before {
   width: 10em;

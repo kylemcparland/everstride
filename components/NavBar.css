@@ -10,7 +10,6 @@
 .Logo,
 .UserLogOutContainer {
   color: rgb(113, 117, 229);
-  padding: 10px;
 }
 /* The following allows to remove the underline from hyperlinks */
 a {
