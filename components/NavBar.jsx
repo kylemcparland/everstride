@@ -11,7 +11,8 @@ const NavBar = ({
   userItems,
   cookieSession,
   userEquipment,
-  user
+  user,
+  showLogin = true
 }) => {
 
   const [username, setUsername] = useState("")
@@ -36,9 +37,11 @@ const NavBar = ({
           
         </>
       ) : (
+        showLogin && (
         <>
           <Login setUsername={setUsername} setUserId={setUserId} />
         </>
+        )
       )}
     </div>
   );
