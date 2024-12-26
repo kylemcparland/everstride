@@ -28,10 +28,11 @@ export default function StepVisualizer({
     <div className="StepVisualizer">
       <div className="StepVisualizer-progress">
         {user_tag === "current_user" ? (
-          <h2>
-            Your progress: {distance_travelled_today}/{goal_distance} [💰
+          <p>
+            (debug - distance_travelled_today): {distance_travelled_today}/
+            {goal_distance} [💰
             {userCharacter.gold}]
-          </h2>
+          </p>
         ) : (
           <h2>
             {name}'s progress: {distance_travelled_today}/{goal_distance} [💰
