@@ -3,11 +3,6 @@ require("dotenv").config();
 // This is just hardcoded for now
 export const userName = "Jon Hiebert";
 
-// Need to add the tokens here to connect to strava
-// const refreshToken = "";
-// const clientSecret = "";
-// const clientId = "";
-
 export let accessToken = "";
 
 export async function newAccessToken() {

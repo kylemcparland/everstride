@@ -1,4 +1,4 @@
-import { accessToken, newAccessToken, userName } from "./stravaUserInfo.js";
+import { accessToken, newAccessToken, userName } from "./stravaUserInfo";
 
 export function getUserName() {
   return userName;
@@ -37,18 +37,24 @@ export function getTotalDistance(activities) {
 }
 
 export async function loadUserData() {
-  console.log("Starting loadUserData");
+  console.log("🟢Starting loadUserData");
 
   await newAccessToken(); // Wait for the new access token to be fetched
-  console.log("Access token fetched:", accessToken);
+  console.log("🟢New access token generated");
+  // Hiding the access token now.
+  // console.log(accessToken)
 
   const dataLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`;
-  console.log("Data link:", dataLink);
+  console.log("🟢Data link success");
+  // Hiding the dataLink now.
+  // console.log(dataLink)
 
   return fetch(dataLink)
     .then((res) => res.json())
     .then((activities) => {
-      console.log("Activities fetched:", activities);
+      console.log("🟢Fetched all user activities");
+      // Hiding the activities too, no need to list them all.
+      // console.log(activities)
 
       const totalDistanceThisWeek = Math.round(
         getTotalDistanceThisWeek(activities)
@@ -56,8 +62,11 @@ export async function loadUserData() {
       const totalDistanceToday = Math.round(getTotalDistanceToday(activities));
       const totalDistance = Math.round(getTotalDistance(activities));
 
+      const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+      // App home page
+
       // Update total_distance_today in the database
-      return fetch("/api/updateDistance", {
+      return fetch(`${baseUrl}/api/updateDistance`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,10 +75,10 @@ export async function loadUserData() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("Update distance today response:", data.message);
+          console.log("🔵Update distance today response:", data.message);
 
           // Update total_distance and gold in the database
-          return fetch("/api/updateTotalDistance", {
+          return fetch(`${baseUrl}/api/updateTotalDistance`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -79,16 +88,16 @@ export async function loadUserData() {
         })
         .then((res) => res.json())
         .then((data) => {
-          console.log("Update total distance response:", data.message);
+          console.log("🪙Update total distance response:", data.message);
           return { totalDistanceThisWeek, totalDistanceToday, totalDistance };
         })
         .catch((error) => {
-          console.error("Error updating total distance:", error);
+          console.error("⛔Error updating total distance:", error);
           return { totalDistanceThisWeek, totalDistanceToday, totalDistance };
         });
     })
     .catch((error) => {
-      console.error("Error fetching data:", error);
+      console.error("⛔Error fetching data:", error);
       return {
         totalDistanceThisWeek: 0,
         totalDistanceToday: 0,

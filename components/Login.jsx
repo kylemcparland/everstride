@@ -30,5 +30,5 @@ const Login = () => {
     </div>
   );
 };
-
+// This is the login menu in the nav bar.
 export default Login;

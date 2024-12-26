@@ -3,9 +3,7 @@ import db from "@/db/connection";
 export default async function handler(req, res) {
   try {
     const { userName, totalDistance } = req.body;
-    console.log(
-      `Updating total_distance_travelled and last_total_distance for ${userName}`
-    );
+    console.log("🪙Starting updateTotalDistance🪙");
 
     const selectQuery = `
       SELECT last_total_distance, gold
@@ -22,7 +20,7 @@ export default async function handler(req, res) {
     }
 
     // Set last_total_distance to 0 if it's not set yet. Prevents the gold duplication issue.
-    
+
     const lastTotalDistance = user.last_total_distance || 0;
     const goldEarned = totalDistance - lastTotalDistance;
 
@@ -41,16 +39,14 @@ export default async function handler(req, res) {
       userName,
     ]);
     console.log(
-      `Updated total_distance_travelled, last_total_distance, and gold for ${userName}: Total Distance - ${totalDistance}, Gold Earned - ${goldEarned}`
+      `🪙Updated total_distance_travelled, last_total_distance, and gold for ${userName}: Total Distance - ${totalDistance}, Gold Earned - ${goldEarned}🪙`
     );
 
-    res
-      .status(200)
-      .json({
-        message: "Total distance travelled and gold updated successfully",
-      });
+    res.status(200).json({
+      message: "Success",
+    });
   } catch (error) {
-    console.error("Error updating total_distance_travelled and gold:", error);
+    console.error("⛔Error updating total_distance_travelled and gold:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 }

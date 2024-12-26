@@ -32,8 +32,8 @@ const NavLinks = ({ user, userItems, userEquipment }) => {
         <div className="NavLinks-button">World Progress</div>
       </Link>
 
-      <Link href="/test_page">
-        <div className="NavLinks-button">Dev Tools</div>
+      <Link href="/">
+        <div className="NavLinks-button">Placeholder</div>
       </Link>
 
       <div>
