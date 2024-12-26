@@ -3,7 +3,7 @@ import db from "@/db/connection";
 export default async function handler(req, res) {
   try {
     const { userName, totalDistance } = req.body;
-    console.log("🪙Starting updateTotalDistance🪙");
+    console.log("🪙Starting updateTotalDistance");
 
     const selectQuery = `
       SELECT last_total_distance, gold
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
       userName,
     ]);
     console.log(
-      `🪙Updated total_distance_travelled, last_total_distance, and gold for ${userName}: Total Distance - ${totalDistance}, Gold Earned - ${goldEarned}🪙`
+      `🪙Updated ${userName}: Total Distance - ${totalDistance}, Gold Earned - ${goldEarned}`
     );
 
     res.status(200).json({
