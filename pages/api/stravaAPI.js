@@ -63,7 +63,7 @@ export async function loadUserData() {
       const totalDistance = Math.round(getTotalDistance(activities));
 
       const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-      // App home page
+      // App home page - Had to be set because this is running server side instead of client side now.
 
       // Update total_distance_today in the database
       return fetch(`${baseUrl}/api/updateDistance`, {
