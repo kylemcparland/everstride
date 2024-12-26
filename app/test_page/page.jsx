@@ -3,6 +3,7 @@ import './test_page.css'
 import NavBar from "@/components/NavBar.jsx";
 import { useEffect, useState } from "react";
 import { loadUserData, getUserName } from "./strava.js";
+// Note: do not try to put a manual database update form on this page, it does not work. If anything make it all brand new and separate on a different page, with different DB updating api than the ones being used here.
 
 export default function Page() {
   const [totalDistanceToday, setTotalDistanceToday] = useState(0);
