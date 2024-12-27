@@ -51,7 +51,7 @@ export async function loadUserData() {
   return fetch(dataLink)
     .then((res) => res.json())
     .then((activities) => {
-      console.log("🟢 Fetch API data: Success");
+      console.log("🟢 Recieved the data from API, parsing");
       // Hiding the activities too, no need to list them all.
       // console.log(activities)
 

@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   try {
     const { userName, distance } = req.body;
     console.log('🔵 Starting updateDistance');
-    console.log(`🔵 Set ${userName} distance_travelled_today ${distance}`);
+    
 
     const updateQuery = `
       UPDATE users
@@ -13,6 +13,8 @@ export default async function handler(req, res) {
     `;
 
     const result = await db.query(updateQuery, [distance, userName]);
+    console.log(`🔵 Update database ${userName}: 
+      Travelled Today: ${distance}`);
 
     res.status(200).json({ message: "Success" });
   } catch (error) {

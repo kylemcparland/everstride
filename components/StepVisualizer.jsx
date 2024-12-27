@@ -34,10 +34,10 @@ export default function StepVisualizer({
             {userCharacter.gold}]
           </p>
         ) : (
-          <h2>
-            {name}'s progress: {distance_travelled_today}/{goal_distance} [💰
+          <p>
+            {name}'s progress (distance_travelled_today): {distance_travelled_today}/{goal_distance} [💰
             {userCharacter.gold}]
-          </h2>
+          </p>
         )}
       </div>
 

@@ -38,15 +38,21 @@ export default async function handler(req, res) {
       goldEarned,
       userName,
     ]);
-    console.log(
-      `🪙 Updated ${userName}: Total Distance - ${totalDistance}, Gold Earned - ${goldEarned}`
-    );
+    
+    console.log(`🪙 Update database ${userName}:
+      Last Total Distance: ${lastTotalDistance}
+      New Total Distance: ${totalDistance}
+      Gold increased amount: ${goldEarned}
+      `);
 
     res.status(200).json({
       message: "Success",
     });
   } catch (error) {
-    console.error("⛔ Error updating total_distance_travelled and gold:", error);
+    console.error(
+      "⛔ Error updating total_distance_travelled and gold:",
+      error
+    );
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
