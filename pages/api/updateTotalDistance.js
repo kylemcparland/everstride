@@ -3,7 +3,7 @@ import db from "@/db/connection";
 export default async function handler(req, res) {
   try {
     const { userName, totalDistance } = req.body;
-    console.log("🪙Starting updateTotalDistance");
+    console.log("🪙 Starting updateTotalDistance (and gold)");
 
     const selectQuery = `
       SELECT last_total_distance, gold
@@ -39,14 +39,14 @@ export default async function handler(req, res) {
       userName,
     ]);
     console.log(
-      `🪙Updated ${userName}: Total Distance - ${totalDistance}, Gold Earned - ${goldEarned}`
+      `🪙 Updated ${userName}: Total Distance - ${totalDistance}, Gold Earned - ${goldEarned}`
     );
 
     res.status(200).json({
       message: "Success",
     });
   } catch (error) {
-    console.error("⛔Error updating total_distance_travelled and gold:", error);
+    console.error("⛔ Error updating total_distance_travelled and gold:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 }

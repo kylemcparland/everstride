@@ -37,22 +37,21 @@ export function getTotalDistance(activities) {
 }
 
 export async function loadUserData() {
-  console.log("🟢Starting loadUserData");
+  console.log("🟢 Start loadUserData");
 
   await newAccessToken(); // Wait for the new access token to be fetched
-  console.log("🟢New access token generated");
+  console.log("🟢 Got access token, generate link");
   // Hiding the access token now.
   // console.log(accessToken)
 
   const dataLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`;
-  console.log("🟢Data link success");
   // Hiding the dataLink now.
   // console.log(dataLink)
 
   return fetch(dataLink)
     .then((res) => res.json())
     .then((activities) => {
-      console.log("🟢Fetched all user activities");
+      console.log("🟢 Fetch API data: Success");
       // Hiding the activities too, no need to list them all.
       // console.log(activities)
 
@@ -75,7 +74,7 @@ export async function loadUserData() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("🔵Update distance today response:", data.message);
+          console.log("🔵 updateDistance:", data.message);
 
           // Update total_distance and gold in the database
           return fetch(`${baseUrl}/api/updateTotalDistance`, {
@@ -88,16 +87,16 @@ export async function loadUserData() {
         })
         .then((res) => res.json())
         .then((data) => {
-          console.log("🪙Update total distance response:", data.message);
+          console.log("🪙 updateTotalDistance:", data.message);
           return { totalDistanceThisWeek, totalDistanceToday, totalDistance };
         })
         .catch((error) => {
-          console.error("⛔Error updating total distance:", error);
+          console.error("⛔ Error updating total distance:", error);
           return { totalDistanceThisWeek, totalDistanceToday, totalDistance };
         });
     })
     .catch((error) => {
-      console.error("⛔Error fetching data:", error);
+      console.error("⛔ Error fetching data:", error);
       return {
         totalDistanceThisWeek: 0,
         totalDistanceToday: 0,
