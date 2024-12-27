@@ -7,17 +7,17 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .button,
 .NavLinks-button {
+  font-family: "Barlow";
+  font-size: 20px;
+  font-weight: 600;
   background-color: transparent;
-  font-family: sans-serif;
-  color: rgb(50, 147, 227);
+  color: rgb(72, 155, 224);
   border: none;
-  font-size: 22px;
-  font-weight: 700;
   cursor: pointer;
   position: relative;
   text-align: center;
@@ -27,7 +27,7 @@ a {
 /* The hover effect was always the wrong size until I wrapped the button (Avatar Editor) in a Link tag in NavLinks.jsx to just match the rest of the buttons.*/
 
 .NavLinks a:hover::before {
-  width: 10em;
+  width: 8.5em;
   height: stretch;
   background-color: rgb(172, 200, 237);
   z-index: 1;
@@ -36,7 +36,7 @@ a {
 .button::before,
 .NavLinks a::before {
   content: "";
-  border-radius: 10px;
+  border-radius: 5px;
   position: absolute;
   width: 0;
   height: 0;

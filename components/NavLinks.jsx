@@ -33,7 +33,7 @@ const NavLinks = ({ user, userItems, userEquipment }) => {
       </Link>
 
       <Link href="/">
-        <div className="NavLinks-button">Placeholder</div>
+        <div className="NavLinks-button">Dev Placeholder</div>
       </Link>
 
       <div>
