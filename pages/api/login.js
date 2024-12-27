@@ -6,7 +6,8 @@ export default async function login(req, res) {
   const sessionToken = `${username}`;
   res.setHeader("Set-Cookie", `session=${sessionToken}; Path=/; HttpOnly`);
 
-  await runTestPageLogic(); // Run the logic from /test_page
+  await runTestPageLogic();
+  // Run newStravaLogic on login button click
 
   res.status(200).json({ message: "Login successful!" });
 }

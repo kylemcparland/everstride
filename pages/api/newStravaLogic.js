@@ -2,7 +2,7 @@ import { loadUserData, getUserName } from "@/pages/api/stravaAPI";
 
 export async function runTestPageLogic() {
   const userName = getUserName();
-  console.log(`🟢API Strava Connected: (${userName})`);
+  console.log(`🟢Got user name: (${userName})`);
 
   try {
     const data = await loadUserData();
@@ -14,11 +14,11 @@ export async function runTestPageLogic() {
       // console.log(`Total distance today: ${totalDistanceToday} meters`);
       // console.log(`Total distance this week: ${totalDistanceThisWeek} meters`);
       // console.log(`Total distance since sign-up: ${totalDistance} meters`);
-      console.log("🟢loadUserData complete");
+      console.log("🟢Completed loadUserData");
     } else {
-      console.error("loadUserData in runTestPageLogic failed.");
+      console.error("⛔loadUserData in runTestPageLogic failed.");
     }
   } catch (error) {
-    console.error("loadUserData error:", error);
+    console.error("⛔loadUserData error:", error);
   }
 }

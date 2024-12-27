@@ -3,8 +3,7 @@ import db from "@/db/connection";
 export default async function handler(req, res) {
   try {
     const { userName, distance } = req.body;
-    console.log;
-    ("🔵Starting updateDistance");
+    console.log('🔵Starting updateDistance');
     console.log(`🔵Updating distance today for ${userName} to ${distance}`);
 
     const updateQuery = `
