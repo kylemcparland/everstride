@@ -1,6 +1,6 @@
 INSERT INTO users (name, email, distance_travelled_today, total_distance_travelled, last_total_distance, gold, colour)
 VALUES 
-    ('Kyle McParland', 'k@k.com', 1000, 0, 0, 10, 'blue'),
+    ('Kyle McParland', 'k@k.com', 1000, 0, 0, 6, 'blue'),
     ('Ben Hallam', 'b@b.com', 300, 0, 0, 20, 'red'),
     ('Jon Hiebert', 'j@j.com', 0, 0, 0, 15, 'green');
 

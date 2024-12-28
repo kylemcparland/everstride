@@ -1,4 +1,16 @@
-const ConfirmButton = ({ setConfirmPurchase, userId, itemId }) => {
+"use client";
+
+import { useEffect } from "react";
+import "./ConfirmButton.css";
+
+const ConfirmButton = ({
+  setConfirmPurchase,
+  userId,
+  itemId,
+  userGold,
+  itemPrice,
+}) => {
+  // FUNCTION to query pages/api/addUserItems route...
   const buyItem = async () => {
     try {
       const response = await fetch("api/addUserItems", {
@@ -24,11 +36,30 @@ const ConfirmButton = ({ setConfirmPurchase, userId, itemId }) => {
     }
   };
 
+  // USEEFFECT called if not enough gold (error message timeout)...
+  useEffect(() => {
+    if (userGold <= itemPrice) {
+      const errorTimeout = setTimeout(() => {
+        setConfirmPurchase();
+      }, 1500);
+
+      return () => clearTimeout(errorTimeout);
+    }
+  }, [userGold, itemPrice, setConfirmPurchase]);
+
   return (
     <div>
-      Are you sure?
-      <button onClick={() => buyItem()}>Purchase</button>
-      <button onClick={() => setConfirmPurchase()}>Exit</button>
+      {userGold >= itemPrice ? (
+        <div>
+          Are you sure?
+          <button onClick={() => buyItem()}>Purchase</button>
+          <button onClick={() => setConfirmPurchase()}>Exit</button>
+        </div>
+      ) : (
+        <div className="ConfirmButton-error">
+          <h3>Not enough Gold!</h3>
+        </div>
+      )}
     </div>
   );
 };

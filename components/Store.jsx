@@ -56,6 +56,8 @@ const Store = ({ userItems, allItems, user }) => {
                   setConfirmPurchase={setConfirmPurchase}
                   userId={user.id}
                   itemId={hat.id}
+                  userGold={user.gold}
+                  itemPrice={hat.price}
                 />
               ) : (
                 <button onClick={() => toggleConfirmPurchase(hat.id)}>
