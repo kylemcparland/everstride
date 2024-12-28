@@ -11,14 +11,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .Store-category {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .Store-item {
   padding: 1em;
   padding-top: 0em;
+}
+
+.Store-item-thumbnail {
+  width: 100px;
 }

@@ -15,16 +15,18 @@ const Store = ({ allItems }) => {
 
       <div className="Store-body">
         {/* HATS */}
-        <h2>Hats</h2>
+        <h2>-- Purchase Hats --</h2>
         <div className="Store-category">
           {hats.map((hat) => (
             <div className="Store-item" key={hat.id}>
-              <p>{hat.name}</p>
+              <p>
+                {hat.name} 💰:{hat.price}
+              </p>
               <button>
                 <img
                   src={`assets/hats/${hat.image}`}
                   alt={hat.name}
-                  className="equipment-thumbnail"
+                  className="Store-item-thumbnail"
                   title={hat.name}
                 />
               </button>
@@ -33,16 +35,18 @@ const Store = ({ allItems }) => {
         </div>
 
         {/* SHIRTS */}
-        <h2>Shirts</h2>
+        <h2>-- Purchase Shirts --</h2>
         <div className="Store-category">
           {shirts.map((shirt) => (
             <div className="Store-item" key={shirt.id}>
-              <p>{shirt.name}</p>
+              <p>
+                {shirt.name} 💰:{shirt.price}
+              </p>
               <button>
                 <img
                   src={`assets/shirts/${shirt.image}`}
                   alt={shirt.name}
-                  className="equipment-thumbnail"
+                  className="Store-item-thumbnail"
                   title={shirt.name}
                 />
               </button>
@@ -51,16 +55,18 @@ const Store = ({ allItems }) => {
         </div>
 
         {/* PANTS */}
-        <h2>Pants</h2>
+        <h2>-- Purchase Pants --</h2>
         <div className="Store-category">
           {pants.map((pants) => (
             <div className="Store-item" key={pants.id}>
-              <p>{pants.name}</p>
+              <p>
+                {pants.name} 💰:{pants.price}
+              </p>
               <button>
                 <img
                   src={`assets/pants/${pants.image}`}
                   alt={pants.name}
-                  className="equipment-thumbnail"
+                  className="Store-item-thumbnail"
                   title={pants.name}
                 />
               </button>
@@ -69,32 +75,42 @@ const Store = ({ allItems }) => {
         </div>
 
         {/* BOOTS */}
+        <h2>-- Purchase Boots --</h2>
         <div className="Store-category">
-          <h2>Boots</h2>
           {boots.map((boots) => (
-            <button key={boots.id}>
-              <img
-                src={`assets/boots/${boots.image}`}
-                alt={boots.name}
-                className="equipment-thumbnail"
-                title={boots.name}
-              />
-            </button>
+            <div className="Store-item" key={boots.id}>
+              <p>
+                {boots.name} 💰:{boots.price}
+              </p>
+              <button>
+                <img
+                  src={`assets/boots/${boots.image}`}
+                  alt={boots.name}
+                  className="Store-item-thumbnail"
+                  title={boots.name}
+                />
+              </button>
+            </div>
           ))}
         </div>
 
         {/* WEAPONS */}
+        <h2>-- Purchase Weapons --</h2>
         <div className="Store-category">
-          <h2>Weapons</h2>
           {weapons.map((weapon) => (
-            <button key={weapon.id}>
-              <img
-                src={`assets/weapons/${weapon.image}`}
-                alt={weapon.name}
-                className="equipment-thumbnail"
-                title={weapon.name}
-              />
-            </button>
+            <div className="Store-item" key={weapon.id}>
+              <p>
+                {weapon.name} 💰:{weapon.price}
+              </p>
+              <button>
+                <img
+                  src={`assets/weapons/${weapon.image}`}
+                  alt={weapon.name}
+                  className="Store-item-thumbnail"
+                  title={weapon.name}
+                />
+              </button>
+            </div>
           ))}
         </div>
       </div>
@@ -110,7 +126,7 @@ export default Store;
   <img
     src={`assets/hats/${hat.image}`}
     alt={hat.name}
-    className="equipment-thumbnail"
+    className="Store-item-thumbnail"
     title={hat.name}
   />
 </button>
