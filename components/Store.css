@@ -1,0 +1,24 @@
+.Store {
+  text-align: center;
+  height: inherit;
+  max-width: 900px;
+  width: inherit;
+
+  overflow-y: auto;
+}
+
+.Store-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Store-category {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Store-item {
+  padding: 1em;
+  padding-top: 0em;
+}

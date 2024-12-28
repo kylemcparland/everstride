@@ -1,23 +1,17 @@
-"use client"
-
 import "./NavBar.css";
 import NavLinks from "./NavLinks";
 import Link from "next/link";
 import Login from "./Login";
 import Logout from "./Logout";
-import { useState } from "react";
 
 const NavBar = ({
   userItems,
   cookieSession,
   userEquipment,
   user,
-  showLogin = true
+  showLogin = true,
+  allItems,
 }) => {
-
-  const [username, setUsername] = useState("")
-  const [userId, setUserId] = useState(null)
-
   return (
     <div className="NavBar">
       <Link href="/">
@@ -29,6 +23,7 @@ const NavBar = ({
             userItems={userItems}
             userEquipment={userEquipment}
             user={user}
+            allItems={allItems}
           />
           <div className="UserLogOutContainer">
             {cookieSession}
@@ -38,7 +33,7 @@ const NavBar = ({
       ) : (
         showLogin && (
           <>
-            <Login setUsername={setUsername} setUserId={setUserId} />
+            <Login />
           </>
         )
       )}
