@@ -70,7 +70,7 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         {/* STORE MODAL */}
         {isStoreModalOpen && (
           <Modal toggleModal={toggleStoreModal}>
-            <Store userItems={userItems} allItems={allItems} />
+            <Store userItems={userItems} allItems={allItems} user={user} />
           </Modal>
         )}
       </div>

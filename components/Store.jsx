@@ -1,7 +1,16 @@
 "use client";
-import "./Store.css";
 
-const Store = ({ userItems, allItems }) => {
+import "./Store.css";
+import { useState } from "react";
+import ConfirmButton from "./ConfirmButton";
+
+const Store = ({ userItems, allItems, user }) => {
+  // Confirm purchase:
+  const [confirmPurchase, setConfirmPurchase] = useState(false);
+  const toggleConfirmPurchase = (itemId) => {
+    setConfirmPurchase((prevId) => (prevId === itemId ? null : itemId));
+  };
+
   // Sort all items for store display...
   const hats = allItems.filter((item) => item.type === "hat");
   const shirts = allItems.filter((item) => item.type === "shirt");
@@ -9,19 +18,17 @@ const Store = ({ userItems, allItems }) => {
   const boots = allItems.filter((item) => item.type === "boots");
   const weapons = allItems.filter((item) => item.type === "weapon");
 
-  // console.log("USER ITEMS:", userItems, "ALLITEMS:", allItems);
-
+  // Create SET for conditional SOLD OUT display...
   const ownedItemIds = new Set(
     Object.values(userItems)
       .flat()
       .map((item) => item.id)
   );
 
-  // console.log(ownedItemIds);
-
   return (
     <div className="Store">
       <h1>Store</h1>
+      <h2>Your Gold: 💰{user.gold}</h2>
 
       <div className="Store-body">
         {/* HATS */}
@@ -44,8 +51,14 @@ const Store = ({ userItems, allItems }) => {
                   />
                   <h3 className="Store-item-owned-SOLD">SOLD OUT!</h3>
                 </button>
+              ) : confirmPurchase === hat.id ? (
+                <ConfirmButton
+                  setConfirmPurchase={setConfirmPurchase}
+                  userId={user.id}
+                  itemId={hat.id}
+                />
               ) : (
-                <button>
+                <button onClick={() => toggleConfirmPurchase(hat.id)}>
                   <img
                     src={`assets/hats/${hat.image}`}
                     alt={hat.name}
