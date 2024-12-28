@@ -18,7 +18,7 @@ const Login = () => {
 
   return (
     <div className="Login">
-      <h2>Login:</h2>
+      {/* <h2>Login:</h2> */}
       <select value={username} onChange={(e) => setUsername(e.target.value)}>
         <option value="">Select a username</option>
         <option value="Kyle McParland">Kyle McParland</option>
