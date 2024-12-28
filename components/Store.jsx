@@ -93,8 +93,16 @@ const Store = ({ userItems, allItems, user }) => {
                   />
                   <h3 className="Store-item-owned-SOLD">SOLD OUT!</h3>
                 </button>
+              ) : confirmPurchase === shirt.id ? (
+                <ConfirmButton
+                  setConfirmPurchase={setConfirmPurchase}
+                  userId={user.id}
+                  itemId={shirt.id}
+                  userGold={user.gold}
+                  itemPrice={shirt.price}
+                />
               ) : (
-                <button>
+                <button onClick={() => toggleConfirmPurchase(shirt.id)}>
                   <img
                     src={`assets/shirts/${shirt.image}`}
                     alt={shirt.name}
@@ -127,8 +135,16 @@ const Store = ({ userItems, allItems, user }) => {
                   />
                   <h3 className="Store-item-owned-SOLD">SOLD OUT!</h3>
                 </button>
+              ) : confirmPurchase === pants.id ? (
+                <ConfirmButton
+                  setConfirmPurchase={setConfirmPurchase}
+                  userId={user.id}
+                  itemId={pants.id}
+                  userGold={user.gold}
+                  itemPrice={pants.price}
+                />
               ) : (
-                <button>
+                <button onClick={() => toggleConfirmPurchase(pants.id)}>
                   <img
                     src={`assets/pants/${pants.image}`}
                     alt={pants.name}
@@ -161,8 +177,16 @@ const Store = ({ userItems, allItems, user }) => {
                   />
                   <h3 className="Store-item-owned-SOLD">SOLD OUT!</h3>
                 </button>
+              ) : confirmPurchase === boots.id ? (
+                <ConfirmButton
+                  setConfirmPurchase={setConfirmPurchase}
+                  userId={user.id}
+                  itemId={boots.id}
+                  userGold={user.gold}
+                  itemPrice={boots.price}
+                />
               ) : (
-                <button>
+                <button onClick={() => toggleConfirmPurchase(boots.id)}>
                   <img
                     src={`assets/boots/${boots.image}`}
                     alt={boots.name}
@@ -176,7 +200,7 @@ const Store = ({ userItems, allItems, user }) => {
         </div>
 
         {/* WEAPONS */}
-        <h2>-- Purchase Weapons --</h2>
+        <h2>-- Purchase WEapons --</h2>
         <div className="Store-category">
           {weapons.map((weapon) => (
             <div className="Store-item" key={weapon.id}>
@@ -195,8 +219,16 @@ const Store = ({ userItems, allItems, user }) => {
                   />
                   <h3 className="Store-item-owned-SOLD">SOLD OUT!</h3>
                 </button>
+              ) : confirmPurchase === weapon.id ? (
+                <ConfirmButton
+                  setConfirmPurchase={setConfirmPurchase}
+                  userId={user.id}
+                  itemId={weapon.id}
+                  userGold={user.gold}
+                  itemPrice={weapon.price}
+                />
               ) : (
-                <button>
+                <button onClick={() => toggleConfirmPurchase(weapon.id)}>
                   <img
                     src={`assets/weapons/${weapon.image}`}
                     alt={weapon.name}

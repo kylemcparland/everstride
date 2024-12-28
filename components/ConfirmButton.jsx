@@ -25,7 +25,26 @@ const ConfirmButton = ({
 
       if (response.ok) {
         console.log("Item successfully purchased:", data.data);
-        window.location.reload();
+
+        // Deduct the gold by calling updateUserGold
+        const newGoldAmount = userGold - itemPrice;
+        const goldResponse = await fetch("api/updateUserGold", {
+          method: "POST",
+          headers: {
+            "Content-Type": "Application/json",
+          },
+          body: JSON.stringify({ userId, newGoldAmount }),
+        });
+
+        const goldData = await goldResponse.json();
+
+        if (goldResponse.ok) {
+          console.log("Gold successfully updated:", goldData.gold);
+          window.location.reload(); // Reload to reflect updated data
+        } else {
+          setError(goldData.error || "Failed to update gold");
+          console.error(goldData.error);
+        }
       } else {
         setError(data.error || "Failed to purchase item");
         console.error(data.error);
@@ -50,10 +69,17 @@ const ConfirmButton = ({
   return (
     <div>
       {userGold >= itemPrice ? (
-        <div>
-          Are you sure?
-          <button onClick={() => buyItem()}>Purchase</button>
-          <button onClick={() => setConfirmPurchase()}>Exit</button>
+        <div className="ConfirmButton">
+          <h3>Are you sure?</h3>
+          <button className="ConfirmButton-btn" onClick={() => buyItem()}>
+            Purchase
+          </button>
+          <button
+            className="ConfirmButton-btn"
+            onClick={() => setConfirmPurchase()}
+          >
+            Exit
+          </button>
         </div>
       ) : (
         <div className="ConfirmButton-error">
