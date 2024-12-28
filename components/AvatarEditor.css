@@ -1,7 +1,8 @@
 .avatar-editor-container {
-  text-align: center;
   display: flex;
-  justify-content: center;
+  text-align: center;
+
+  justify-content: flex-end;
   height: inherit;
 }
 
@@ -9,10 +10,13 @@
   position: relative;
   display: inline-block;
   width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .avatar-editor-title {
-  position: absolute;
+  justify-self: center;
 }
 
 .equipment-layer {
@@ -63,4 +67,8 @@
 
 .equipment-thumbnail:hover {
   opacity: 0.7;
+}
+
+.equip-button {
+  font-size: 1.5em;
 }

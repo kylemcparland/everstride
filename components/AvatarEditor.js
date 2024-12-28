@@ -4,7 +4,15 @@ import "./AvatarEditor.css"; // Assuming you're using an external CSS file
 import Avatar from "./Avatar.js";
 import React, { useState } from "react";
 
-const AvatarEditor = ({ hats, shirts, pants, boots, weapons, user, userEquipment }) => {
+const AvatarEditor = ({
+  hats,
+  shirts,
+  pants,
+  boots,
+  weapons,
+  user,
+  userEquipment,
+}) => {
   // State for selected items
   const [selectedHat, setSelectedHat] = useState(userEquipment.hat);
   const [selectedShirt, setSelectedShirt] = useState(userEquipment.shirt);
@@ -62,7 +70,7 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons, user, userEquipment
       console.error("User or user.id is undefined");
       return;
     }
-  
+
     const response = await fetch("/api/updateEquipment", {
       method: "POST",
       headers: {
@@ -77,7 +85,7 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons, user, userEquipment
         weaponId: selectedWeapon?.id || null,
       }),
     });
-  
+
     const data = await response.json();
     if (data.message === "Equipment updated successfully!") {
       console.log("Equipment updated!");
@@ -172,7 +180,10 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons, user, userEquipment
           <h5>Weapons</h5>
           <button onClick={() => handleDeselect("weapon")}>None</button>
           {weapons.map((weapon) => (
-            <button key={weapon.id} onClick={() => handleSelect("weapon", weapon)}>
+            <button
+              key={weapon.id}
+              onClick={() => handleSelect("weapon", weapon)}
+            >
               <img
                 src={`assets/weapons/${weapon.image}`}
                 alt={weapon.name}
@@ -182,12 +193,12 @@ const AvatarEditor = ({ hats, shirts, pants, boots, weapons, user, userEquipment
             </button>
           ))}
         </div>
-      </div>
 
-      {/* Equip Button */}
-      <button className="equip-button" onClick={handleEquip}>
-        Equip
-      </button>
+        {/* Equip Button */}
+        <button className="equip-button" onClick={handleEquip}>
+          Equip
+        </button>
+      </div>
     </div>
   );
 };
