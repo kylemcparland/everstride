@@ -1,0 +1,16 @@
+.ConfirmButton {
+  display: flex;
+  flex-direction: column;
+}
+
+.ConfirmButton-btn {
+  font-size: larger;
+}
+
+.ConfirmButton-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: red;
+}

@@ -1,0 +1,39 @@
+.Store {
+  text-align: center;
+  height: inherit;
+  max-width: 900px;
+  width: inherit;
+
+  overflow-y: auto;
+}
+
+.Store-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Store-category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.Store-item {
+  padding: 1em;
+  padding-top: 0em;
+}
+
+.Store-item-thumbnail {
+  width: 100px;
+}
+
+.Store-item-owned {
+  background-color: darkgray;
+}
+
+.Store-item-owned-SOLD {
+  color: red;
+}
