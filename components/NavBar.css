@@ -4,7 +4,7 @@
   justify-content: space-around;
   width: 100%;
   height: 55px;
-  background-color: lightgray;
+  background-color: black;
 }
 
 .Logo,
@@ -13,6 +13,7 @@
   font-family: "Barlow", serif;
   font-style: italic;
   font-weight: 600;
+  width: max-content;
 }
 /* The following allows to remove the underline from hyperlinks */
 a {

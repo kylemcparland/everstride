@@ -1,16 +1,23 @@
-/* The 'a' here affects the Everstride logo. To compensate, add padding to the Login / Logout css to the right.*/
-
+/* The 'a' here affects the Everstride logo and the Avatar Editor button  */
 .NavLinks-button,
 .NavLinks,
 .button,
 a {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 0.5em;
+  justify-content: center;
 }
 
-.button,
+a, button {
+  padding: 0;
+}
+/* Fixes the spacing between Avatar Editor and Gold Market */
+
+a{
+  width: 110px;
+}
+/* Makes the Avatar Editor box the same size as the other links, but also makes the logo box 110px */
+
 .NavLinks-button {
   font-family: "Barlow";
   font-size: 20px;
@@ -22,12 +29,14 @@ a {
   position: relative;
   text-align: center;
   z-index: 1;
+  width: 90px;
+  padding: 10px;
 }
 
 /* The hover effect was always the wrong size until I wrapped the button (Avatar Editor) in a Link tag in NavLinks.jsx to just match the rest of the buttons.*/
 
 .NavLinks a:hover::before {
-  width: 8.5em;
+  width: 110px;
   height: stretch;
   background-color: rgb(172, 200, 237);
   z-index: 1;

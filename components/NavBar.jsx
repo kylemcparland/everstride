@@ -34,13 +34,12 @@ const NavBar = ({
             {cookieSession}
             <Logout />
           </div>
-          
         </>
       ) : (
         showLogin && (
-        <>
-          <Login setUsername={setUsername} setUserId={setUserId} />
-        </>
+          <>
+            <Login setUsername={setUsername} setUserId={setUserId} />
+          </>
         )
       )}
     </div>

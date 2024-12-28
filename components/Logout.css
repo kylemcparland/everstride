@@ -4,6 +4,6 @@
   align-items: center;
   flex-shrink: 0;
   /* To compensate the Logo padding from 'a' in NavLinks.css */
-  padding: 1em;
-  padding-right: 2em;
+  /* padding: 1em;
+  padding-right: 2em; */
 }
