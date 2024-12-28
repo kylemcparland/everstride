@@ -29,3 +29,11 @@
 .Store-item-thumbnail {
   width: 100px;
 }
+
+.Store-item-owned {
+  background-color: darkgray;
+}
+
+.Store-item-owned-SOLD {
+  color: red;
+}
