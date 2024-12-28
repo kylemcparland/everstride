@@ -38,10 +38,10 @@ const ConfirmButton = ({
 
   // USEEFFECT called if not enough gold (error message timeout)...
   useEffect(() => {
-    if (userGold <= itemPrice) {
+    if (userGold < itemPrice) {
       const errorTimeout = setTimeout(() => {
         setConfirmPurchase();
-      }, 1500);
+      }, 1200);
 
       return () => clearTimeout(errorTimeout);
     }
