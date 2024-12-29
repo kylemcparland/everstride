@@ -1,6 +1,6 @@
 import db from "@/db/connection";
 
-export default async function handler(req, res) {
+export default async function updateDistance(req, res) {
   try {
     const { userName, distance } = req.body;
     console.log('🔵 Starting updateDistance');

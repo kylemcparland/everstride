@@ -14,11 +14,12 @@ const NavLinks = ({ user, userItems, userEquipment }) => {
   };
   return (
     <div className="NavLinks">
-
-      
-      
-      <Link href=""><button onClick={toggleModal} className="NavLinks-button"> <p className="a">Avatar Editor</p></button>
-      </Link>{/* The only way to make the styling match in the nav bar was to wrap this buttin in a link to nothing */}
+      <Link href="">
+        <button onClick={toggleModal} className="NavLinks-button">
+          <p className="a">Avatar Editor</p>
+        </button>
+      </Link>
+      {/* The only way to make the styling match in the nav bar was to wrap this buttin in a link to nothing */}
 
       <Link href="/">
         <div className="NavLinks-button">Gold Market</div>
@@ -32,7 +33,7 @@ const NavLinks = ({ user, userItems, userEquipment }) => {
         <div className="NavLinks-button">World Progress</div>
       </Link>
 
-      <Link href="/">
+      <Link href="/dev">
         <div className="NavLinks-button">Dev</div>
       </Link>
 
