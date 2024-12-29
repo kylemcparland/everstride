@@ -1,6 +1,6 @@
 import db from "@/db/connection";
 
-export default async function handler(req, res) {
+export default async function getAllUsers(req, res) {
   try {
     const result = await db.query("SELECT * FROM users");
     res.status(200).json(result.rows);

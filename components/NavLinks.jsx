@@ -47,7 +47,7 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         <div className="NavLinks-button">World Progress</div>
       </Link>
 
-      <Link href="/">
+      <Link href="/dev">
         <div className="NavLinks-button">Dev</div>
       </Link>
 

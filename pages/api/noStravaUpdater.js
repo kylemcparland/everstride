@@ -1,12 +1,14 @@
+// This is a copied but separated version of updateTotalDistance, it adds new user TOTAL distance and calculates gold. It doesn't effect distance_travelled_today.
+
 import db from "@/db/connection";
 
-export default async function updateTotalDistance(req, res) {
+export default async function noStravaUpdater(req, res) {
   try {
-    const { userName, totalDistance } = req.body;
-    console.log("🪙 Starting updateTotalDistance (and gold)");
+    const { userName, distance } = req.body;
+    console.log("🪙 Starting addDistanceAndGold");
 
     const selectQuery = `
-      SELECT last_total_distance, gold
+      SELECT total_distance_travelled, last_total_distance, gold
       FROM users
       WHERE name = $1;
     `;
@@ -19,10 +21,9 @@ export default async function updateTotalDistance(req, res) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Set last_total_distance to 0 if it's not set yet. Prevents the gold duplication issue.
-
+    const newTotalDistance = user.total_distance_travelled + Number(distance);
     const lastTotalDistance = user.last_total_distance || 0;
-    const goldEarned = totalDistance - lastTotalDistance;
+    const goldEarned = newTotalDistance - lastTotalDistance;
 
     const updateQuery = `
       UPDATE users
@@ -33,15 +34,15 @@ export default async function updateTotalDistance(req, res) {
     `;
 
     await db.query(updateQuery, [
-      totalDistance,
-      totalDistance,
+      newTotalDistance,
+      newTotalDistance,
       goldEarned,
       userName,
     ]);
-    
+
     console.log(`🪙 Update database ${userName}:
       Last Total Distance: ${lastTotalDistance}
-      New Total Distance: ${totalDistance}
+      New Total Distance: ${newTotalDistance}
       Gold increased amount: ${goldEarned}
       `);
 

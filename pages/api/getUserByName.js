@@ -1,6 +1,6 @@
 import db from "@/db/connection";
 
-export default async function handler(req, res) {
+export default async function getUserByName(req, res) {
   const { name } = req.query;
   try {
     const result = await db.query("SELECT * FROM users WHERE name = $1", [
