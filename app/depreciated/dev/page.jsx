@@ -43,7 +43,9 @@ const Page = () => {
 
   return (
     <div>
-      <NavBar/>
+      <NavBar
+        showLogin={false}
+        />
       <p>Add Distance / Gold</p>
       <p>Does not affect distance_travelled_today only totals</p>
       <form onSubmit={handleSubmit}>

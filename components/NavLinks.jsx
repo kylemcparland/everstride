@@ -7,10 +7,12 @@ import Modal from "./Modal";
 
 import AvatarEditor from "./AvatarEditor";
 import Store from "./Store";
+import DevPage from "./DevPage";
 
 const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
   const [isAvatarModalOpen, setAvatarModalOpen] = useState(false);
   const [isStoreModalOpen, setStoreModalOpen] = useState(false);
+  const [isDevModalOpen, setDevModelOpen] = useState(false)
 
   // AVATAR EDITOR:
   const toggleAvatarModal = () => {
@@ -21,6 +23,11 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
   const toggleStoreModal = () => {
     setStoreModalOpen(!isStoreModalOpen);
   };
+
+  // DEV:
+  const toggleDevModal = () => {
+    setDevModelOpen(!isDevModalOpen);
+  }
 
   return (
     <div className="NavLinks">
@@ -47,9 +54,16 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         <div className="NavLinks-button">World Progress</div>
       </Link>
 
-      <Link href="/dev">
-        <div className="NavLinks-button">Dev</div>
+      <Link href="">
+        <button onClick={toggleDevModal} className="NavLinks-button">
+          {" "}
+          <p className="a">Dev Page</p>
+        </button>
       </Link>
+
+      {/* <Link href="/dev">
+        <div className="NavLinks-button">Dev</div>
+      </Link> */}
 
       <div>
         {/* AVATAR EDITOR MODAL */}
@@ -71,6 +85,13 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         {isStoreModalOpen && (
           <Modal toggleModal={toggleStoreModal}>
             <Store userItems={userItems} allItems={allItems} user={user} />
+          </Modal>
+        )}
+
+        {/* DEV MODAL */}
+        {isDevModalOpen && (
+          <Modal toggleModal={toggleDevModal}>
+            <DevPage />
           </Modal>
         )}
       </div>
