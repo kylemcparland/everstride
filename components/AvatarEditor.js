@@ -19,6 +19,7 @@ const AvatarEditor = ({
   const [selectedPants, setSelectedPants] = useState(userEquipment.pants);
   const [selectedBoots, setSelectedBoots] = useState(userEquipment.boots);
   const [selectedWeapon, setSelectedWeapon] = useState(userEquipment.weapon);
+  const [selectedColor, setSelectedColor] = useState(user.colour || 'base'); // Set default to base color
 
   const handleSelect = (type, item) => {
     switch (type) {
@@ -64,25 +65,29 @@ const AvatarEditor = ({
     }
   };
 
+  const handleColorChange = (color) => {
+    setSelectedColor(color);
+  };
+
   const handleEquip = async () => {
-    // Check if user is available and has an id
     if (!user || !user.id) {
       console.error("User or user.id is undefined");
       return;
     }
 
-    const response = await fetch("/api/updateEquipment", {
+    const response = await fetch("/api/updateAvatar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId: user.id, // Ensure this is correct
+        userId: user.id,
         hatId: selectedHat?.id || null,
         shirtId: selectedShirt?.id || null,
         pantsId: selectedPants?.id || null,
         bootsId: selectedBoots?.id || null,
         weaponId: selectedWeapon?.id || null,
+        avatarColor: selectedColor, // Send the selected color
       }),
     });
 
@@ -106,7 +111,7 @@ const AvatarEditor = ({
         pants={selectedPants}
         boots={selectedBoots}
         weapon={selectedWeapon}
-        colour={user.colour}
+        colour={selectedColor}  // Pass the selected color to Avatar component
       />
 
       {/* Equipment Selection */}
@@ -190,6 +195,21 @@ const AvatarEditor = ({
                 className="equipment-thumbnail"
                 title={weapon.name}
               />
+            </button>
+          ))}
+        </div>
+
+        {/* Avatar Color Selection */}
+        <div className="equipment-category">
+          <h5>Avatar Color</h5>
+          {["base", "blue", "green", "limegreen", "orange", "pink", "purple", "red", "turquoise", "yellow"].map((color) => (
+            <button
+              key={color}
+              style={{ backgroundColor: color }}
+              onClick={() => handleColorChange(color)}
+              title={color}
+            >
+              {color}
             </button>
           ))}
         </div>

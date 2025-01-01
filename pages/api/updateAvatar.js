@@ -2,10 +2,10 @@ import db from "@/db/connection";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { userId, hatId, shirtId, pantsId, bootsId, weaponId } = req.body;
+    const { userId, hatId, shirtId, pantsId, bootsId, weaponId, avatarColor } = req.body;
 
     // Log the received data to check userId
-    console.log('Received data:', { userId, hatId, shirtId, pantsId, bootsId, weaponId });
+    console.log('Received data:', { userId, hatId, shirtId, pantsId, bootsId, weaponId, avatarColor });
 
     if (!userId) {
       return res.status(400).json({ message: "User ID is required." });
@@ -19,8 +19,9 @@ export default async function handler(req, res) {
           equipped_shirt = $2,
           equipped_pants = $3,
           equipped_boots = $4,
-          equipped_weapon = $5
-        WHERE id = $6;
+          equipped_weapon = $5,
+          colour = $6  -- Add this line to update the color
+        WHERE id = $7;
       `;
 
       console.log("Executing query:", updateQuery);
@@ -30,6 +31,7 @@ export default async function handler(req, res) {
         pantsId || null,
         bootsId || null,
         weaponId || null,
+        avatarColor || 'base', // Default to 'base' if no color is selected
         userId,
       ]);
 
@@ -39,6 +41,7 @@ export default async function handler(req, res) {
         pantsId || null,
         bootsId || null,
         weaponId || null,
+        avatarColor || 'base', // Ensure the color is correctly set
         userId,
       ]);
 
