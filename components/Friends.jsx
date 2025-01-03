@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 import "./Friends.css";
 
-const DevPage = () => {
+const Friends = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
-  const [distance, setDistance] = useState("");
 
-  // Use the existing getAllUsers function with useEffect
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await fetch("/api/getAllUsers");
         const data = await response.json();
-        setUsers(data);
+        const usersWithIds = await Promise.all(
+          data.map(async (user) => {
+            const res = await fetch(`/api/getUserID?name=${user.name}`);
+            const userIdData = await res.json();
+            return { ...user, id: userIdData.id };
+          })
+        );
+        setUsers(usersWithIds);
       } catch (error) {
         console.error("Fetch users error", error);
       }
@@ -21,12 +26,10 @@ const DevPage = () => {
     fetchUsers();
   }, []);
 
-  // Form
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // Updates the distance / gold
       const response = await fetch("/api/noStravaUpdater", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -35,23 +38,20 @@ const DevPage = () => {
 
       const result = await response.json();
       console.log(result.message);
-      
-      // Then reset/reload to the home page to see the updates.
-      window.location.href = '/'
 
+      // Then reset/reload to the home page to see the updates.
+      window.location.href = "/";
     } catch (error) {
       console.error("Error updating distance:", error);
     }
   };
 
   return (
-    <div class = 'container'>
-      <p>Add Distance / Gold</p>
-      <p>Does not affect distance_travelled_today only totals</p>
+    <div className="container">
+      <p>Users</p>
       <form onSubmit={handleSubmit}>
         <label>
           Select User:
-          {/* Cool drop down menu */}
           <select
             value={selectedUser}
             onChange={(e) => setSelectedUser(e.target.value)}
@@ -59,23 +59,15 @@ const DevPage = () => {
             <option value="">Select a user</option>
             {users.map((user) => (
               <option key={user.id} value={user.name}>
-                {user.name}
+                {`${user.name} (${user.id})`}
               </option>
             ))}
           </select>
         </label>
-        <label>
-          Distance:
-          <input
-            type="number"
-            value={distance}
-            onChange={(e) => setDistance(e.target.value)}
-          />
-        </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );
 };
 
-export default DevPage;
+export default Friends;
