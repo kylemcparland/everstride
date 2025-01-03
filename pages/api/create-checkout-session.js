@@ -8,11 +8,11 @@ export default async function handler(req, res) {
         line_items: [
           {
             price_data: {
-              currency: "usd",
+              currency: "cad",
               product_data: {
-                name: "T-shirt",
+                name: "20 Gold",
               },
-              unit_amount: 2000,
+              unit_amount: 500,
             },
             quantity: 1,
           },
