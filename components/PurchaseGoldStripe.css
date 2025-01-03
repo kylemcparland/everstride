@@ -6,12 +6,15 @@
 }
 
 .PurchaseGoldStripe-ad {
-  width: 300px;
-  margin-right: 50px;
+  width: 200px;
 }
 
 .PurchaseGoldStripe-link:hover::before {
   content: none;
+}
+
+.PurchaseGoldStripe-link {
+  width: 350px;
 }
 
 .PurchaseGoldStripe-button {
@@ -20,6 +23,4 @@
   justify-content: space-evenly;
   min-width: 350px;
   padding: 10px 20px;
-
-  margin-right: 8em;
 }
