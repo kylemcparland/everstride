@@ -20,7 +20,7 @@ export default async function handler(req, res) {
           equipped_pants = $3,
           equipped_boots = $4,
           equipped_weapon = $5,
-          colour = $6  -- Add this line to update the color
+          colour = $6
         WHERE id = $7;
       `;
 
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
         pantsId || null,
         bootsId || null,
         weaponId || null,
-        avatarColor || 'base', // Ensure the color is correctly set
+        avatarColor || 'base',
         userId,
       ]);
 
