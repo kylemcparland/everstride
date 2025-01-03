@@ -1,5 +1,6 @@
 "use client";
 
+import "./page.css";
 import { useCallback } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -26,10 +27,18 @@ const PurchaseGold = () => {
   const options = { fetchClientSecret };
 
   return (
-    <div id="checkout">
-      <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
-        <EmbeddedCheckout />
-      </EmbeddedCheckoutProvider>
+    <div>
+      <div className="NavBar">
+        <h1 className="NavBar-logo">Everstride</h1>
+      </div>
+      <div className="checkout">
+        <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+          <EmbeddedCheckout />
+        </EmbeddedCheckoutProvider>
+      </div>
+      <h4>Simulate successful payment: </h4>
+      <p>Card number: 4242 4242 4242 4242</p>
+      <p>Any 3 digits / Any future date</p>
     </div>
   );
 };
