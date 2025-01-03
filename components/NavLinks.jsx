@@ -8,11 +8,13 @@ import Modal from "./Modal";
 import AvatarEditor from "./AvatarEditor";
 import Store from "./Store";
 import DevPage from "./DevPage";
+import Friends from "./Friends";
 
 const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
   const [isAvatarModalOpen, setAvatarModalOpen] = useState(false);
   const [isStoreModalOpen, setStoreModalOpen] = useState(false);
-  const [isDevModalOpen, setDevModelOpen] = useState(false)
+  const [isDevModalOpen, setDevModelOpen] = useState(false);
+  const [isFriendsModalOpen, setFriendsModelOpen] = useState(false);
 
   // AVATAR EDITOR:
   const toggleAvatarModal = () => {
@@ -27,7 +29,12 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
   // DEV:
   const toggleDevModal = () => {
     setDevModelOpen(!isDevModalOpen);
-  }
+  };
+
+  // FRIENDS:
+  const toggleFriendsModal = () => {
+    setFriendsModelOpen(!isFriendsModalOpen);
+  };
 
   return (
     <div className="NavLinks">
@@ -46,9 +53,10 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         </button>
       </Link>
 
-      <Link href="/">
-        <div className="NavLinks-button">My Friends</div>
-      </Link>
+      <button onClick={toggleFriendsModal} className="NavLinks-button">
+        {" "}
+        <p className="a">My Friends</p>
+      </button>
 
       <Link href="/">
         <div className="NavLinks-button">World Progress</div>
@@ -60,10 +68,6 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
           <p className="a">Dev Page</p>
         </button>
       </Link>
-
-      {/* <Link href="/dev">
-        <div className="NavLinks-button">Dev</div>
-      </Link> */}
 
       <div>
         {/* AVATAR EDITOR MODAL */}
@@ -92,6 +96,13 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         {isDevModalOpen && (
           <Modal toggleModal={toggleDevModal}>
             <DevPage />
+          </Modal>
+        )}
+
+        {/* FRIENDS MODAL */}
+        {isFriendsModalOpen && (
+          <Modal toggleModal={toggleFriendsModal}>
+            <Friends />
           </Modal>
         )}
       </div>
