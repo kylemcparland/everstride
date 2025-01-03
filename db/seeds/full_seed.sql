@@ -29,7 +29,7 @@ INSERT INTO user_items (user_id, item_id) VALUES
     (2, 2), (2, 3), (2, 6), (2, 7), (2, 11), (2, 13), (2, 15), (2, 17), (2, 18),
     (3, 1), (3, 2), (3, 3), (3, 5), (3, 7), (3, 8), (3, 10), (3, 12), (3, 16), (3, 17);
 
-INSERT INTO user_friends (user_id_1, user_id_2) VALUES 
-    (2, 3),
-    (3, 1);
+-- INSERT INTO user_friends (user_id_1, user_id_2) VALUES 
+--     (2, 3),
+--     (3, 1);
 
