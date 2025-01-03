@@ -13,7 +13,7 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
 
-const StripeTest = () => {
+const PurchaseGold = () => {
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session
     return fetch("/api/create-checkout-session", {
@@ -34,4 +34,4 @@ const StripeTest = () => {
   );
 };
 
-export default StripeTest;
+export default PurchaseGold;

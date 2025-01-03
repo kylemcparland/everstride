@@ -1,6 +1,4 @@
-const stripe = require("stripe")(
-  process.env.NEXT_PUBLIC_STRIPE_CLIENT_SECRET
-);
+const stripe = require("stripe")(process.env.NEXT_PUBLIC_STRIPE_CLIENT_SECRET);
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -21,8 +19,7 @@ export default async function handler(req, res) {
         ],
         mode: "payment",
         ui_mode: "embedded",
-        return_url:
-          "https://example.com/checkout/return?session_id={CHECKOUT_SESSION_ID}",
+        return_url: "http://localhost:3000/stripe-redirect",
       });
 
       res.status(200).json({ clientSecret: session.client_secret });
