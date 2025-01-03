@@ -2,6 +2,7 @@ import "./page.css";
 import NavBar from "@/components/NavBar";
 import PageBody from "@/components/PageBody";
 import Footer from "@/components/Footer";
+import PurchaseGoldStripe from "@/components/PurchaseGoldStripe";
 import { fetchUserAndFriends } from "./helpers/userHelpers";
 import { fetchAllUserItems } from "./helpers/userItemsHelpers";
 import { fetchEquipmentForUser } from "./helpers/equippedItemHelpers";
@@ -41,6 +42,8 @@ export default async function HomePage() {
 
       {username ? (
         <>
+          {/* TESTING PURCHASE GOLD LINK */}
+          <PurchaseGoldStripe />
           <PageBody
             user={user}
             friends={friends}
