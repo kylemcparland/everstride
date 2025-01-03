@@ -3,6 +3,7 @@
 import "./Store.css";
 import { useState } from "react";
 import ConfirmButton from "./ConfirmButton";
+import PurchaseGoldStripe from "@/components/PurchaseGoldStripe";
 
 const Store = ({ userItems, allItems, user }) => {
   // Confirm purchase:
@@ -200,7 +201,7 @@ const Store = ({ userItems, allItems, user }) => {
         </div>
 
         {/* WEAPONS */}
-        <h2>-- Purchase WEapons --</h2>
+        <h2>-- Purchase Weapons --</h2>
         <div className="Store-category">
           {weapons.map((weapon) => (
             <div className="Store-item" key={weapon.id}>
@@ -240,6 +241,10 @@ const Store = ({ userItems, allItems, user }) => {
             </div>
           ))}
         </div>
+      </div>
+      {/* TESTING PURCHASE GOLD LINK */}
+      <div className="Store-Stripe-Banner">
+        <PurchaseGoldStripe />
       </div>
     </div>
   );

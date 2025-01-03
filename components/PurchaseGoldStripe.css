@@ -1,0 +1,26 @@
+.PurchaseGoldStripe {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; /* Distribute space evenly between ad and button */
+  width: 100%;
+}
+
+.PurchaseGoldStripe-ad {
+  width: 200px;
+}
+
+.PurchaseGoldStripe-link:hover::before {
+  content: none;
+}
+
+.PurchaseGoldStripe-link {
+  width: 350px;
+}
+
+.PurchaseGoldStripe-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 350px;
+  padding: 10px 20px;
+}
