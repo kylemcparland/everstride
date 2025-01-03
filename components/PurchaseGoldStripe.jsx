@@ -1,7 +1,14 @@
+import "./PurchaseGoldStripe.css";
+
 const PurchaseGoldStripe = () => {
   return (
-    <div>
-      <a href="/purchase-gold"> Purchase Gold</a>
+    <div className="PurchaseGoldStripe">
+      <span>Purchase 20 Gold for only $5!</span>
+      <a href="/purchase-gold" className="PurchaseGoldStripe-link">
+        <button className="PurchaseGoldStripe-button">
+          <h2>Secure payment with Stripe</h2>
+        </button>
+      </a>
     </div>
   );
 };

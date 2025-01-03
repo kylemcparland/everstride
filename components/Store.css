@@ -37,3 +37,18 @@
 .Store-item-owned-SOLD {
   color: red;
 }
+
+.Store-Stripe-Banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  left: 0;
+  bottom: -135px;
+
+  width: 100%;
+  height: 135px;
+
+  background-color: grey;
+}

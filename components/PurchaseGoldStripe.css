@@ -1,0 +1,17 @@
+.PurchaseGoldStripe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.PurchaseGoldStripe-link:hover::before {
+  content: none;
+  background-color: transparent;
+  width: auto;
+  height: auto;
+}
+
+.PurchaseGoldStripe-button {
+  min-width: 200px;
+}
