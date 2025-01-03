@@ -8,7 +8,7 @@ export default async function addFriend(req, res) {
   const { userId1, userId2 } = req.body;
 
   try {
-    console.log("addFriend adding user with ID "+ userId1 + " to user ID " + userId2);
+    console.log("addFriend adding user with ID "+ userId2 + " to user ID " + userId1);
     await db.query(
       "INSERT INTO user_friends (user_id_1, user_id_2) VALUES ($1, $2)",
       [userId1, userId2]
