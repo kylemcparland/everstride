@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import "./Friends.css";
 
-const Friends = () => {
+// currentUserId is passed in from NavLinks.jsx
+const Friends = ({ currentUserId }) => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
 
@@ -23,26 +24,38 @@ const Friends = () => {
       }
     };
 
-    fetchUsers();
-  }, []);
+    if (currentUserId) {
+      fetchUsers();
+    }
+  }, [currentUserId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (selectedUser === "") {
+      alert("Choose someone to add as a friend");
+      return;
+    }
+
     try {
-      const response = await fetch("/api/noStravaUpdater", {
+      const response = await fetch("/api/addFriend", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userName: selectedUser, distance }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId1: currentUserId,
+          userId2: selectedUser,
+        }),
       });
 
-      const result = await response.json();
-      console.log(result.message);
+      if (!response.ok) {
+        throw new Error("Failed");
+      }
 
-      // Then reset/reload to the home page to see the updates.
-      window.location.href = "/";
+      window.location.reload();
     } catch (error) {
-      console.error("Error updating distance:", error);
+      alert("Failed");
     }
   };
 
@@ -57,14 +70,16 @@ const Friends = () => {
             onChange={(e) => setSelectedUser(e.target.value)}
           >
             <option value="">Select a user</option>
-            {users.map((user) => (
-              <option key={user.id} value={user.name}>
-                {`${user.name} (${user.id})`}
-              </option>
-            ))}
+            {users
+              .filter((user) => user.id !== currentUserId) // Filter out the current user
+              .map((user) => (
+                <option key={user.id} value={user.id}>
+                  {`${user.name} (${user.id})`}
+                </option>
+              ))}
           </select>
         </label>
-        <button type="submit">Add</button>
+        <button type="submit">Add Friend</button>
       </form>
     </div>
   );

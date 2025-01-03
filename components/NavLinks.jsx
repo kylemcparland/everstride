@@ -16,6 +16,9 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
   const [isDevModalOpen, setDevModelOpen] = useState(false);
   const [isFriendsModalOpen, setFriendsModelOpen] = useState(false);
 
+  const currentUserId = user.id;
+  // Get the ID from the current user! Pass it to the Friends component.
+
   // AVATAR EDITOR:
   const toggleAvatarModal = () => {
     setAvatarModalOpen(!isAvatarModalOpen);
@@ -40,23 +43,22 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
     <div className="NavLinks">
       <Link href="">
         <button onClick={toggleAvatarModal} className="NavLinks-button">
-          {" "}
           <p className="a">Avatar Editor</p>
         </button>
       </Link>
-      {/* The only way to make the styling match in the nav bar was to wrap this buttin in a link to nothing */}
+      {/* The only way to make the styling match in the nav bar was to wrap this button in a link to nothing */}
 
       <Link href="">
         <button onClick={toggleStoreModal} className="NavLinks-button">
-          {" "}
           <p className="a">Gold Market</p>
         </button>
       </Link>
 
-      <button onClick={toggleFriendsModal} className="NavLinks-button">
-        {" "}
-        <p className="a">My Friends</p>
-      </button>
+      <Link href="">
+        <button onClick={toggleFriendsModal} className="NavLinks-button">
+          <p className="a">My Friends</p>
+        </button>
+      </Link>
 
       <Link href="/">
         <div className="NavLinks-button">World Progress</div>
@@ -64,7 +66,6 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
 
       <Link href="">
         <button onClick={toggleDevModal} className="NavLinks-button">
-          {" "}
           <p className="a">Dev Page</p>
         </button>
       </Link>
@@ -102,7 +103,7 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         {/* FRIENDS MODAL */}
         {isFriendsModalOpen && (
           <Modal toggleModal={toggleFriendsModal}>
-            <Friends />
+            <Friends currentUserId={currentUserId} />
           </Modal>
         )}
       </div>
