@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import "./Friends.css";
+import "./FriendsUserCards.css";
 
 // currentUserId is passed in from NavLinks.jsx
 const Friends = ({ currentUserId }) => {
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState("");
 
   // Load all users from database
   useEffect(() => {
@@ -65,17 +64,21 @@ const Friends = ({ currentUserId }) => {
 const UserCards = ({ users, currentUserId, handleSubmit }) => {
   return (
     <div className="container">
-      <p>Users</p>
+      <p>Add Friends</p>
       <div className="users">
         {users
           .filter((user) => user.id !== currentUserId)
           .map((user) => (
             <div className="card" key={user.id}>
-              <h3>Name: {user.name}</h3>
-              <p>ID: (Don't really need)</p>
-              <p>Distance: (Distance run total?)</p>
-              <p>Location: (Location in game)</p>
-              <button onClick={() => handleSubmit(user.id)}>Add Friend</button>
+              <div className="details">
+                <h3>{user.name}</h3>
+                <p>Distance: (Some details)</p>
+                <p>Location: (On the game map)</p>
+                <button onClick={() => handleSubmit(user.id)}>
+                  Add
+                </button>
+              </div>
+              <div className="avatar">avatar</div>
             </div>
           ))}
       </div>
