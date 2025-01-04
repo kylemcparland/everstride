@@ -78,7 +78,7 @@ const UserCards = ({ users, currentUserId, handleSubmit }) => {
                   Add
                 </button>
               </div>
-              <div className="avatar">avatar</div>
+              <div className="avatar"></div>
             </div>
           ))}
       </div>
