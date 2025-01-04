@@ -6,6 +6,7 @@ const Friends = ({ currentUserId }) => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
 
+// Load all users from database
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -29,6 +30,7 @@ const Friends = ({ currentUserId }) => {
     }
   }, [currentUserId]);
 
+// Add friend button
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -59,30 +61,56 @@ const Friends = ({ currentUserId }) => {
     }
   };
 
-  return (
-    <div className="container">
-      <p>Users</p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Select User:
-          <select
-            value={selectedUser}
-            onChange={(e) => setSelectedUser(e.target.value)}
-          >
-            <option value="">Select a user</option>
-            {users
-              .filter((user) => user.id !== currentUserId) // Filter out the current user
-              .map((user) => (
-                <option key={user.id} value={user.id}>
-                  {`${user.name} (${user.id})`}
-                </option>
-              ))}
-          </select>
-        </label>
-        <button type="submit">Add Friend</button>
-      </form>
+// Actual list of available users
+//   return (
+//     <div className="container">
+//       <p>Users</p>
+//       <form onSubmit={handleSubmit}>
+//         {/* <select> forms a drop down list */}
+//         <label>
+//           Select User:
+//           <select
+//             value={selectedUser}
+//             onChange={(e) => setSelectedUser(e.target.value)}
+//           >
+//             <option value="">Select a user</option>
+//             {users
+//             // Simple filter to not show yourself in the list
+//               .filter((user) => user.id !== currentUserId) 
+//               .map((user) => (
+//                 <option key={user.id} value={user.id}>
+//                   {`${user.name} (${user.id})`}
+//                 </option>
+//               ))}
+//           </select>
+//         </label>
+//         <button type="submit">Add Friend</button>
+//       </form>
+//     </div>
+//   );
+// };
+// Replacing the drop down list with static user cards
+return (
+  <UserCards />
+)
+}
+
+const UserCards = () => {
+return (
+  <div className = 'container'>
+    <p>Users</p>
+    <div className = 'users'>
+      <div className = 'card'>
+        <h3>Name: </h3>
+        <p>ID: </p>
+        <p>Distance: </p>
+        <p>Location: </p>
+        <button></button>
+      </div>
     </div>
-  );
-};
+  </div>
+);
+}
+
 
 export default Friends;
