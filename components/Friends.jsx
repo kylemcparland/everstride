@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import "./Friends.css";
+import "./FriendsUserCards.css";
 
 // currentUserId is passed in from NavLinks.jsx
 const Friends = ({ currentUserId }) => {
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState("");
 
+  // Load all users from database
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -29,14 +29,8 @@ const Friends = ({ currentUserId }) => {
     }
   }, [currentUserId]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (selectedUser === "") {
-      alert("Choose someone to add as a friend");
-      return;
-    }
-
+  // Add friend button
+  const handleSubmit = async (userId) => {
     try {
       const response = await fetch("/api/addFriend", {
         method: "POST",
@@ -45,7 +39,7 @@ const Friends = ({ currentUserId }) => {
         },
         body: JSON.stringify({
           userId1: currentUserId,
-          userId2: selectedUser,
+          userId2: userId,
         }),
       });
 
@@ -58,29 +52,36 @@ const Friends = ({ currentUserId }) => {
       alert("Failed");
     }
   };
+  return (
+    <UserCards
+      users={users}
+      currentUserId={currentUserId}
+      handleSubmit={handleSubmit}
+    />
+  );
+};
 
+const UserCards = ({ users, currentUserId, handleSubmit }) => {
   return (
     <div className="container">
-      <p>Users</p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Select User:
-          <select
-            value={selectedUser}
-            onChange={(e) => setSelectedUser(e.target.value)}
-          >
-            <option value="">Select a user</option>
-            {users
-              .filter((user) => user.id !== currentUserId) // Filter out the current user
-              .map((user) => (
-                <option key={user.id} value={user.id}>
-                  {`${user.name} (${user.id})`}
-                </option>
-              ))}
-          </select>
-        </label>
-        <button type="submit">Add Friend</button>
-      </form>
+      <p>Add Friends</p>
+      <div className="users">
+        {users
+          .filter((user) => user.id !== currentUserId)
+          .map((user) => (
+            <div className="card" key={user.id}>
+              <div className="details">
+                <h3>{user.name}</h3>
+                <p>Distance: (Some details)</p>
+                <p>Location: (On the game map)</p>
+                <button onClick={() => handleSubmit(user.id)}>
+                  Add
+                </button>
+              </div>
+              <div className="avatar"></div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
