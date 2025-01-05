@@ -1,5 +1,10 @@
-.Login {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.LoginContainer{
+  align-self: center;
+  margin-top: 5vh;
+  border: 5px solid white;
+}
+
+h1{
+  padding-top: 10vh;
+  color:white;
 }

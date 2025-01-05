@@ -5,8 +5,10 @@ import { useState } from "react";
 const Login = () => {
   // Usestate for the form...
   const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
+    setLoading(true);
     await fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -14,21 +16,24 @@ const Login = () => {
     });
 
     window.location.reload();
+    setLoading(false);
   };
 
   return (
     <div className="Login">
-      {/* <h2>Login:</h2> */}
       <select value={username} onChange={(e) => setUsername(e.target.value)}>
-        <option value="">Select a username</option>
+        <option value="">Select a user</option>
         <option value="Kyle McParland">Kyle McParland</option>
         <option value="Jon Hiebert">Jon Hiebert</option>
         <option value="Ben Hallam">Ben Hallam</option>
       </select>
 
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogin} disabled={!username}>
+        Login
+      </button>
+      <div className="Loading"><h1>Loading...</h1></div>
     </div>
   );
 };
-// This is the login menu in the nav bar.
+// This is the login menu in the nav bar. (moved out of nav to screen center now)
 export default Login;

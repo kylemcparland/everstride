@@ -7,6 +7,7 @@ import { fetchAllUserItems } from "./helpers/userItemsHelpers";
 import { fetchEquipmentForUser } from "./helpers/equippedItemHelpers";
 import { fetchAllItems } from "./helpers/itemHelpers";
 import { cookies } from "next/headers";
+import Login from "components/Login.jsx";
 
 export default async function HomePage() {
   // Retrieve login info if any. Set it as current username...
@@ -53,7 +54,12 @@ export default async function HomePage() {
           />
         </>
       ) : (
-        <Footer />
+        <>
+        <div className='LoginContainer'>
+          <Login />
+          </div>
+          <Footer />
+        </>
       )}
     </main>
   );

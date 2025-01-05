@@ -4,12 +4,13 @@ import Link from "next/link";
 import Login from "./Login";
 import Logout from "./Logout";
 
+// Simply changed showLogin to false to keep all logic in place if changing back
 const NavBar = ({
   userItems,
   cookieSession,
   userEquipment,
   user,
-  showLogin = true,
+  showLogin = false,
   allItems,
 }) => {
   return (
