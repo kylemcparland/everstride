@@ -55,8 +55,8 @@ export default async function HomePage() {
         </>
       ) : (
         <>
-        <div className='LoginContainer'>
-          <Login />
+          <div className="LoginContainer">
+            <Login />
           </div>
           <Footer />
         </>

@@ -22,16 +22,16 @@ const Login = () => {
   return (
     <div className="Login">
       <select value={username} onChange={(e) => setUsername(e.target.value)}>
-        <option value="">Select a user</option>
+        <option value="">Saved Users</option>
         <option value="Kyle McParland">Kyle McParland</option>
         <option value="Jon Hiebert">Jon Hiebert</option>
         <option value="Ben Hallam">Ben Hallam</option>
       </select>
-
       <button onClick={handleLogin} disabled={!username}>
         Login
       </button>
-      <div className="Loading"><h1>Loading...</h1></div>
+
+      <div className="Loading">{loading && <h1>Loading</h1>}</div>
     </div>
   );
 };
