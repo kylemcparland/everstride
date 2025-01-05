@@ -1,14 +1,27 @@
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
 .container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  align-items: center;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.container {
+  margin-top: 8vh;
+  max-width: 70%;
+  max-height: 80%;
+  overflow-y:auto;
+  background-color: inherit;
+  border: none;
 }
 
 .users {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
 }
 
 .card {
@@ -18,7 +31,7 @@
   border-radius: 5px;
   padding: 15px;
   width: 100%;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .details p{

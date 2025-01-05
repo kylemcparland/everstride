@@ -64,7 +64,6 @@ const Friends = ({ currentUserId }) => {
 const UserCards = ({ users, currentUserId, handleSubmit }) => {
   return (
     <div className="container">
-      <p>Add Friends</p>
       <div className="users">
         {users
           .filter((user) => user.id !== currentUserId)
