@@ -5,7 +5,8 @@ import "./FriendsUserCards.css";
 const Friends = ({ currentUserId }) => {
   const [users, setUsers] = useState([]);
 
-  // Load all users from database
+  // Load all users from database -- Added a call to the api that checks the database to see if you are already friends with a user or not and display the add or remove button conditionally
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -15,7 +16,22 @@ const Friends = ({ currentUserId }) => {
           data.map(async (user) => {
             const res = await fetch(`/api/getUserID?name=${user.name}`);
             const userIdData = await res.json();
-            return { ...user, id: userIdData.id };
+            const friendStatusRes = await fetch(`/api/checkFriendStatus`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userId1: currentUserId,
+                userId2: userIdData.id,
+              }),
+            });
+            const friendStatusData = await friendStatusRes.json();
+            return {
+              ...user,
+              id: userIdData.id,
+              isFriend: friendStatusData.isFriend,
+            };
           })
         );
         setUsers(usersWithIds);
@@ -53,8 +69,7 @@ const Friends = ({ currentUserId }) => {
     }
   };
 
-  // Remove friend button - Calls removeFriend api, a clone of addFriend, but it uses the DELETE post instead of INSERT INTO post
-
+  // Remove friend button
   const handleRemoveFriend = async (userId) => {
     try {
       const response = await fetch("/api/removeFriend", {
@@ -105,12 +120,15 @@ const UserCards = ({
                 <h3>{user.name}</h3>
                 <p>Distance: (Some details)</p>
                 <p>Location: (On the game map)</p>
-                <button onClick={() => handleAddFriend(user.id)}>
-                  Add to Friends
-                </button>
-                <button onClick={() => handleRemoveFriend(user.id)}>
-                  Remove Friend
-                </button>
+                {user.isFriend ? (
+                  <button onClick={() => handleRemoveFriend(user.id)}>
+                    Remove Friend
+                  </button>
+                ) : (
+                  <button onClick={() => handleAddFriend(user.id)}>
+                    Add to Friends
+                  </button>
+                )}
               </div>
               <div className="avatar"></div>
             </div>
