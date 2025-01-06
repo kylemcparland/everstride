@@ -6,7 +6,7 @@ const Friends = ({ currentUserId }) => {
   const [users, setUsers] = useState([]);
 
   // Load all users from database -- Added a call to the api that checks the database to see if you are already friends with a user or not and display the add or remove button conditionally
-  
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -120,15 +120,22 @@ const UserCards = ({
                 <h3>{user.name}</h3>
                 <p>Distance: (Some details)</p>
                 <p>Location: (On the game map)</p>
-                {user.isFriend ? (
-                  <button onClick={() => handleRemoveFriend(user.id)}>
+                <div className="buttonsContainer">
+                  <button
+                    className="Remove"
+                    onClick={() => handleRemoveFriend(user.id)}
+                    disabled={!user.isFriend}
+                  >
                     Remove Friend
                   </button>
-                ) : (
-                  <button onClick={() => handleAddFriend(user.id)}>
-                    Add to Friends
+                  <button
+                    className="Add"
+                    onClick={() => handleAddFriend(user.id)}
+                    disabled={user.isFriend}
+                  >
+                    Add Friend
                   </button>
-                )}
+                </div>
               </div>
               <div className="avatar"></div>
             </div>
