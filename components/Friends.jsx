@@ -30,7 +30,7 @@ const Friends = ({ currentUserId }) => {
   }, [currentUserId]);
 
   // Add friend button
-  const handleSubmit = async (userId) => {
+  const handleAddFriend = async (userId) => {
     try {
       const response = await fetch("/api/addFriend", {
         method: "POST",
@@ -52,16 +52,48 @@ const Friends = ({ currentUserId }) => {
       alert("Failed");
     }
   };
+
+  // Remove friend button - Calls removeFriend api, a clone of addFriend, but it uses the DELETE post instead of INSERT INTO post
+
+  const handleRemoveFriend = async (userId) => {
+    try {
+      const response = await fetch("/api/removeFriend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId1: currentUserId,
+          userId2: userId,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed");
+      }
+
+      window.location.reload();
+    } catch (error) {
+      alert("Failed");
+    }
+  };
+
   return (
     <UserCards
       users={users}
       currentUserId={currentUserId}
-      handleSubmit={handleSubmit}
+      handleAddFriend={handleAddFriend}
+      handleRemoveFriend={handleRemoveFriend}
     />
   );
 };
 
-const UserCards = ({ users, currentUserId, handleSubmit }) => {
+const UserCards = ({
+  users,
+  currentUserId,
+  handleAddFriend,
+  handleRemoveFriend,
+}) => {
   return (
     <div className="container">
       <div className="users">
@@ -73,8 +105,11 @@ const UserCards = ({ users, currentUserId, handleSubmit }) => {
                 <h3>{user.name}</h3>
                 <p>Distance: (Some details)</p>
                 <p>Location: (On the game map)</p>
-                <button onClick={() => handleSubmit(user.id)}>
-                  Add
+                <button onClick={() => handleAddFriend(user.id)}>
+                  Add to Friends
+                </button>
+                <button onClick={() => handleRemoveFriend(user.id)}>
+                  Remove Friend
                 </button>
               </div>
               <div className="avatar"></div>
