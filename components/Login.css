@@ -15,20 +15,19 @@
   background-color: lightgray;
 }
 
-h1 {
+.LoginContainer h1 {
   padding-top: 15vh;
   display: flex;
   justify-self: center;
   color: rgb(113, 117, 229);
 }
 
-button,
+.LoginContainer button,
 select {
   height: 20px;
   text-align: center;
 }
 
-/* This button also changes the style of the button in the logout inside the nav bar */
-button {
-  width: 65px;
+.LoginContainer button {
+  width: 60px;
 }
