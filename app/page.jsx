@@ -2,12 +2,12 @@ import "./page.css";
 import NavBar from "@/components/NavBar";
 import PageBody from "@/components/PageBody";
 import Footer from "@/components/Footer";
+import Login from "components/Login.jsx";
 import { fetchUserAndFriends } from "./helpers/userHelpers";
 import { fetchAllUserItems } from "./helpers/userItemsHelpers";
 import { fetchEquipmentForUser } from "./helpers/equippedItemHelpers";
 import { fetchAllItems } from "./helpers/itemHelpers";
 import { cookies } from "next/headers";
-import Login from "components/Login.jsx";
 import { fetchUserCurrentQuest } from "./helpers/questHelpers";
 
 export default async function HomePage() {
