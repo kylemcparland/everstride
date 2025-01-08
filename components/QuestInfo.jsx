@@ -1,3 +1,4 @@
+import QuestComplete from "./QuestComplete";
 import "./QuestInfo.css";
 
 const QuestInfo = ({ distance_today, goal_distance, currentQuest }) => {
@@ -29,6 +30,7 @@ const QuestInfo = ({ distance_today, goal_distance, currentQuest }) => {
           blocked, and you must decide: Will you{" "}
           <b>negotiate with the bandits to avoid conflict</b>, or{" "}
           <b>draw your weapon and face them head-on?</b>
+          <QuestComplete currentQuest={currentQuest} />
         </div>
       )}
     </div>

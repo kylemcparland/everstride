@@ -8,6 +8,8 @@ export async function fetchUserCurrentQuest(name) {
          quests.name AS quest_name, 
          quests.description, 
          quests.goal_steps,
+         user_quests.id AS user_quests_id,
+         users.id AS user_id,
          user_quests.created_at
        FROM user_quests
        JOIN users ON user_quests.user_id = users.id
@@ -16,7 +18,7 @@ export async function fetchUserCurrentQuest(name) {
       [name]
     );
 
-    return result.rows[0]; // Return the active quest or null if none
+    return result.rows[0];
   } catch (error) {
     console.error(`Error fetching current quest for user (${name}):`, error);
     return null;
