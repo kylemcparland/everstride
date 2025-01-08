@@ -9,12 +9,14 @@ import AvatarEditor from "./AvatarEditor";
 import Store from "./Store";
 import DevPage from "./DevPage";
 import Friends from "./Friends";
+import { WorldMap } from "./WorldMap";
 
 const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
   const [isAvatarModalOpen, setAvatarModalOpen] = useState(false);
   const [isStoreModalOpen, setStoreModalOpen] = useState(false);
   const [isDevModalOpen, setDevModelOpen] = useState(false);
   const [isFriendsModalOpen, setFriendsModelOpen] = useState(false);
+  const [isMapModalOpen, setMapModalOpen] = useState(false);
 
   const currentUserId = user.id;
   // Get the ID from the current user! Pass it to the Friends component.
@@ -39,6 +41,11 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
     setFriendsModelOpen(!isFriendsModalOpen);
   };
 
+  // MAP:
+  const toggleMapModal = () => {
+    setMapModalOpen(!isMapModalOpen);
+  };
+
   return (
     <div className="NavLinks">
       <Link href="">
@@ -60,8 +67,10 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         </button>
       </Link>
 
-      <Link href="/">
-        <div className="NavLinks-button">World Progress</div>
+      <Link href="">
+        <button onClick={toggleMapModal} className="NavLinks-button">
+          <p className="a">World Map</p>
+        </button>
       </Link>
 
       <Link href="">
@@ -97,6 +106,13 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         {isDevModalOpen && (
           <Modal toggleModal={toggleDevModal}>
             <DevPage />
+          </Modal>
+        )}
+
+        {/* MAP MODAL */}
+        {isMapModalOpen && (
+          <Modal toggleModal={toggleMapModal}>
+            <WorldMap steps={user.total_distance_travelled} totalSteps={10000}/>
           </Modal>
         )}
 
