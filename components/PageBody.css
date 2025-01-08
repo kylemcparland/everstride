@@ -8,4 +8,33 @@
   height: 100%;
   margin-bottom: 200px;
   padding-bottom: 1em;
+
+  overflow: hidden;
+  position: relative; /* Important to contain absolute-positioned children */
+}
+
+.infinite-scrolling {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: -1; /* Push the background behind other content */
+  background: url("https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7feb4465-91ad-407f-9fb1-f9aea072aa21_1906x1065.png")
+    repeat-x;
+  background-size: auto 100%; /* Scale image height to match container, width adjusts automatically */
+  height: 100vh; /* Full height of the viewport */
+  width: 5718px; /* This width must be larger than the animation distance */
+
+  animation: slide 60s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0); /* Start position */
+  }
+  100% {
+    transform: translateX(
+      calc(-100vw)
+    ); /* Scroll the background left by the width of the viewport */
+  }
 }

@@ -21,8 +21,6 @@ async function fetchEquipmentForUser(userId) {
   return { hat, shirt, pants, boots, weapon };
 }
 
-
-
 export default async function PageBody({ user, friends, goal_distance }) {
   // Fetch the user's equipment
   const userEquipment = await fetchEquipmentForUser(user.id);
@@ -34,10 +32,13 @@ export default async function PageBody({ user, friends, goal_distance }) {
       equipment: await fetchEquipmentForUser(friend.id),
     }))
   );
-  
+
   // Render StepVisualizer components and pass the user's data...
   return (
     <main className="PageBody">
+      
+      <div className="infinite-scrolling" />
+
       {/* Render current user at top */}
       <StepVisualizer
         userCharacter={user}
