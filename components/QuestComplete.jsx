@@ -1,6 +1,8 @@
 "use client";
 
 const QuestComplete = ({ currentQuest }) => {
+  const { option_1, option_2, odds1, odds2 } = currentQuest;
+
   const userQuestId = currentQuest.user_quests_id;
   const userId = currentQuest.user_id;
   const updatedUserGold = currentQuest.user_gold + 10;
@@ -31,7 +33,14 @@ const QuestComplete = ({ currentQuest }) => {
           completeCurrentQuest(userQuestId, userId, updatedUserGold)
         }
       >
-        Complete Quest
+        {option_1}
+      </button>
+      <button
+        onClick={() =>
+          completeCurrentQuest(userQuestId, userId, updatedUserGold)
+        }
+      >
+        {option_2}
       </button>
     </div>
   );

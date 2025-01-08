@@ -50,7 +50,9 @@ CREATE TABLE quests (
     goal_steps INTEGER NOT NULL,
     result_description VARCHAR(800) NOT NULL,
     option_1 VARCHAR(255) NOT NULL,
-    option_2 VARCHAR(255) NOT NULL
+    option_2 VARCHAR(255) NOT NULL,
+    option_1_odds INT DEFAULT 50,
+    option_2_odds INT DEFAULT 50
 );
 
 CREATE TABLE user_quests (
