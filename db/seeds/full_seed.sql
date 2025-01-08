@@ -31,16 +31,16 @@ INSERT INTO user_items (user_id, item_id) VALUES
     (2, 2), (2, 3), (2, 6), (2, 7), (2, 11), (2, 13), (2, 15), (2, 17), (2, 18),
     (3, 1), (3, 2), (3, 3), (3, 5), (3, 7), (3, 8), (3, 10), (3, 12), (3, 16), (3, 17);
 
-INSERT INTO quests (name, description, goal_steps, result_description, option_1, option_2, option_1_odds, option_2_odds)
+INSERT INTO quests (name, description, goal_steps, result_description, option_1, option_2, option_1_odds, option_2_odds, success_message, failure_message)
 VALUES
     ('The Trail of the Everstride', 
     'Brave Adventurer, journey through the Plains of Perpetual Motion and conquer the Glade of Nimble Steps. Achieve 30,000 steps to reach the Sanctuary of Vitality and claim the title of Everstride Champion!',
     1000, 'With the final step, you enter the Sanctuary of Vitality, your body brimming with energy as the title of Everstride Champion is bestowed upon you. Just as you begin to bask in your victory, a rustle from the nearby trees catches your attention. From the shadows, a group of bandits emerges, eyes glinting with greed.',
-    'Flee from the bandits', 'Draw your weapon', 50, 75),
+    'Flee from the bandits', 'Draw your weapon', 50, 75, 'You escape the bandits and gain 10 Gold!', 'You escape with your life, but are no richer.'),
     ('The Path of Thunderstride', 
     'Intrepid Traveler, embark on a journey through the Stormy Highlands. Traverse the Thunder Pass and outpace the Lightning Trails. Walk or run 2,000 steps to reach the Peak of Resilience and claim the title of Thunderstride Conqueror!', 
-    2000, 'Test completed quest description',
-    'Option 1', 'Option 2', 50, 75);
+    2000, 'As you near the summit, a thunderous roar shakes the earth, and a mysterious figure emerges from the mist, blocking your path.',
+    'Calm the storm', 'Draw your weapon', 75, 50, 'The figure dissolves into thin air leaving behind 10 gold coins!', 'The mist blinds you and you are foreced to flee.');
 
 INSERT INTO user_quests (user_id, quest_id)
 VALUES

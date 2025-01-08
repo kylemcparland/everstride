@@ -16,7 +16,9 @@ export async function fetchUserCurrentQuest(name) {
          option_1,
          option_2,
          option_1_odds AS odds1,
-         option_2_odds AS odds2
+         option_2_odds AS odds2,
+         success_message,
+         failure_message
        FROM user_quests
        JOIN users ON user_quests.user_id = users.id
        JOIN quests ON user_quests.quest_id = quests.id

@@ -52,7 +52,9 @@ CREATE TABLE quests (
     option_1 VARCHAR(255) NOT NULL,
     option_2 VARCHAR(255) NOT NULL,
     option_1_odds INT DEFAULT 50,
-    option_2_odds INT DEFAULT 50
+    option_2_odds INT DEFAULT 50,
+    success_message VARCHAR(800) NOT NULL,
+    failure_message VARCHAR(800) NOT NULL
 );
 
 CREATE TABLE user_quests (

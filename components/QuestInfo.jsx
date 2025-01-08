@@ -4,7 +4,7 @@ import "./QuestInfo.css";
 const QuestInfo = ({ distance_today, goal_distance, currentQuest }) => {
   console.log(currentQuest);
 
-  const { quest_name, description, result_description } = currentQuest;
+  const { quest_name, description } = currentQuest;
 
   return (
     <div className="QuestInfo">
@@ -20,9 +20,6 @@ const QuestInfo = ({ distance_today, goal_distance, currentQuest }) => {
         </div>
       ) : (
         <div>
-          <b>Quest Completed!</b>
-          <br />
-          {result_description}
           <QuestComplete currentQuest={currentQuest} />
         </div>
       )}
