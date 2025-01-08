@@ -1,19 +1,10 @@
-INSERT INTO quests (name, description, goal_steps)
-VALUES
-    ('The Trail of the Everstride', 
-    'Brave Adventurer, journey through the Plains of Perpetual Motion and conquer the Glade of Nimble Steps. Achieve 30,000 steps to reach the Sanctuary of Vitality and claim the title of Everstride Champion!',
-    1000),
-    ('The Path of Thunderstride', 
-     'Intrepid Traveler, embark on a journey through the Stormy Highlands. Traverse the Thunder Pass and outpace the Lightning Trails. Walk or run 2,000 steps to reach the Peak of Resilience and claim the title of Thunderstride Conqueror!', 
-     2000);
-
-INSERT INTO users (name, email, distance_travelled_today, total_distance_travelled, last_total_distance, gold, colour, current_quest_id)
+INSERT INTO users (name, email, distance_travelled_today, total_distance_travelled, last_total_distance, gold, colour)
 VALUES 
-    ('Kyle McParland', 'k@k.com', 1000, 0, 0, 6, 'blue', 1),
-    ('Ben Hallam', 'b@b.com', 300, 0, 0, 20, 'red', 2),
-    ('Jon Hiebert', 'j@j.com', 0, 0, 0, 15, 'green', 1),
-    ('Leeroy Walker', 'j@l.com', 324, 0, 99, 15, 'pink', 2),
-    ('Jenna Johnson', 'y@j.com', 44, 0, 0, 431, 'purple', 1);
+    ('Kyle McParland', 'k@k.com', 1000, 0, 0, 6, 'blue'),
+    ('Ben Hallam', 'b@b.com', 300, 0, 0, 20, 'red'),
+    ('Jon Hiebert', 'j@j.com', 0, 0, 0, 15, 'green'),
+    ('Leeroy Walker', 'j@l.com', 324, 0, 99, 15, 'pink'),
+    ('Jenna Johnson', 'y@j.com', 44, 0, 0, 431, 'purple');
 
 INSERT INTO items (name, type, description, price, image) VALUES 
     ('Hat of Wisdom', 'hat', 'Increases wisdom by 5.', 3, 'hat1.png'),
@@ -39,6 +30,23 @@ INSERT INTO user_items (user_id, item_id) VALUES
     (1, 1), (1, 2), (1, 5), (1, 6), (1, 12), (1, 13), (1, 14), (1, 16), (1, 17),
     (2, 2), (2, 3), (2, 6), (2, 7), (2, 11), (2, 13), (2, 15), (2, 17), (2, 18),
     (3, 1), (3, 2), (3, 3), (3, 5), (3, 7), (3, 8), (3, 10), (3, 12), (3, 16), (3, 17);
+
+INSERT INTO quests (name, description, goal_steps)
+VALUES
+    ('The Trail of the Everstride', 
+    'Brave Adventurer, journey through the Plains of Perpetual Motion and conquer the Glade of Nimble Steps. Achieve 30,000 steps to reach the Sanctuary of Vitality and claim the title of Everstride Champion!',
+    1000),
+    ('The Path of Thunderstride', 
+     'Intrepid Traveler, embark on a journey through the Stormy Highlands. Traverse the Thunder Pass and outpace the Lightning Trails. Walk or run 2,000 steps to reach the Peak of Resilience and claim the title of Thunderstride Conqueror!', 
+     2000);
+
+INSERT INTO user_quests (user_id, quest_id)
+VALUES
+    (1, 1),
+    (2, 1),
+    (3, 2),
+    (4, 1),
+    (5, 2);
 
 -- INSERT INTO user_friends (user_id_1, user_id_2) VALUES 
 --     (2, 3),
