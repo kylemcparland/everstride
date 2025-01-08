@@ -11,7 +11,10 @@ export async function fetchUserCurrentQuest(name) {
          user_quests.id AS user_quests_id,
          users.id AS user_id,
          user_quests.created_at,
-         users.gold AS user_gold
+         users.gold AS user_gold,
+         quests.result_description,
+         option_1,
+         option_2
        FROM user_quests
        JOIN users ON user_quests.user_id = users.id
        JOIN quests ON user_quests.quest_id = quests.id
