@@ -2,7 +2,7 @@ import QuestComplete from "./QuestComplete";
 import "./QuestInfo.css";
 
 const QuestInfo = ({ distance_today, goal_distance, currentQuest }) => {
-  console.log(currentQuest);
+  // console.log(currentQuest);
 
   const { quest_name, description } = currentQuest;
 
