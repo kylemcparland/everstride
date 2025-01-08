@@ -35,6 +35,14 @@ export default async function handler(req, res) {
       [userId, newQuestId]
     );
 
+    // Reset distance_travelled_today...
+    await db.query(
+      `UPDATE users
+       SET distance_travelled_today = 0
+       WHERE id = $1`,
+      [userId]
+    );
+
     return res.status(200).json({
       success: true,
       message: "Quest completed and new quest started.",
