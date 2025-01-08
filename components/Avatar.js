@@ -3,14 +3,16 @@ import './Avatar.css';  // Assuming you're using an external CSS file
 const Avatar = ({ hat, shirt, pants, boots, weapon, colour }) => {
 
   // Determine the correct avatar base image based on the colour prop
-  const avatarBaseSrc = `/assets/avatars/avatar_${colour.toLowerCase()}.png`; // Ensure the colour is in lowercase to match the filename
+  const avatarBaseSrc = colour
+    ? `/assets/avatars/avatar_${colour.toLowerCase()}.png`  // Use the colour prop if provided
+    : '/assets/avatars/avatar_base.png';  // Default if no colour prop
 
   return (
     <div className="avatar-display">
       {/* Dynamic avatar base */}
       <img
         src={avatarBaseSrc}
-        alt={`Avatar base ${colour}`}
+        alt={`Avatar base ${colour || 'default'}`}  // Use default if no colour prop
         className="avatar-base"
       />
 
