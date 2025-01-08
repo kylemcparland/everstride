@@ -7,7 +7,7 @@ export default async function handler(req, res) {
       .json({ success: false, message: "Method not allowed. Use POST." });
   }
 
-  const { userQuestId, userId } = req.body;
+  const { userQuestId, userId, updatedUserGold } = req.body;
 
   // Increment the user's quest up by one...
   const newQuestId = userQuestId + 1;
@@ -35,12 +35,13 @@ export default async function handler(req, res) {
       [userId, newQuestId]
     );
 
-    // Reset distance_travelled_today...
+    // Reset distance_travelled_today & add gold...
     await db.query(
       `UPDATE users
-       SET distance_travelled_today = 0
+       SET distance_travelled_today = 0, 
+           gold = $2
        WHERE id = $1`,
-      [userId]
+      [userId, updatedUserGold]
     );
 
     return res.status(200).json({
