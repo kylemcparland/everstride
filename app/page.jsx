@@ -7,6 +7,7 @@ import { fetchAllUserItems } from "./helpers/userItemsHelpers";
 import { fetchEquipmentForUser } from "./helpers/equippedItemHelpers";
 import { fetchAllItems } from "./helpers/itemHelpers";
 import { cookies } from "next/headers";
+import { fetchUserCurrentQuest } from "./helpers/questHelpers";
 
 export default async function HomePage() {
   // Retrieve login info if any. Set it as current username...
@@ -20,14 +21,15 @@ export default async function HomePage() {
   const user = userAndFriends[0];
   const friends = userAndFriends.slice(1);
 
-  // Goal distance set (will make this dynamic but for now will be static and passed down...):
-  const goal_distance = 1000;
-
   // Get the user's items and equipped items to pass on as props
   const userItems = await fetchAllUserItems(user?.id);
   const userEquipment = await fetchEquipmentForUser(user?.id);
   // Fetch all items in DB for use in STORE component (This is too many queries to make for one table so we'll need to consolidate eventually)
   const allItems = await fetchAllItems();
+
+  // Pull current user's quest data from DB dynamically...
+  const currentQuest = await fetchUserCurrentQuest(username);
+  const goal_distance = currentQuest ? currentQuest.goal_steps : undefined;
 
   return (
     <main className="HomePage">
@@ -50,6 +52,7 @@ export default async function HomePage() {
             distance_today={user.distance_travelled_today}
             goal_distance={goal_distance}
             username={username}
+            currentQuest={currentQuest}
           />
         </>
       ) : (
