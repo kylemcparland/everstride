@@ -25,7 +25,7 @@ export default async function initUser(req, res) {
       } = user;
 
       if (distance_travelled_today === last_travelled_today) {
-        console.log(`🟡 initUser ${name}: No new workouts to add.`);
+        console.log(`🟡 initUser ${name}: Already init`);
         continue;
       }
 
@@ -40,6 +40,15 @@ export default async function initUser(req, res) {
       const newTotalDistance =
         total_distance_travelled +
         (distance_travelled_today - last_travelled_today);
+
+      // Check to ensure new total distance never decreases
+      if (newTotalDistance < total_distance_travelled) {
+        console.log(
+          `🔴 initUser ${name}: distance_travelled_today - last_travelled_today is less than total_distance_travelled. Skip update.`
+        );
+        continue;
+      }
+
       const goldEarned = newTotalDistance - last_total_distance;
 
       const updateTotalDistanceQuery = `
