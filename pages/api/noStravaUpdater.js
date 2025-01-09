@@ -5,7 +5,7 @@ import db from "@/db/connection";
 export default async function noStravaUpdater(req, res) {
   try {
     const { userName, distance } = req.body;
-    console.log("🪙 Starting addDistanceAndGold");
+    console.log("🪙 noStravaUpdater addDistanceAndGold");
 
     const selectQuery = `
       SELECT total_distance_travelled, last_total_distance, gold
@@ -40,7 +40,7 @@ export default async function noStravaUpdater(req, res) {
       userName,
     ]);
 
-    console.log(`🪙 Update database ${userName}:
+    console.log(`🪙 noStravaUpdater update database ${userName}:
       Last Total Distance: ${lastTotalDistance}
       New Total Distance: ${newTotalDistance}
       Gold increased amount: ${goldEarned}

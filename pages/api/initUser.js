@@ -25,7 +25,7 @@ export default async function initUser(req, res) {
       } = user;
 
       if (distance_travelled_today === last_travelled_today) {
-        console.log(`\n🟡 initUser ${name}: No new distance to add.`);
+        console.log(`🟡 initUser ${name}: No new workouts to add.`);
         continue;
       }
 
@@ -36,8 +36,6 @@ export default async function initUser(req, res) {
       `;
 
       await db.query(updateDistanceQuery, [distance_travelled_today, name]);
-      console.log(`\n🔵 initUser ${name}: 
-        Distance Travelled Today: ${distance_travelled_today}`);
 
       const newTotalDistance =
         total_distance_travelled +
@@ -65,6 +63,7 @@ export default async function initUser(req, res) {
         Last Total Distance: ${last_total_distance}
         New Total Distance: ${newTotalDistance}
         Gold increased amount: ${goldEarned}
+        Distance Travelled Today: ${distance_travelled_today}
         Last Travelled Today updated to: ${distance_travelled_today}`);
     }
 

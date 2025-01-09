@@ -76,7 +76,7 @@ export async function loadUserData() {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log("🔵 updateDistance:", data.message);
+          // console.log("🟢 updateDistance:", data.message);
 
           // Update total_distance and gold in the database
           return fetch(`${baseUrl}/api/updateTotalDistance`, {
@@ -89,7 +89,7 @@ export async function loadUserData() {
         })
         .then((res) => res.json())
         .then((data) => {
-          // console.log("🪙 updateTotalDistance:", data.message);
+          // console.log("🔵updateTotalDistance:", data.message);
           return { totalDistanceThisWeek, totalDistanceToday, totalDistance };
         })
         .catch((error) => {
