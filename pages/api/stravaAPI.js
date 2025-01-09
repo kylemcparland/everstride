@@ -37,10 +37,12 @@ export function getTotalDistance(activities) {
 }
 
 export async function loadUserData() {
-  console.log("🟢 Start loadUserData");
+  console.log(
+    "\n🟢 STRAVA stravaAPI loadUserData " + JSON.stringify({ userName })
+  );
 
   await newAccessToken(); // Wait for the new access token to be fetched
-  console.log("🟢 Got access token, generate link");
+  // console.log("🟢 Got access token, generate link");
   // Hiding the access token now.
   // console.log(accessToken)
 
@@ -51,7 +53,7 @@ export async function loadUserData() {
   return fetch(dataLink)
     .then((res) => res.json())
     .then((activities) => {
-      console.log("🟢 Recieved the data from API, parsing");
+      // console.log("🟢 Recieved the data from API, parsing");
       // Hiding the activities too, no need to list them all.
       // console.log(activities)
 
@@ -74,7 +76,7 @@ export async function loadUserData() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("🔵 updateDistance:", data.message);
+          // console.log("🔵 updateDistance:", data.message);
 
           // Update total_distance and gold in the database
           return fetch(`${baseUrl}/api/updateTotalDistance`, {
@@ -87,7 +89,7 @@ export async function loadUserData() {
         })
         .then((res) => res.json())
         .then((data) => {
-          console.log("🪙 updateTotalDistance:", data.message);
+          // console.log("🪙 updateTotalDistance:", data.message);
           return { totalDistanceThisWeek, totalDistanceToday, totalDistance };
         })
         .catch((error) => {

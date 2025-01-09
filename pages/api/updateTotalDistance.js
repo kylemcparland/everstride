@@ -3,7 +3,7 @@ import db from "@/db/connection";
 export default async function updateTotalDistance(req, res) {
   try {
     const { userName, totalDistance } = req.body;
-    console.log("🪙 Starting updateTotalDistance (and gold)");
+    // console.log("🪙 Run updateTotalDistance");
 
     const selectQuery = `
       SELECT last_total_distance, gold
@@ -38,8 +38,8 @@ export default async function updateTotalDistance(req, res) {
       goldEarned,
       userName,
     ]);
-    
-    console.log(`🪙 Update database ${userName}:
+
+    console.log(`\n🔵 STRAVA updateTotalDistance for ${userName}:
       Last Total Distance: ${lastTotalDistance}
       New Total Distance: ${totalDistance}
       Gold increased amount: ${goldEarned}

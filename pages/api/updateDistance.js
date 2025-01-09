@@ -3,8 +3,7 @@ import db from "@/db/connection";
 export default async function updateDistance(req, res) {
   try {
     const { userName, distance } = req.body;
-    console.log('🔵 Starting updateDistance');
-    
+    // console.log('🔵 Starting updateDistance');
 
     const updateQuery = `
       UPDATE users
@@ -13,7 +12,7 @@ export default async function updateDistance(req, res) {
     `;
 
     const result = await db.query(updateQuery, [distance, userName]);
-    console.log(`🔵 Update database ${userName}: 
+    console.log(`\n🔵 STRAVA updateDistance for ${userName}: 
       Travelled Today: ${distance}`);
 
     res.status(200).json({ message: "Success" });
