@@ -7,6 +7,8 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
 
+
+  // Strava data is loaded inside this handleLogin block by api/login.js before opening the home page.
   const handleLogin = async () => {
     setLoading(true);
     await fetch("/api/login", {
