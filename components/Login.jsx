@@ -7,29 +7,27 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
 
-
   // Strava data is loaded inside this handleLogin block by api/login.js before opening the home page.
-const handleLogin = async () => {
-  setLoading(true);
-  try {
-    await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username }),
-    });
+  const handleLogin = async () => {
+    setLoading(true);
+    try {
+      await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username }),
+      });
 
-    await fetch("/api/initUser", {
-      method: "POST",
-    });
+      await fetch("/api/initUser", {
+        method: "POST",
+      });
 
-    window.location.reload();
-  } catch (error) {
-    console.error("Error during login or initialization:", error);
-  } finally {
-    setLoading(false);
-  }
-};
-
+      window.location.reload();
+    } catch (error) {
+      console.error("Error during login or initialization:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="Login">

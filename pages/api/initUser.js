@@ -1,5 +1,3 @@
-// pages/api/initUser.js
-
 import db from "@/db/connection";
 
 export default async function initUser(req, res) {
@@ -9,7 +7,7 @@ export default async function initUser(req, res) {
 
   try {
     const selectUsersQuery = `
-      SELECT name, distance_travelled_today, last_total_distance, total_distance_travelled, gold
+      SELECT name, distance_travelled_today, last_total_distance, total_distance_travelled, gold, last_travelled_today
       FROM users;
     `;
 
@@ -23,7 +21,13 @@ export default async function initUser(req, res) {
         last_total_distance,
         total_distance_travelled,
         gold,
+        last_travelled_today,
       } = user;
+
+      if (distance_travelled_today === last_travelled_today) {
+        console.log(`\n🟡 initUser ${name}: No new distance to add.`);
+        continue;
+      }
 
       const updateDistanceQuery = `
         UPDATE users
@@ -36,28 +40,32 @@ export default async function initUser(req, res) {
         Distance Travelled Today: ${distance_travelled_today}`);
 
       const newTotalDistance =
-        total_distance_travelled + distance_travelled_today;
+        total_distance_travelled +
+        (distance_travelled_today - last_travelled_today);
       const goldEarned = newTotalDistance - last_total_distance;
 
       const updateTotalDistanceQuery = `
         UPDATE users
         SET total_distance_travelled = $1,
             last_total_distance = $2,
-            gold = gold + $3
-        WHERE name = $4;
+            gold = gold + $3,
+            last_travelled_today = $4
+        WHERE name = $5;
       `;
 
       await db.query(updateTotalDistanceQuery, [
         newTotalDistance,
         newTotalDistance,
         goldEarned,
+        distance_travelled_today,
         name,
       ]);
 
       console.log(`\n🔵 initUser ${name}:
         Last Total Distance: ${last_total_distance}
         New Total Distance: ${newTotalDistance}
-        Gold increased amount: ${goldEarned}`);
+        Gold increased amount: ${goldEarned}
+        Last Travelled Today updated to: ${distance_travelled_today}`);
     }
 
     res.status(200).json({ message: "Success" });

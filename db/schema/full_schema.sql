@@ -15,7 +15,8 @@ CREATE TABLE users (
     total_distance_travelled INT DEFAULT 0,
     last_total_distance INT DEFAULT 0,
     gold INT DEFAULT 0,
-    colour VARCHAR(12)
+    colour VARCHAR(12),
+    last_travelled_today INTEGER DEFAULT 0
 );
 
 

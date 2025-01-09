@@ -4,7 +4,7 @@ VALUES
     ('Kyle McParland', 'k@k.com', 1000, 0, 0, 0, 'blue'),
     ('Ben Hallam', 'b@b.com', 300, 0, 0, 0, 'red'),
     ('Jon Hiebert', 'j@j.com', 0, 0, 0, 0, 'green'),
-    ('Leeroy Walker', 'j@l.com', 324, 0, 99, 0, 'pink'),
+    ('Leeroy Walker', 'j@l.com', 324, 0, 0, 0, 'pink'),
     ('Jenna Johnson', 'y@j.com', 44, 0, 0, 0, 'purple'),
     ('Jimmy Jenkins', 'y@q.com', 440, 0, 0, 0, 'turquoise');
 
