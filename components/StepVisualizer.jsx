@@ -26,24 +26,25 @@ export default function StepVisualizer({
   // Render character's distance travelled...
   return (
     <div className="StepVisualizer">
+      <div className="LocationDiv">
+        <p>Location | 💰{userCharacter.gold}</p>
+      </div>
       <div className="StepVisualizer-progress">
         {user_tag === "current_user" ? (
           <p>
-            Today you have travelled {distance_travelled_today}/
-            {goal_distance} [💰
-            {userCharacter.gold}]
+            Today you have travelled {distance_travelled_today}/{goal_distance}m
           </p>
         ) : (
           <p>
-            Today {name} has travelled {distance_travelled_today}/{goal_distance} [💰
-            {userCharacter.gold}]
+            Today {name} has travelled {distance_travelled_today}m
           </p>
         )}
       </div>
+      <div className="DivThree"></div>
 
       <div
         className="StepVisualizer-character"
-        style={{ left: `calc(${position}% - 3em)` }}
+        style={{ left: `calc(${position}% - 5em)` }}
       >
         <Avatar
           hat={hat}

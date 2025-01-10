@@ -43,7 +43,7 @@ const DevPage = () => {
 
   return (
     <div className="container">
-      <p>Add a new workout</p>
+      <p>New distance</p>
       <form onSubmit={handleSubmit}>
         <label>
           Select User:
@@ -51,7 +51,7 @@ const DevPage = () => {
             value={selectedUser}
             onChange={(e) => setSelectedUser(e.target.value)}
           >
-            <option value="">Select a user</option>
+            <option value="">Select</option>
             {users.map((user) => (
               <option key={user.id} value={user.name}>
                 {user.name}

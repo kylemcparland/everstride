@@ -1,7 +1,7 @@
 .StepVisualizer {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-grow: 1;
 
   width: calc(100% - 2em);
@@ -26,7 +26,6 @@
   transform: translate(-50%, -50%); /* Center horizontally and vertically */
 
   height: 360px;
-  margin-left: 3em;
   margin-right: 3em;
 }
 
