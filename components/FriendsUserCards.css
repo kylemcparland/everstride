@@ -16,7 +16,7 @@
   overflow-y: auto;
   background-color: inherit;
   border: none;
-  
+  justify-self: center;
 }
 
 .users {

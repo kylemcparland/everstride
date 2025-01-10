@@ -75,7 +75,7 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
 
       <Link href="">
         <button onClick={toggleDevModal} className="NavLinks-button">
-          <p className="a">Add Distance</p>
+          <p className="a">Add Progress</p>
         </button>
       </Link>
 
@@ -105,7 +105,7 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         {/* DEV MODAL */}
         {isDevModalOpen && (
           <Modal toggleModal={toggleDevModal}>
-            <DevPage />
+            <DevPage user={user}/>
           </Modal>
         )}
 

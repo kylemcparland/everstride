@@ -1,24 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./DevPage.css";
 
-const DevPage = () => {
-  const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState("");
+const DevPage = ({ user }) => {
   const [distance, setDistance] = useState("");
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch("/api/getAllUsers");
-        const data = await response.json();
-        setUsers(data);
-      } catch (error) {
-        console.error("Fetch users error", error);
-      }
-    };
-
-    fetchUsers();
-  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,7 +12,7 @@ const DevPage = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userName: selectedUser,
+          userName: user.name,
           distance: parseFloat(distance),
         }),
       });
@@ -42,33 +26,33 @@ const DevPage = () => {
   };
 
   return (
-    <div className="container">
-      <p>New distance</p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Select User:
-          <select
-            value={selectedUser}
-            onChange={(e) => setSelectedUser(e.target.value)}
-          >
-            <option value="">Select</option>
-            {users.map((user) => (
-              <option key={user.id} value={user.name}>
-                {user.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Distance:
+    <div className="devParent">
+      {user.name === "Jon Hiebert" ? (
+        <div className="devContainerCon">
+          <p>Strava is connected! Use the Strava app!</p>
+        </div>
+      ) : (
+        <div className="devContainerNotCon">
+          <p>Strava is not connected! Add your progress below.</p>
+        </div>
+      )}
+      <div className="devContainerAdd">
+        <p>How many steps or meters?</p>
+        <form onSubmit={handleSubmit}>
           <input
             type="number"
             value={distance}
             onChange={(e) => setDistance(e.target.value)}
           />
-        </label>
-        <button type="submit">Add</button>
-      </form>
+          <button
+            type="submit"
+            className="Add"
+            disabled={user.name === "Jon Hiebert"}
+          >
+            Add
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
