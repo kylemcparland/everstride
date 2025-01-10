@@ -75,7 +75,7 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
 
       <Link href="">
         <button onClick={toggleDevModal} className="NavLinks-button">
-          <p className="a">Dev Page</p>
+          <p className="a">Add Distance</p>
         </button>
       </Link>
 

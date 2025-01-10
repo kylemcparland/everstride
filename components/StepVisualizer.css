@@ -1,7 +1,7 @@
 .StepVisualizer {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-grow: 1;
 
   width: calc(100% - 2em);
@@ -22,15 +22,15 @@
   transform: translate(-50%, -50%); /* Center horizontally and vertically */
 
   height: 100%;
-  margin-left: 3em;
   margin-right: 3em;
 }
 
-.StepVisualizer-progress {
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  flex-direction: row;
+.LocationDiv,
+.StepVisualizer-progress,
+.DivThree {
+  flex: 1;
+  margin: 0;
+  justify-items: center;
 }
 
 .StepVisualizer-goal {
