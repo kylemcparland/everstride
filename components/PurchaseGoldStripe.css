@@ -3,10 +3,12 @@
   align-items: center;
   justify-content: space-evenly; /* Distribute space evenly between ad and button */
   width: 100%;
+  
 }
 
 .PurchaseGoldStripe-ad {
   width: 200px;
+  
 }
 
 .PurchaseGoldStripe-link:hover::before {
@@ -23,4 +25,7 @@
   justify-content: space-evenly;
   min-width: 350px;
   padding: 10px 20px;
+}
+.Store-Stripe-Banner{
+  border-radius: 15px;
 }

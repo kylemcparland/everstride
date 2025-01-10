@@ -25,12 +25,18 @@
   margin-right: 3em;
 }
 
-.LocationDiv,
-.StepVisualizer-progress,
+.LocationDiv {
+  flex: 1;
+  margin-left: 1em;
+  justify-items: flex-start;
+}
+.StepVisualizer-progress {
+  justify-items: center;
+}
 .DivThree {
   flex: 1;
-  margin: 0;
-  justify-items: center;
+  margin-right: 1em;
+  justify-items: flex-end;
 }
 
 .StepVisualizer-goal {
