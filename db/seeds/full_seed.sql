@@ -1,12 +1,12 @@
-INSERT INTO users (name, email, distance_travelled_today, total_distance_travelled, last_total_distance, gold, colour)
+INSERT INTO users (name, email, distance_travelled_today, total_distance_travelled, last_total_distance, gold, colour, accumulated_distance)
 
 VALUES 
-    ('Kyle McParland', 'k@k.com', 1000, 0, 0, 0, 'blue'),
-    ('Ben Hallam', 'b@b.com', 300, 0, 0, 0, 'red'),
-    ('Jon Hiebert', 'j@j.com', 0, 0, 0, 0, 'green'),
-    ('Leeroy Walker', 'j@l.com', 324, 0, 0, 0, 'pink'),
-    ('Jenna Johnson', 'y@j.com', 44, 0, 0, 0, 'purple'),
-    ('Jimmy Jenkins', 'y@q.com', 440, 0, 0, 0, 'turquoise');
+    ('Kyle McParland', 'k@k.com', 1000, 0, 0, 0, 'blue', 0),
+    ('Ben Hallam', 'b@b.com', 300, 0, 0, 0, 'red', 0),
+    ('Jon Hiebert', 'j@j.com', 0, 0, 0, 0, 'green', 0),
+    ('Leeroy Walker', 'j@l.com', 324, 0, 0, 0, 'pink', 0),
+    ('Jenna Johnson', 'y@j.com', 44, 0, 0, 0, 'purple', 0),
+    ('Jimmy Jenkins', 'y@q.com', 440, 0, 0, 0, 'turquoise', 0);
 
 INSERT INTO items (name, type, description, price, image) VALUES 
     ('Hat of Wisdom', 'hat', 'Increases wisdom by 5.', 3, 'hat1.png'),

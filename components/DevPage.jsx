@@ -6,7 +6,6 @@ const DevPage = () => {
   const [selectedUser, setSelectedUser] = useState("");
   const [distance, setDistance] = useState("");
 
-  // Use the existing getAllUsers function with useEffect
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -21,37 +20,33 @@ const DevPage = () => {
     fetchUsers();
   }, []);
 
-  // Form
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // Updates the distance / gold
-      const response = await fetch("/api/noStravaUpdater", {
+      const response = await fetch("/api/userUpdater", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userName: selectedUser, distance }),
+        body: JSON.stringify({
+          userName: selectedUser,
+          distance: parseFloat(distance),
+        }),
       });
 
       const result = await response.json();
       console.log(result.message);
-      
-      // Then reset/reload to the home page to see the updates.
-      window.location.href = '/'
-
+      window.location.href = "/";
     } catch (error) {
       console.error("Error updating distance:", error);
     }
   };
 
   return (
-    <div class = 'container'>
-      <p>Add Distance / Gold</p>
-      <p>Does not affect distance_travelled_today only totals</p>
+    <div className="container">
+      <p>Add a new workout</p>
       <form onSubmit={handleSubmit}>
         <label>
           Select User:
-          {/* Cool drop down menu */}
           <select
             value={selectedUser}
             onChange={(e) => setSelectedUser(e.target.value)}
@@ -72,7 +67,7 @@ const DevPage = () => {
             onChange={(e) => setDistance(e.target.value)}
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );
