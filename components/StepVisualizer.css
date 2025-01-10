@@ -9,7 +9,6 @@
   margin-top: 1em;
 
   color: black;
-  background-color: lightgray;
   background-image: url('/assets/scenes/start.png');
   background-size: 4000px;
   background-position: center;
@@ -29,10 +28,12 @@
   margin-right: 3em;
 }
 
-.StepVisualizer-progress {
-  display: flex;
-  flex-direction: row;
-  align-self: center;
+.LocationDiv,
+.StepVisualizer-progress,
+.DivThree {
+  flex: 1;
+  margin: 0;
+  justify-items: center;
 }
 
 .StepVisualizer-goal {
