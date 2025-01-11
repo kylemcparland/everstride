@@ -10,7 +10,12 @@ export default async function handler(req, res) {
   const { userQuestId, userId, updatedUserGold, questId } = req.body;
 
   // Increment the user's quest up by one...
-  const newQuestId = questId + 1;
+  let newQuestId = questId + 1;
+  console.log(newQuestId)
+
+  if (newQuestId > 4) {
+    newQuestId = 1;
+  }
 
   if (!userQuestId || !userId) {
     return res.status(400).json({

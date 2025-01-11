@@ -36,13 +36,21 @@ INSERT INTO user_items (user_id, item_id) VALUES
 INSERT INTO quests (name, description, goal_steps, result_description, option_1, option_2, option_1_odds, option_2_odds, success_message, failure_message)
 VALUES
     ('The Trail of the Everstride', 
-    'Brave Adventurer, journey through the Plains of Perpetual Motion and conquer the Glade of Nimble Steps. Achieve 30,000 steps to reach the Sanctuary of Vitality and claim the title of Everstride Champion!',
+    'Brave Adventurer, journey through the Plains of Perpetual Motion and conquer the Glade of Nimble Steps. Achieve 1,000 steps to reach the Sanctuary of Vitality and claim the title of Everstride Champion!',
     1000, 'With the final step, you enter the Sanctuary of Vitality, your body brimming with energy as the title of Everstride Champion is bestowed upon you. Just as you begin to bask in your victory, a rustle from the nearby trees catches your attention. From the shadows, a group of bandits emerges, eyes glinting with greed.',
     'Flee from the bandits', 'Draw your weapon', 50, 75, 'You escape the bandits and gain 10 Gold!', 'You escape with your life, but are no richer.'),
     ('The Path of Thunderstride', 
-    'Intrepid Traveler, embark on a journey through the Stormy Highlands. Traverse the Thunder Pass and outpace the Lightning Trails. Walk or run 2,000 steps to reach the Peak of Resilience and claim the title of Thunderstride Conqueror!', 
-    2000, 'As you near the summit, a thunderous roar shakes the earth, and a mysterious figure emerges from the mist, blocking your path.',
-    'Calm the storm', 'Draw your weapon', 75, 50, 'The figure dissolves into thin air leaving behind 10 gold coins!', 'The mist blinds you and you are foreced to flee.');
+    'Intrepid Traveler, embark on a journey through the Stormy Highlands. Traverse the Thunder Pass and outpace the Lightning Trails. Walk or run 1,500 steps to reach the Peak of Resilience and claim the title of Thunderstride Conqueror!', 
+    1500, 'As you near the summit, a thunderous roar shakes the earth, and a mysterious figure emerges from the mist, blocking your path.',
+    'Calm the storm', 'Draw your weapon', 75, 50, 'The figure dissolves into thin air leaving behind 10 gold coins!', 'The mist blinds you and you are foreced to flee.'),
+    ('The Journey to Windwalker Ridge', 
+    'Embark on a trek through the Whispering Valleys, ascend the rocky trails of Windwalker Ridge, and conquer the heights to earn the title of Windwalker Traveler. Traverse 2000 steps and face the challenges of the ridge!',
+    2000, 'As you climb higher, a gust of wind knocks you off balance, and a whirlwind forms before you, swirling violently.',
+    'Draw your weapon', 'Take shelter and wait for calm', 70, 40, 'You fight against the winds and reach the summit, finding a hidden treasure of 10 gold!', 'The storm is too fierce, and you are forced to wait, losing valuable time.'),
+    ('The Crossing of Mirage Desert', 
+    'Venture across the scorching sands of Mirage Desert, navigating treacherous dunes and avoiding illusions. Reach the Oasis of Serenity after walking 2,500 steps to gain the title of Desert Wanderer!',
+    2500, 'Just as the heat becomes unbearable, a mirage of an oasis shimmers ahead, but you must decide if it is real or a trick.',
+    'Approach the oasis cautiously', 'Ignore it and continue walking', 80, 60, 'The oasis is real, providing shelter and 10 gold coins!', 'The mirage disappears, leaving you lost and parched.');
 
 INSERT INTO user_quests (user_id, quest_id)
 VALUES
