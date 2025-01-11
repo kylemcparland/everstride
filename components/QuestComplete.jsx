@@ -17,6 +17,7 @@ const QuestComplete = ({ currentQuest }) => {
   } = currentQuest;
 
   const userQuestId = currentQuest.user_quests_id;
+  const questId = currentQuest.quest_id;
   const userId = currentQuest.user_id;
 
   // Initialize user gold for updating...
@@ -45,7 +46,7 @@ const QuestComplete = ({ currentQuest }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userQuestId, userId, updatedUserGold }),
+      body: JSON.stringify({ userQuestId, userId, updatedUserGold, questId }),
     });
 
     const result = await response.json();
