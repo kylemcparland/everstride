@@ -24,6 +24,8 @@ async function fetchEquipmentForUser(userId) {
 
 
 export default async function PageBody({ user, friends, goal_distance }) {
+
+
   // Fetch the user's equipment
   const userEquipment = await fetchEquipmentForUser(user.id);
 
