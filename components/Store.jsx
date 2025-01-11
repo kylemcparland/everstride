@@ -28,18 +28,17 @@ const Store = ({ userItems, allItems, user }) => {
 
   return (
     <div className="Store">
-      <h1>Store</h1>
-      <h2>Your Gold: 💰{user.gold}</h2>
-
+      <h2 className='Title'>Market | 💰{user.gold}</h2>
       <div className="Store-body">
         {/* HATS */}
-        <h2>-- Purchase Hats --</h2>
+        <h2>Hats</h2>
         <div className="Store-category">
           {hats.map((hat) => (
             <div className="Store-item" key={hat.id}>
-              <p>
-                {hat.name} 💰:{hat.price}
-              </p>
+              <>
+                <p>{hat.name}</p>
+                <p className="Item-price">💰{hat.price}</p>
+              </>
 
               {/* Conditionally display item if not owned */}
               {ownedItemIds.has(hat.id) ? (
@@ -75,13 +74,14 @@ const Store = ({ userItems, allItems, user }) => {
         </div>
 
         {/* SHIRTS */}
-        <h2>-- Purchase Shirts --</h2>
+        <h2>Shirts</h2>
         <div className="Store-category">
           {shirts.map((shirt) => (
             <div className="Store-item" key={shirt.id}>
-              <p>
-                {shirt.name} 💰:{shirt.price}
-              </p>
+              <>
+                <p className='Item-name'>{shirt.name}</p>
+                <p className="Item-price">💰{shirt.price}</p>
+              </>
 
               {/* Conditionally display item if not owned */}
               {ownedItemIds.has(shirt.id) ? (
@@ -117,13 +117,14 @@ const Store = ({ userItems, allItems, user }) => {
         </div>
 
         {/* PANTS */}
-        <h2>-- Purchase Pants --</h2>
+        <h2>Pants</h2>
         <div className="Store-category">
           {pants.map((pants) => (
             <div className="Store-item" key={pants.id}>
-              <p>
-                {pants.name} 💰:{pants.price}
-              </p>
+              <>
+                <p>{pants.name}</p>
+                <p className="Item-price">💰{pants.price}</p>
+              </>
 
               {/* Conditionally display item if not owned */}
               {ownedItemIds.has(pants.id) ? (
@@ -159,13 +160,14 @@ const Store = ({ userItems, allItems, user }) => {
         </div>
 
         {/* BOOTS */}
-        <h2>-- Purchase Boots --</h2>
+        <h2>Boots</h2>
         <div className="Store-category">
           {boots.map((boots) => (
             <div className="Store-item" key={boots.id}>
-              <p>
-                {boots.name} 💰:{boots.price}
-              </p>
+              <>
+                <p>{boots.name}</p>
+                <p className="Item-price">💰{boots.price}</p>
+              </>
 
               {/* Conditionally display item if not owned */}
               {ownedItemIds.has(boots.id) ? (
@@ -201,13 +203,14 @@ const Store = ({ userItems, allItems, user }) => {
         </div>
 
         {/* WEAPONS */}
-        <h2>-- Purchase Weapons --</h2>
+        <h2>Weapons</h2>
         <div className="Store-category">
           {weapons.map((weapon) => (
             <div className="Store-item" key={weapon.id}>
-              <p>
-                {weapon.name} 💰:{weapon.price}
-              </p>
+              <>
+                <p>{weapon.name}</p>
+                <p className="Item-price">💰{weapon.price}</p>
+              </>
 
               {/* Conditionally display item if not owned */}
               {ownedItemIds.has(weapon.id) ? (

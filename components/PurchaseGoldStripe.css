@@ -21,9 +21,12 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  align-content: center;
   min-width: 350px;
   padding: 10px 20px;
+  font-size: smaller;
 }
 .Store-Stripe-Banner {
   border-radius: 15px;
 }
+
