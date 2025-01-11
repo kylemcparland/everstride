@@ -26,16 +26,16 @@ export default function StepVisualizer({
   // Determine the location based on total_distance
   const location =
     userCharacter.total_distance_travelled >= 10000
-      ? "dragon"
+      ? "The Cave of the Wandering Wyrm"
       : userCharacter.total_distance_travelled >= 8000
-      ? "mountains"
+      ? "The Pacing Peaks"
       : userCharacter.total_distance_travelled >= 6000
-      ? "castle"
+      ? "The Strider's Stronghold"
       : userCharacter.total_distance_travelled >= 4000
-      ? "village"
+      ? "Paceport Village"
       : userCharacter.total_distance_travelled >= 2000
-      ? "woods"
-      : "start";
+      ? "The Wanderwillow Woods"
+      : "The Fields of Frollicking";
 
   // Set the background image URL based on the location
   const backgroundImage = `/assets/scenes/${location
@@ -53,7 +53,7 @@ export default function StepVisualizer({
       style={{ backgroundImage: `url(${backgroundImage})` }} // Apply dynamic background image
     >
       <div className="LocationDiv">
-        <p>Location | 💰{userCharacter.gold}</p>
+        <p>{location} | 💰{userCharacter.gold}</p>
       </div>
       <div className="StepVisualizer-progress">
         {user_tag === "current_user" ? (
