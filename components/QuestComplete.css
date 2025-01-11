@@ -35,4 +35,8 @@
   .QuestComplete-congrats {
     font-size: 1.2em;
   }
+  .QuestComplete-button {
+    font-size: large;
+    padding: 0.4em;
+  }
 }
