@@ -11,7 +11,7 @@ const PurchaseGoldStripe = () => {
       <a href="/purchase-gold" className="PurchaseGoldStripe-link">
         <button className="PurchaseGoldStripe-button">
           <FontAwesomeIcon icon={faCartShopping} size="2x" />
-          <h2>Secure payment with Stripe</h2>
+          <h2 className='Stripe-button'>Secure payment with Stripe</h2>
         </button>
       </a>
     </div>

@@ -7,6 +7,10 @@
   overflow-y: auto;
 }
 
+h2.Title {
+  margin-top: 2.5em;
+}
+
 .Store-body {
   display: flex;
   flex-direction: column;
@@ -18,24 +22,66 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 100%;
 }
 
 .Store-item {
-  padding: 1em;
-  padding-top: 0em;
+  padding: 0px;
+  width: 9em;
+  margin-left: 1px;
+  margin-right: 1px;
+  border: solid rgba(211, 211, 211, 0.42) 2px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.Store-item:hover {
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.Store-item button {
+  border-radius: 10px;
+  border: 0px;
+}
+
+.Store-item button:not(:disabled) {
+  background-color: rgba(127, 255, 212, 0.459);
+  cursor: pointer;
+}
+
+.Store-item p {
+  font-size: small;
+  height: fit-content;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: transparent;
+}
+
+.Item-name {
+  width: 150%;
+  justify-self: center;
+}
+
+p.Item-price {
+  justify-self: center;
+  font-size: 17px;
 }
 
 .Store-item-thumbnail {
-  width: 100px;
+  width: 100%;
+  background-color: transparent;
 }
 
 .Store-item-owned {
-  background-color: darkgray;
+  background-color: lightgoldenrodyellow;
+  border: 0px;
+  border-radius: 15px;
 }
 
-.Store-item-owned-SOLD {
+h3.Store-item-owned-SOLD {
   color: red;
+  height: fit-content;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .Store-Stripe-Banner {
