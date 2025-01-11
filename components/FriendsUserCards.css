@@ -10,7 +10,7 @@
 }
 
 .container {
-  margin-top: 7vh;
+  margin-top: 10vh;
   max-width: 70%;
   max-height: 80%;
   overflow-y: auto;
@@ -22,13 +22,13 @@
 .users {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  /* gap: 15px; */
   justify-content: center;
 }
 
 .card {
   background-color: white;
-  border-radius: 15px;
+  border-radius: 4px;
   display: flex;
   flex-direction: row;
   border: 1px solid #ccc;
@@ -37,7 +37,7 @@
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.details h3{
+.details h3 {
   margin-top: 0px;
 }
 
@@ -55,7 +55,6 @@
   width: 100%;
   border: none;
   border-radius: 10px;
-  
 }
 
 .Add:not(:disabled):hover {
