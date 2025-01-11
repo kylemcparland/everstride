@@ -6,7 +6,7 @@ const PurchaseGoldStripe = () => {
   return (
     <div className="PurchaseGoldStripe">
       <div className="PurchaseGoldStripe-ad">
-        <h3>Purchase 20 Gold 💰 for only $5!</h3>
+        <h3>Purchase 300 Gold 💰 for only $5!</h3>
       </div>
       <a href="/purchase-gold" className="PurchaseGoldStripe-link">
         <button className="PurchaseGoldStripe-button">

@@ -10,7 +10,7 @@ export default async function handler(req, res) {
             price_data: {
               currency: "cad",
               product_data: {
-                name: "20 Gold",
+                name: "300 Gold",
               },
               unit_amount: 500,
             },

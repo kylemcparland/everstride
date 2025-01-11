@@ -29,7 +29,7 @@ const PurchaseGold = () => {
   return (
     <div>
       <div className="NavBar">
-        <h1 className="NavBar-logo">Everstride</h1>
+        <h1 className="NavBar-logo" href="/">Everstride</h1>
       </div>
       <div className="checkout">
         <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
