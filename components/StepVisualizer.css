@@ -5,13 +5,13 @@
   flex-grow: 1;
 
   width: calc(100% - 2em);
-  height: 360px;
+
   margin-top: 1em;
 
-  background-image: url('/assets/scenes/start.png');
-  background-size: 4000px;
-  background-position: center;
-  background-repeat: repeat-x;
+  background-image: url("/assets/scenes/start.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   overflow: hidden;
 
   font-size: calc(0.5rem + 1vh);
@@ -19,9 +19,9 @@
 
 .StepVisualizer-character {
   position: absolute;
-  top: 62%;
+  top: 44%;
   transform: translate(-50%, -50%); /* Center horizontally and vertically */
-  height: 260px;
+  height: 100%;
   margin-right: 3em;
 }
 
@@ -33,14 +33,22 @@
   justify-items: center;
 }
 
+.StepVisualizer-progress {
+  min-width: 350px;
+}
+
 .StepVisualizer-goal {
   position: absolute;
-  top: 65%;
+  top: 50%;
   transform: translateY(-50%);
   font-size: calc(1em + 4vh);
 }
 
-@media (max-width: 768px) {
+#pagebody-character {
+  color: red;
+}
+
+/* @media (max-width: 768px) {
   .StepVisualizer {
     height: 180px;
     background-size: 2000px;
@@ -49,4 +57,4 @@
   .StepVisualizer-character {
     height: 130px;
   }
-}
+} */
