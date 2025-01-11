@@ -3,7 +3,10 @@
 import { useState } from "react";
 
 const QuestComplete = ({ currentQuest }) => {
-  const [resultsScreen, setResultsScreen] = useState();
+  const [resultsScreen, setResultsScreen] = useState({
+    message: null,
+    gold: null,
+  });
 
   // Unpack quest object...
   const {
@@ -22,6 +25,9 @@ const QuestComplete = ({ currentQuest }) => {
 
   // Initialize user gold for updating...
   let updatedUserGold = currentQuest.user_gold;
+  const min = questId * 100;
+  const max = min + 100;
+  const randomGoldReward = Math.floor(Math.random() * (max - min + 1) + min);
 
   // Dice roll for quest rewards...
   const determineOutcome = (odds) => {
@@ -38,7 +44,7 @@ const QuestComplete = ({ currentQuest }) => {
     const outcome = determineOutcome(odds);
 
     if (outcome) {
-      updatedUserGold += 10;
+      updatedUserGold += randomGoldReward;
     }
 
     const response = await fetch("/api/completeQuest", {
@@ -54,9 +60,18 @@ const QuestComplete = ({ currentQuest }) => {
       console.log(result.message);
 
       // Show the outcome of your choice...
-      outcome
-        ? setResultsScreen(success_message)
-        : setResultsScreen(failure_message);
+      if (outcome) {
+        setResultsScreen((prevState) => ({
+          ...prevState,
+          message: success_message,
+          gold: randomGoldReward,
+        }));
+      } else {
+        setResultsScreen((prevState) => ({
+          ...prevState,
+          message: failure_message,
+        }));
+      }
 
       // Reload the page after 5 seconds...
       setTimeout(() => {
@@ -70,7 +85,7 @@ const QuestComplete = ({ currentQuest }) => {
   return (
     <div>
       {/* Display choices after quest is completed / Display results after option is selected */}
-      {!resultsScreen ? (
+      {!resultsScreen.message ? (
         <div>
           <b>Quest Completed!</b>
           <br />
@@ -93,7 +108,8 @@ const QuestComplete = ({ currentQuest }) => {
       ) : (
         <div>
           Result:
-          {resultsScreen}
+          {resultsScreen.message}{" "}
+          {resultsScreen.gold && `You recieve 💰${resultsScreen.gold} gold!!`}
           <br />
           Starting new quest in 5 seconds...
         </div>
