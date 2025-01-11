@@ -4,10 +4,6 @@ VALUES
 <<<<<<< HEAD
     ('Kyle McParland', 'k@k.com', 1000, 1000, 0, 0, 'blue', 0),
     ('Ben Hallam', 'b@b.com', 300, 300, 0, 0, 'red', 0),
-=======
-    ('Kyle McParland', 'k@k.com', 0, 0, 0, 0, 'blue', 0),
-    ('Ben Hallam', 'b@b.com', 0, 0, 0, 0, 'red', 0),
->>>>>>> 36c80d0521e016e92daa0eccf91b979b370bacaa
     ('Jon Hiebert', 'j@j.com', 0, 0, 0, 0, 'green', 0),
     ('Leeroy Walker', 'j@l.com', 324, 0, 0, 324, 'pink', 0),
     ('Jenna Johnson', 'y@j.com', 44, 0, 0, 44, 'purple', 0),
@@ -55,22 +51,20 @@ VALUES
     ('The Crossing of Mirage Desert', 
     'Venture across the scorching sands of Mirage Desert, navigating treacherous dunes and avoiding illusions. Reach the Oasis of Serenity after walking 2,500 steps to gain the title of Desert Wanderer!',
     2500, 'Just as the heat becomes unbearable, a mirage of an oasis shimmers ahead, but you must decide if it is real or a trick.',
-    'Approach the oasis cautiously', 'Ignore it and continue walking', 80, 60, 'The oasis is real, providing shelter!', 'The mirage disappears, leaving you lost and parched.');
-    'Intrepid Traveler, embark on a journey through the Stormy Highlands. Traverse the Thunder Pass and outpace the Lightning Trails. Walk or run 2,000 steps to reach the Peak of Resilience and claim the title of Thunderstride Conqueror!', 
-    2000, 'As you near the summit, a thunderous roar shakes the earth, and a mysterious figure emerges from the mist, blocking your path.',
-    'Calm the storm', 'Draw your weapon', 75, 50, 'The figure dissolves into thin air leaving behind 10 gold coins!', 'The mist blinds you and you are foreced to flee.'),
-     ('The Dance of the Emberflame', 
-    'Prepare yourself for the fiery trials within the Ashen Peaks. Perform the sacred dance of the Emberflame, completing 10,000 steps through volcanic terrain to reach the Heart of the Firestorm and become the Emberflame Dancer!',
-    2000, 'After your final step, the fire surrounding you subsides, revealing a glowing emberstone at the peak. Before you can approach, a fiery guardian appears, its molten eyes staring you down.',
-    'Submit to the guardian', 'Defeat the guardian', 80, 60, 'The guardian grants you the Emberstone and 20 Gold, leaving you with newfound wisdom.', 'The battle is hard-fought, but you succumb to the flames, your dance unfinished.'),
+    'Approach the oasis cautiously', 'Ignore it and continue walking', 80, 60, 'The oasis is real, providing shelter!', 'The mirage disappears, leaving you lost and parched.'),
+
+    ('The Dance of the Emberflame', 
+    'Prepare yourself for the fiery trials within the Ashen Peaks. Perform the sacred dance of the Emberflame, completing 3,000 steps through volcanic terrain to reach the Heart of the Firestorm and become the Emberflame Dancer!',
+    3000, 'After your final step, the fire surrounding you subsides, revealing a glowing emberstone at the peak. Before you can approach, a fiery guardian appears, its molten eyes staring you down.',
+    'Submit to the guardian', 'Defeat the guardian', 80, 60, 'The guardian grants you the Emberstone, leaving you with newfound wisdom.', 'The battle is hard-fought, but you succumb to the flames, your dance unfinished.'),
     ('The Quest for the Frostbound Crown', 
-    'Brave Frostwanderer, traverse the frozen wastes of the Glacial Expanse. Complete 3,000 steps through icy tundras and blizzards to reach the Throne of the Frost King and claim the legendary Frostbound Crown!',
-    1500, 'As you arrive at the throne, a shimmering figure appears. The Frost King himself, guarding the crown, rises from the ice with a cold glare.',
+    'Brave Frostwanderer, traverse the frozen wastes of the Glacial Expanse. Complete 3,500 steps through icy tundras and blizzards to reach the Throne of the Frost King and claim the legendary Frostbound Crown!',
+    3500, 'As you arrive at the throne, a shimmering figure appears. The Frost King himself, guarding the crown, rises from the ice with a cold glare.',
     'Speak with the Frost King', 'Challenge the Frost King to a duel', 70, 50, 'The Frost King, impressed with your wit, offers you the crown and a blessing of the frozen north!', 'Your duel ends in defeat, but the king allows you to return with your life, though the crown remains untouched.'),
-     ('The March of the Ironfoot', 
-    'Warrior of the Forge, march across the Metal Plains, where the ground hums with the power of ancient forges. Walk 12,000 steps to reach the Iron Citadel and claim the title of Ironfoot Conqueror!',
-    1200, 'Upon reaching the Iron Citadel, a massive gate opens, revealing a blacksmith guardian who questions your resolve. Before you can respond, an army of iron golems approaches!',
-    'Stand your ground', 'Bargain with the golems', 65, 70, 'You stand strong, and the golems, impressed by your courage, allow you entry and grant you 25 Gold!', 'The golems overwhelm you, but you escape with your life, only to find yourself further from your goal than before.');
+    ('The March of the Ironfoot', 
+    'Warrior of the Forge, march across the Metal Plains, where the ground hums with the power of ancient forges. Walk 4,000 steps to reach the Iron Citadel and claim the title of Ironfoot Conqueror!',
+    4000, 'Upon reaching the Iron Citadel, a massive gate opens, revealing a blacksmith guardian who questions your resolve. Before you can respond, an army of iron golems approaches!',
+    'Stand your ground', 'Bargain with the golems', 65, 70, 'You stand strong, and the golems, impressed by your courage, allow you entry!', 'The golems overwhelm you, but you escape with your life, only to find yourself further from your goal than before.');
 
 INSERT INTO user_quests (user_id, quest_id)
 VALUES

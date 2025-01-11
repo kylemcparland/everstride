@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   let newQuestId = questId + 1;
   console.log(newQuestId)
 
-  if (newQuestId > 4) {
+  if (newQuestId > 7) {
     newQuestId = 1;
   }
 
