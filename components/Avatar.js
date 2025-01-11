@@ -1,6 +1,8 @@
 import './Avatar.css';  // Assuming you're using an external CSS file
 
-const Avatar = ({ hat, shirt, pants, boots, weapon, colour }) => {
+const Avatar = ({ hat, shirt, pants, boots, weapon, colour, animate }) => {
+
+  const avatarClass = animate ? "avatar-walk" : "avatar-display";
 
   // Determine the correct avatar base image based on the colour prop
   const avatarBaseSrc = colour
@@ -8,7 +10,7 @@ const Avatar = ({ hat, shirt, pants, boots, weapon, colour }) => {
     : '/assets/avatars/avatar_base.png';  // Default if no colour prop
 
   return (
-    <div className="avatar-display">
+    <div className={avatarClass}>
       {/* Dynamic avatar base */}
       <img
         src={avatarBaseSrc}

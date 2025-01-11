@@ -16,7 +16,7 @@ const NavBar = ({
   return (
     <div className="NavBar">
       <Link href="/">
-        <h2 className="Logo">Everstride</h2>
+        <p className="Logo">Everstride</p>
       </Link>
       {cookieSession ? (
         <>

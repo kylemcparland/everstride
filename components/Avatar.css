@@ -42,3 +42,28 @@
   z-index: 3; /* Weapon should be in front of all the other equipment */
   height: inherit;
 }
+
+.avatar-walk {
+  position: absolute;
+  flex-grow: 1;
+  display: inline-block;
+
+  height: inherit;
+  width: auto;
+
+  top: 44%;
+
+  height: 100%;
+  margin-right: 3em;
+  animation: walk 1s infinite;
+}
+
+@keyframes walk {
+  0%,
+  100% {
+    transform: translateY(-44%) rotate(0.01turn);
+  }
+  50% {
+    transform: translateY(-44%) rotate(-0.01turn);
+  }
+}

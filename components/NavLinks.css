@@ -6,6 +6,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  height: 100%;
 }
 
 a, button {
@@ -15,6 +17,7 @@ a, button {
 
 a{
   width: 110px;
+  height: 100%;
 }
 /* Makes the Avatar Editor box the same size as the other links, but also makes the logo box 110px */
 
@@ -23,24 +26,23 @@ a{
   font-size: 20px;
   font-weight: 600;
   background-color: transparent;
-  color: rgb(72, 155, 224);
+  color: #131212;
   border: none;
   cursor: pointer;
   position: relative;
   text-align: center;
   z-index: 1;
   width: 90px;
+  height: 100%;
   padding: 10px;
 }
 
 /* Hover effect */
 .NavLinks a:hover::before {
   width: 110px;
-  height: 55px; /* Match the height of the nav bar */
-  background-color: rgb(172, 200, 237);
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 1;
   transition: none; 
-  /* Instant hover */
 }
 
 /* Off-hover */
