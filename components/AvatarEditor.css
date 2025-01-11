@@ -63,9 +63,19 @@
   height: auto;
   cursor: pointer;
 }
+.equipment-category button {
+  border: solid rgba(211, 211, 211, 0.42) 2px;
+  border-radius: 10px;
+  margin: 1px;
+  background-color: lightgoldenrodyellow;
+}
+
+.equipment-category button:hover {
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+}
 
 .equipment-thumbnail:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .equip-button {
@@ -82,7 +92,8 @@
 
 .equip-button:hover {
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.8;
+  background-color: lightgoldenrodyellow;
 }
 
 button[title="base"],
