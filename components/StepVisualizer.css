@@ -5,6 +5,7 @@
   flex-grow: 1;
 
   width: calc(100% - 2em);
+  min-height: 130px;
 
   margin-top: 1em;
 
@@ -35,6 +36,7 @@
 
 .StepVisualizer-progress {
   min-width: 350px;
+  font-size: 16px;
 }
 
 .StepVisualizer-goal {
