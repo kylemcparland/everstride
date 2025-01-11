@@ -29,11 +29,15 @@ const DevPage = ({ user }) => {
     <div className="devParent">
       {user.name === "Jon Hiebert" ? (
         <div className="devContainerCon">
-          <p>Strava is connected! Use the Strava app!</p>
+          <>
+          <p>Strava app is connected.</p>
+          </>
         </div>
       ) : (
         <div className="devContainerNotCon">
-          <p>Strava is not connected! Add your progress below.</p>
+          <>
+          <p>No app connection. Add your progress here!</p>
+          </>
         </div>
       )}
       <div className="devContainerAdd">

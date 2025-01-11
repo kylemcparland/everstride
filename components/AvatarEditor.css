@@ -1,7 +1,6 @@
 .avatar-editor-container {
   display: flex;
   text-align: center;
-
   justify-content: flex-end;
   height: inherit;
 }
@@ -51,7 +50,8 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  gap: 20px;
+  /* gap: 20px; */
+  width: 55%;
 }
 
 /* .equipment-category {
@@ -59,9 +59,8 @@
 } */
 
 .equipment-thumbnail {
-  width: 50px;
+  width: 100px;
   height: auto;
-  margin: 5px;
   cursor: pointer;
 }
 
@@ -71,4 +70,35 @@
 
 .equip-button {
   font-size: 1.5em;
+  margin-top: 40px;
+  padding: 10px;
+  margin-bottom: 40px;
+  align-self: center;
+  width: 85%;
+  background-color: rgba(255, 255, 255, 0.525);
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.equip-button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+button[title="base"],
+button[title="blue"],
+button[title="green"],
+button[title="limegreen"],
+button[title="orange"],
+button[title="pink"],
+button[title="purple"],
+button[title="red"],
+button[title="turquoise"],
+button[title="yellow"] {
+  color: transparent;
+  width: 70px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  gap: 0;
+  height: 25px;
 }

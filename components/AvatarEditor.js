@@ -19,7 +19,7 @@ const AvatarEditor = ({
   const [selectedPants, setSelectedPants] = useState(userEquipment.pants);
   const [selectedBoots, setSelectedBoots] = useState(userEquipment.boots);
   const [selectedWeapon, setSelectedWeapon] = useState(userEquipment.weapon);
-  const [selectedColor, setSelectedColor] = useState(user.colour || 'base'); // Set default to base color
+  const [selectedColor, setSelectedColor] = useState(user.colour || "base"); // Set default to base color
 
   const handleSelect = (type, item) => {
     switch (type) {
@@ -111,15 +111,41 @@ const AvatarEditor = ({
         pants={selectedPants}
         boots={selectedBoots}
         weapon={selectedWeapon}
-        colour={selectedColor}  // Pass the selected color to Avatar component
+        colour={selectedColor} // Pass the selected color to Avatar component
       />
 
       {/* Equipment Selection */}
       <div className="equipment-selection">
+        {/* Avatar Color Selection */}
+        <div className="equipment-category">
+          <h5>Colour</h5>
+          {[
+            "base",
+            "blue",
+            "green",
+            "limegreen",
+            "orange",
+            "pink",
+            "purple",
+            "red",
+            "turquoise",
+            "yellow",
+          ].map((color) => (
+            <button
+              key={color}
+              style={{ backgroundColor: color }}
+              onClick={() => handleColorChange(color)}
+              title={color}
+            >
+              {color}
+            </button>
+          ))}
+        </div>
+
         {/* Hats */}
         <div className="equipment-category">
           <h5>Hats</h5>
-          <button onClick={() => handleDeselect("hat")}>None</button>
+          <button onClick={() => handleDeselect("hat")}>⬇️</button>
           {hats.map((hat) => (
             <button key={hat.id} onClick={() => handleSelect("hat", hat)}>
               <img
@@ -135,7 +161,7 @@ const AvatarEditor = ({
         {/* Shirts */}
         <div className="equipment-category">
           <h5>Shirts</h5>
-          <button onClick={() => handleDeselect("shirt")}>None</button>
+          <button onClick={() => handleDeselect("shirt")}>⬇️</button>
           {shirts.map((shirt) => (
             <button key={shirt.id} onClick={() => handleSelect("shirt", shirt)}>
               <img
@@ -151,7 +177,7 @@ const AvatarEditor = ({
         {/* Pants */}
         <div className="equipment-category">
           <h5>Pants</h5>
-          <button onClick={() => handleDeselect("pants")}>None</button>
+          <button onClick={() => handleDeselect("pants")}>⬇️</button>
           {pants.map((pant) => (
             <button key={pant.id} onClick={() => handleSelect("pants", pant)}>
               <img
@@ -167,7 +193,7 @@ const AvatarEditor = ({
         {/* Boots */}
         <div className="equipment-category">
           <h5>Boots</h5>
-          <button onClick={() => handleDeselect("boots")}>None</button>
+          <button onClick={() => handleDeselect("boots")}>⬇️</button>
           {boots.map((boot) => (
             <button key={boot.id} onClick={() => handleSelect("boots", boot)}>
               <img
@@ -183,7 +209,7 @@ const AvatarEditor = ({
         {/* Weapons */}
         <div className="equipment-category">
           <h5>Weapons</h5>
-          <button onClick={() => handleDeselect("weapon")}>None</button>
+          <button onClick={() => handleDeselect("weapon")}>⬇️</button>
           {weapons.map((weapon) => (
             <button
               key={weapon.id}
@@ -195,21 +221,6 @@ const AvatarEditor = ({
                 className="equipment-thumbnail"
                 title={weapon.name}
               />
-            </button>
-          ))}
-        </div>
-
-        {/* Avatar Color Selection */}
-        <div className="equipment-category">
-          <h5>Avatar Color</h5>
-          {["base", "blue", "green", "limegreen", "orange", "pink", "purple", "red", "turquoise", "yellow"].map((color) => (
-            <button
-              key={color}
-              style={{ backgroundColor: color }}
-              onClick={() => handleColorChange(color)}
-              title={color}
-            >
-              {color}
             </button>
           ))}
         </div>
