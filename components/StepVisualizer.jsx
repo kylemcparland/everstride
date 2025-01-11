@@ -39,8 +39,10 @@ export default function StepVisualizer({
 
   // Set the background image URL based on the location
   const backgroundImage = `/assets/scenes/${location
-    .replace(/\s+/g, "")
+    .replace(/[^a-zA-Z]/g, "")
     .toLowerCase()}.png`;
+
+    console.log(backgroundImage);
 
   console.log(
     `${userCharacter.name} has travelled ${userCharacter.total_distance_travelled} and is at the ${location}`
