@@ -21,11 +21,32 @@ export default function StepVisualizer({
 
   // Calculate the position of the character based on distance travelled...
   const position = 10 + (distance_travelled_today / goal_distance) * 80;
-  const goalPosition = 10 + 1 * 80;
+  const goalPosition = 10 + 1 * 80; 
+
+  // Determine the location based on total_distance
+  const location = userCharacter.total_distance_travelled >= 10000
+    ? "dragon"
+    : userCharacter.total_distance_travelled >= 8000
+    ? "mountains"
+    : userCharacter.total_distance_travelled >= 6000
+    ? "castle"
+    : userCharacter.total_distance_travelled >= 4000
+    ? "village"
+    : userCharacter.total_distance_travelled >= 2000
+    ? "woods"
+    : "start";
+
+  // Set the background image URL based on the location
+  const backgroundImage = `/assets/scenes/${location.replace(/\s+/g, '').toLowerCase()}.png`;
+
+  console.log(`${userCharacter.name} has travelled ${userCharacter.total_distance_travelled} and is at the ${location}`);
 
   // Render character's distance travelled...
   return (
-    <div className="StepVisualizer">
+    <div
+      className="StepVisualizer"
+      style={{ backgroundImage: `url(${backgroundImage})` }} // Apply dynamic background image
+    >
       <div className="LocationDiv">
         <p>Location | 💰{userCharacter.gold}</p>
       </div>

@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import "./QuestComplete.css";
 
 const QuestComplete = ({ currentQuest }) => {
-  const [resultsScreen, setResultsScreen] = useState();
+  const [resultsScreen, setResultsScreen] = useState({
+    message: null,
+    gold: null,
+  });
 
   // Unpack quest object...
   const {
@@ -17,10 +21,14 @@ const QuestComplete = ({ currentQuest }) => {
   } = currentQuest;
 
   const userQuestId = currentQuest.user_quests_id;
+  const questId = currentQuest.quest_id;
   const userId = currentQuest.user_id;
 
   // Initialize user gold for updating...
   let updatedUserGold = currentQuest.user_gold;
+  const min = questId * 100;
+  const max = min + 100;
+  const randomGoldReward = Math.floor(Math.random() * (max - min + 1) + min);
 
   // Dice roll for quest rewards...
   const determineOutcome = (odds) => {
@@ -37,7 +45,7 @@ const QuestComplete = ({ currentQuest }) => {
     const outcome = determineOutcome(odds);
 
     if (outcome) {
-      updatedUserGold += 10;
+      updatedUserGold += randomGoldReward;
     }
 
     const response = await fetch("/api/completeQuest", {
@@ -45,7 +53,7 @@ const QuestComplete = ({ currentQuest }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userQuestId, userId, updatedUserGold }),
+      body: JSON.stringify({ userQuestId, userId, updatedUserGold, questId }),
     });
 
     const result = await response.json();
@@ -53,9 +61,18 @@ const QuestComplete = ({ currentQuest }) => {
       console.log(result.message);
 
       // Show the outcome of your choice...
-      outcome
-        ? setResultsScreen(success_message)
-        : setResultsScreen(failure_message);
+      if (outcome) {
+        setResultsScreen((prevState) => ({
+          ...prevState,
+          message: success_message,
+          gold: randomGoldReward,
+        }));
+      } else {
+        setResultsScreen((prevState) => ({
+          ...prevState,
+          message: failure_message,
+        }));
+      }
 
       // Reload the page after 5 seconds...
       setTimeout(() => {
@@ -69,32 +86,46 @@ const QuestComplete = ({ currentQuest }) => {
   return (
     <div>
       {/* Display choices after quest is completed / Display results after option is selected */}
-      {!resultsScreen ? (
-        <div>
-          <b>Quest Completed!</b>
-          <br />
-          {result_description}
-          <button
-            onClick={() =>
-              completeCurrentQuest(userQuestId, userId, updatedUserGold, odds1)
-            }
-          >
-            {option_1}
-          </button>
-          <button
-            onClick={() =>
-              completeCurrentQuest(userQuestId, userId, updatedUserGold, odds2)
-            }
-          >
-            {option_2}
-          </button>
+      {!resultsScreen.message ? (
+        <div className="QuestComplete-choice">
+          <b className="QuestComplete-congrats">Quest Completed!</b>
+          <i className="QuestComplete-description">{result_description}</i>
+          <div className="QuestComplete-buttons">
+            <button
+              className="QuestComplete-button"
+              onClick={() =>
+                completeCurrentQuest(
+                  userQuestId,
+                  userId,
+                  updatedUserGold,
+                  odds1
+                )
+              }
+            >
+              {option_1}
+            </button>
+            <button
+              className="QuestComplete-button"
+              onClick={() =>
+                completeCurrentQuest(
+                  userQuestId,
+                  userId,
+                  updatedUserGold,
+                  odds2
+                )
+              }
+            >
+              {option_2}
+            </button>
+          </div>
         </div>
       ) : (
-        <div>
-          Result:
-          {resultsScreen}
-          <br />
-          Starting new quest in 5 seconds...
+        <div className="QuestComplete-choice">
+          <b className="QuestComplete-congrats">{resultsScreen.message}</b>
+          <b className="QuestComplete-result">
+            {resultsScreen.gold && `You receive 💰${resultsScreen.gold} gold!!`}
+          </b>
+          <i>Starting new quest in 5 seconds...</i>
         </div>
       )}
     </div>

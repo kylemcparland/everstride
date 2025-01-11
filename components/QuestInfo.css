@@ -11,3 +11,17 @@
 
   background-color: darkgrey;
 }
+
+.QuestInfo-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.QuestInfo-title {
+  font-size: larger;
+  padding-bottom: 1em;
+}
+
+.QuestInfo-description {
+  padding-bottom: 1em;
+}

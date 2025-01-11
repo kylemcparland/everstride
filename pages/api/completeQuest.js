@@ -7,10 +7,15 @@ export default async function handler(req, res) {
       .json({ success: false, message: "Method not allowed. Use POST." });
   }
 
-  const { userQuestId, userId, updatedUserGold } = req.body;
+  const { userQuestId, userId, updatedUserGold, questId } = req.body;
 
   // Increment the user's quest up by one...
-  const newQuestId = userQuestId + 1;
+  let newQuestId = questId + 1;
+  console.log(newQuestId)
+
+  if (newQuestId > 7) {
+    newQuestId = 1;
+  }
 
   if (!userQuestId || !userId) {
     return res.status(400).json({
