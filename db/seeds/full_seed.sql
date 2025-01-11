@@ -37,7 +37,7 @@ INSERT INTO quests (name, description, goal_steps, result_description, option_1,
 VALUES
     ('The Trail of the Everstride', 
     'Brave Adventurer, journey through the Plains of Perpetual Motion and conquer the Glade of Nimble Steps. Achieve 1,000 steps to reach the Sanctuary of Vitality and claim the title of Everstride Champion!',
-    1000, 'With the final step, you enter the Sanctuary of Vitality, your body brimming with energy as the title of Everstride Champion is bestowed upon you. Just as you begin to bask in your victory, a rustle from the nearby trees catches your attention. From the shadows, a group of bandits emerges, eyes glinting with greed.',
+    1000, 'With the final step, you enter the Sanctuary of Vitality, your body brimming with energy as the title of Everstride Champion is bestowed upon you. Suddenly, a rustle from the nearby trees catches your attention. From the shadows, a group of bandits emerges, eyes glinting with greed.',
     'Flee from the bandits', 'Draw your weapon', 50, 75, 'You escape the bandits!', 'You escape with your life, but are no richer.'),
     ('The Path of Thunderstride', 
     'Intrepid Traveler, embark on a journey through the Stormy Highlands. Traverse the Thunder Pass and outpace the Lightning Trails. Walk or run 1,500 steps to reach the Peak of Resilience and claim the title of Thunderstride Conqueror!', 

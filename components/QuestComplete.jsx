@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import "./QuestComplete.css";
 
 const QuestComplete = ({ currentQuest }) => {
   const [resultsScreen, setResultsScreen] = useState({
@@ -86,32 +87,45 @@ const QuestComplete = ({ currentQuest }) => {
     <div>
       {/* Display choices after quest is completed / Display results after option is selected */}
       {!resultsScreen.message ? (
-        <div>
-          <b>Quest Completed!</b>
-          <br />
-          {result_description}
-          <button
-            onClick={() =>
-              completeCurrentQuest(userQuestId, userId, updatedUserGold, odds1)
-            }
-          >
-            {option_1}
-          </button>
-          <button
-            onClick={() =>
-              completeCurrentQuest(userQuestId, userId, updatedUserGold, odds2)
-            }
-          >
-            {option_2}
-          </button>
+        <div className="QuestComplete-choice">
+          <b className="QuestComplete-congrats">Quest Completed!</b>
+          <i className="QuestComplete-description">{result_description}</i>
+          <div className="QuestComplete-buttons">
+            <button
+              className="QuestComplete-button"
+              onClick={() =>
+                completeCurrentQuest(
+                  userQuestId,
+                  userId,
+                  updatedUserGold,
+                  odds1
+                )
+              }
+            >
+              {option_1}
+            </button>
+            <button
+              className="QuestComplete-button"
+              onClick={() =>
+                completeCurrentQuest(
+                  userQuestId,
+                  userId,
+                  updatedUserGold,
+                  odds2
+                )
+              }
+            >
+              {option_2}
+            </button>
+          </div>
         </div>
       ) : (
-        <div>
-          Result:
-          {resultsScreen.message}{" "}
-          {resultsScreen.gold && `You recieve 💰${resultsScreen.gold} gold!!`}
-          <br />
-          Starting new quest in 5 seconds...
+        <div className="QuestComplete-choice">
+          <b className="QuestComplete-congrats">{resultsScreen.message}</b>
+          <b className="QuestComplete-result">
+            {resultsScreen.gold && `You receive 💰${resultsScreen.gold} gold!!`}
+          </b>
+          <i>Starting new quest in 5 seconds...</i>
         </div>
       )}
     </div>
