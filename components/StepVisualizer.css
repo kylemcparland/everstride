@@ -5,16 +5,15 @@
   flex-grow: 1;
 
   width: calc(100% - 2em);
-  height: 360px;
+  max-height: 350px;
   margin-top: 1em;
 
   color: black;
   background-image: url('/assets/scenes/start.png');
   background-size: 4000px;
-  background-position: center;
+  background-position: bottom;
   background-repeat: repeat-x;
   overflow: hidden;
-
   font-size: calc(0.5rem + 1vh);
 }
 
@@ -23,8 +22,7 @@
   left: 10%;
   top: 50%;
   transform: translate(-50%, -50%); /* Center horizontally and vertically */
-
-  height: 360px;
+  height: 100%;
   margin-right: 3em;
 }
 
@@ -44,7 +42,7 @@
   font-size: calc(1em + 4vh);
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .StepVisualizer {
     height: 200px;
     background-size: 2500px;
@@ -53,4 +51,4 @@
   .StepVisualizer-character {
     height: 230px;
   }
-}
+} */
