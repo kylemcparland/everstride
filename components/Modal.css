@@ -13,7 +13,7 @@
   border-radius: 15px;
   box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.7);
   background-color: whitesmoke;
-  border: solid grey 8px;
+  border: solid #554c49 8px;
 }
 
 .Modal-button {

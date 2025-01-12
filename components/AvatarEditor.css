@@ -3,6 +3,8 @@
   text-align: center;
   justify-content: flex-end;
   height: inherit;
+
+  background-color: #a89e91;
 }
 
 .avatar-display {
@@ -12,10 +14,19 @@
   position: absolute;
   top: 0;
   left: 0;
+
+  pointer-events: none;
 }
 
 .avatar-editor-title {
   justify-self: center;
+
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+
+  font-size: 23px;
 }
 
 .equipment-layer {
@@ -67,11 +78,13 @@
   border: solid rgba(211, 211, 211, 0.42) 2px;
   border-radius: 10px;
   margin: 1px;
-  background-color: lightgoldenrodyellow;
+  background-color: #dfd9d0;
+
+  z-index: 51;
 }
 
 .equipment-category button:hover {
-  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.233);
 }
 
 .equipment-thumbnail:hover {
@@ -93,7 +106,7 @@
 .equip-button:hover {
   cursor: pointer;
   opacity: 0.8;
-  background-color: lightgoldenrodyellow;
+  background-color: rgb(255, 255, 255);
 }
 
 button[title="base"],
