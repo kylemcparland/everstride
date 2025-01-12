@@ -1,14 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import './WorldMap.css';
 
-// Example locations (latitude, longitude or coordinates on the map)
 const locations = [
-  { name: "Start", x: 100, y: 350 },
-  { name: "Woods", x: 250, y: 300 },
-  { name: "Village", x: 350, y: 150 },
-  { name: "Castle", x: 500, y: 350 },
-  { name: "Mountain", x: 600, y: 300 },
-  { name: "Dragon's Lair", x: 650, y: 150 },
+  { name: "Start", x: 100, y: 375 },
+  { name: "Woods", x: 250, y: 325 },
+  { name: "Village", x: 350, y: 175 },
+  { name: "Castle", x: 450, y: 375 },
+  { name: "Mountain", x: 600, y: 325 },
+  { name: "Dragon's Lair", x: 650, y: 175 },
 ];
 
 export const WorldMap = ({ steps, totalSteps }) => {
@@ -33,18 +32,15 @@ export const WorldMap = ({ steps, totalSteps }) => {
   }, []);
 
   useEffect(() => {
-    // Ensure the percentage is clamped between 0 and 1
     const percentage = Math.min(steps / totalSteps, 1);
 
     const targetLocationIndex = Math.floor(percentage * (locations.length - 1));
     const startLocation = locations[targetLocationIndex];
     const endLocation = locations[targetLocationIndex + 1] || startLocation;
 
-    // Interpolate between start and end location based on the step percentage
     const x = startLocation.x + (endLocation.x - startLocation.x) * (percentage * (locations.length - 1) - targetLocationIndex);
     const y = startLocation.y + (endLocation.y - startLocation.y) * (percentage * (locations.length - 1) - targetLocationIndex);
 
-    // Scale positions based on the container size
     const scaledX = (x / 800) * containerDimensions.width; // Assume 800px is the original width of the map
     const scaledY = (y / 500) * containerDimensions.height; // Assume 500px is the original height of the map
 
@@ -58,7 +54,6 @@ export const WorldMap = ({ steps, totalSteps }) => {
       const startLocation = locations[i];
       const endLocation = locations[i + 1];
 
-      // Scale coordinates based on container size
       const startX = (startLocation.x / 800) * containerDimensions.width;
       const startY = (startLocation.y / 500) * containerDimensions.height;
       const endX = (endLocation.x / 800) * containerDimensions.width;
@@ -78,7 +73,7 @@ export const WorldMap = ({ steps, totalSteps }) => {
       );
     }
 
-    // Add text labels for each location
+    // Update the labels to scale properly
     locations.forEach((location, index) => {
       const x = (location.x / 800) * containerDimensions.width;
       const y = (location.y / 500) * containerDimensions.height;
@@ -86,10 +81,12 @@ export const WorldMap = ({ steps, totalSteps }) => {
       path.push(
         <text
           key={`text-${index}`}
-          x={x + 10} // Add some offset to avoid overlap with the point
-          y={y + 75} // Adjust to position text above the point
+          x={x + 15}  // Slightly offset to avoid overlap with the point
+          y={y - 50}  // Adjust this if needed to position the label above the point
           fill="black"
-          fontSize="20"
+          fontSize={Math.max((containerDimensions.height / 500) * 20, 12)} // Adjusted font size scaling
+          textAnchor="middle"
+          pointerEvents="none"  // Ensures text doesn't interfere with mouse events
         >
           {location.name}
         </text>
@@ -100,42 +97,36 @@ export const WorldMap = ({ steps, totalSteps }) => {
   };
 
   return (
-    <div
-      className="map-container"
-      ref={containerRef}
-    >
+    <div className="map-container" ref={containerRef}>
       <svg className="svg-map">
         {drawPath()}
-        {/* Draw the moving red circle (avatar) */}
         <circle cx={avatarPosition.x} cy={avatarPosition.y} r="10" fill="red" className="avatar" />
       </svg>
       <img
-        src="assets/worldmap/worldmap.png" // Replace with the actual world map image path
+        src="assets/worldmap/worldmap.png"
         alt="World Map"
         className="world-map-image"
       />
 
-      {/* Add location-specific images */}
       {locations.map((location, index) => {
-  // Skip rendering image for "Start" location
-  if (location.name === "Start") return null;
+        if (location.name === "Start") return null;
 
-  const x = (location.x / 800) * containerDimensions.width;
-  const y = (location.y / 500) * containerDimensions.height;
+        const x = (location.x / 800) * containerDimensions.width;
+        const y = (location.y / 500) * containerDimensions.height;
 
-  return (
-    <img
-      key={index}
-      src={`assets/objects/${location.name}.png`} // Use location name for the image path
-      alt={location.name}
-      className="location-image"
-      style={{
-        top: `${y - 60}px`,  // Adjust for image size (example: 30px image, offset by half the size)
-        left: `${x - 60}px`, // Adjust for image size
-      }}
-    />
-  );
-})}
+        return (
+          <img
+            key={index}
+            src={`assets/objects/${location.name}.png`}
+            alt={location.name}
+            className="location-image"
+            style={{
+              top: `${y - 60}px`,  // Adjust for image size
+              left: `${x - 60}px`, // Adjust for image size
+            }}
+          />
+        );
+      })}
     </div>
   );
 };

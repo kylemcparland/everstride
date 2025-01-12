@@ -129,4 +129,19 @@ button[title="yellow"] {
   border-radius: 5px;
   gap: 0;
   height: 25px;
+  cursor: pointer; /* Added cursor style for hover effect */
+}
+
+button[title="base"]:hover,
+button[title="blue"]:hover,
+button[title="green"]:hover,
+button[title="limegreen"]:hover,
+button[title="orange"]:hover,
+button[title="pink"]:hover,
+button[title="purple"]:hover,
+button[title="red"]:hover,
+button[title="turquoise"]:hover,
+button[title="yellow"]:hover {
+  opacity: 0.8; /* Reduced opacity on hover for a visual effect */
+  background-color: rgba(0, 0, 0, 0.1); /* Optional: background color change on hover */
 }
