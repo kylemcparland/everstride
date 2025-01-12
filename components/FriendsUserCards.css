@@ -20,7 +20,7 @@
 }
 
 .container {
-  margin-top: 10vh;
+  margin-top: 7vh;
   max-width: 70%;
   max-height: 80%;
   overflow-y: auto;
@@ -37,13 +37,14 @@
 }
 
 .card {
+  margin-top:10px;
   background-color: #f3f0eb;
   border-radius: 4px;
   display: flex;
   flex-direction: row;
   border: 1px solid #ccc;
   padding: 10px;
-  width: 100%;
+  width: 90%;
   box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
 }
 .details {
