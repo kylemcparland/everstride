@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./FriendsUserCards.css";
+import { getLocation } from "@/pages/api/location";
 
 // currentUserId is passed in from NavLinks.jsx
 const Friends = ({ currentUserId }) => {
@@ -111,6 +112,7 @@ const UserCards = ({
 }) => {
   return (
     <div className="container">
+      <h2>Users</h2>
       <div className="users">
         {users
           .filter((user) => user.id !== currentUserId)
@@ -118,24 +120,24 @@ const UserCards = ({
             <div className="card" key={user.id}>
               <div className="details">
                 <h3>{user.name}</h3>
-                <p>Distance: (Some details)</p>
-                <p>Location: (On the game map)</p>
-                <div className="buttonsContainer">
-                  <button
-                    className="Remove"
-                    onClick={() => handleRemoveFriend(user.id)}
-                    disabled={!user.isFriend}
-                  >
-                    Remove Friend
-                  </button>
-                  <button
-                    className="Add"
-                    onClick={() => handleAddFriend(user.id)}
-                    disabled={user.isFriend}
-                  >
-                    Add Friend
-                  </button>
-                </div>
+                <p>Distance: {user.total_distance_travelled}m</p>
+                <p>Location: {getLocation(user.total_distance_travelled)}</p>
+              </div>
+              <div className="buttonsContainer">
+                <button
+                  className="Remove"
+                  onClick={() => handleRemoveFriend(user.id)}
+                  disabled={!user.isFriend}
+                >
+                  Remove Friend
+                </button>
+                <button
+                  className="Add"
+                  onClick={() => handleAddFriend(user.id)}
+                  disabled={user.isFriend}
+                >
+                  Add Friend
+                </button>
               </div>
               <div className="avatar"></div>
             </div>

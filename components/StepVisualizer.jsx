@@ -1,6 +1,7 @@
 import "./StepVisualizer.css";
 import Avatar from "./Avatar";
 import GoalIcon from "./GoalIcon";
+import { getLocation } from "@/pages/api/location";
 
 export default function StepVisualizer({
   userCharacter,
@@ -23,19 +24,8 @@ export default function StepVisualizer({
   const position = 10 + (distance_travelled_today / goal_distance) * 80;
   const goalPosition = 10 + 1 * 80;
 
-  // Determine the location based on total_distance
-  const location =
-    userCharacter.total_distance_travelled >= 10000
-      ? "The Cave of the Wandering Wyrm"
-      : userCharacter.total_distance_travelled >= 8000
-      ? "The Pacing Peaks"
-      : userCharacter.total_distance_travelled >= 6000
-      ? "The Strider's Stronghold"
-      : userCharacter.total_distance_travelled >= 4000
-      ? "Paceport Village"
-      : userCharacter.total_distance_travelled >= 2000
-      ? "The Wanderwillow Woods"
-      : "The Fields of Frollicking";
+  // Determine the location based on total_distance (Moved to pages/api location.js)
+  const location = getLocation(userCharacter.total_distance_travelled)
 
   // Set the background image URL based on the location
   const backgroundImage = `/assets/scenes/${location

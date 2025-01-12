@@ -9,6 +9,11 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.container h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
 .container {
   margin-top: 10vh;
   max-width: 70%;
@@ -27,34 +32,38 @@
 }
 
 .card {
-  background-color: white;
+  background-color: transparent;
   border-radius: 4px;
   display: flex;
   flex-direction: row;
   border: 1px solid #ccc;
   padding: 10px;
-  width: 75%;
+  width: 100%;
   box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
-
 }
-
+.details {
+  padding: 10px;
+  width: 70%;
+}
 .details h3 {
   margin-top: 0px;
 }
 
 .details p {
   flex: 1;
-  font-size: small;
+  font-size: normal;
 }
 
 .buttonsContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
-.details button {
+.buttonsContainer button {
+  height: 100%;
   width: 100%;
-  border: none;
   border-radius: 10px;
 }
 
