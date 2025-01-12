@@ -132,7 +132,7 @@ const UserCards = ({
                   Remove Friend
                 </button>
                 <button
-                  className="Add"
+                  className="addFriend"
                   onClick={() => handleAddFriend(user.id)}
                   disabled={user.isFriend}
                 >

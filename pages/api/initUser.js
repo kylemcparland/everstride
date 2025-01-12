@@ -24,6 +24,12 @@ export default async function initUser(req, res) {
         last_travelled_today,
       } = user;
 
+      // Skip the API connected user
+
+      if (name === "Jon Hiebert") {
+        continue;
+      }
+
       if (distance_travelled_today === last_travelled_today) {
         console.log(`🟡 initUser ${name}: No new workouts`);
         continue;

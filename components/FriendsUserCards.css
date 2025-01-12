@@ -73,7 +73,7 @@
   border-radius: 10px;
 }
 
-.Add:not(:disabled):hover {
+.addFriend:not(:disabled):hover {
   background-color: rgb(195, 231, 190);
   border-radius: 10px;
 }

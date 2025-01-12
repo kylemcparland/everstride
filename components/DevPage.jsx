@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "./DevPage.css";
+import { faCropSimple } from "@fortawesome/free-solid-svg-icons";
 
 const DevPage = ({ user }) => {
   const [distance, setDistance] = useState("");
+  const [username] = useState(user.name);
+  // Get the logged in users name for the Strava API loader which is reused from Login.jsx;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,18 +28,34 @@ const DevPage = ({ user }) => {
     }
   };
 
+  // Strava API loader which is reused from Login.jsx;
+  const handleLoadStrava = async () => {
+    try {
+      await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username }),
+      });
+
+      window.location.href = "/";
+    } catch (error) {
+      console.error("handleGetAPIUpdates error");
+    }
+  };
+
   return (
     <div className="devParent">
       {user.name === "Jon Hiebert" ? (
         <div className="devContainerCon">
           <>
-          <p>Strava app is connected.</p>
+            <p>Strava app connected. Updated on login.</p>
+            <button onClick={handleLoadStrava}>Check Now!</button>
           </>
         </div>
       ) : (
         <div className="devContainerNotCon">
           <>
-          <p>No app connection. Add your progress here!</p>
+            <p>No app connection. Add your progress here!</p>
           </>
         </div>
       )}
@@ -47,6 +66,7 @@ const DevPage = ({ user }) => {
             type="number"
             value={distance}
             onChange={(e) => setDistance(e.target.value)}
+            disabled={user.name === "Jon Hiebert"}
           />
           <button
             type="submit"

@@ -14,14 +14,20 @@
   padding-right: 1em;
 }
 
-.Logo {
+/* .NavBar-logo for the stripe purchase page */
+.Logo,
+.NavBar-logo {
   color: #000000;
   font-family: "Jacquard 12", serif;
   font-weight: 400;
   font-style: normal;
   font-size: 3.5em;
-
   margin: 0;
+}
+
+.NavBar-logo a {
+  color: black;
+  text-decoration: none;
 }
 
 .UserLogOutContainer {
@@ -35,6 +41,18 @@
 
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.UserLogOutContainer button {
+  background-color: rgb(222, 217, 208);
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.UserLogOutContainer button:hover {
+  cursor: pointer;
 }
 
 a {

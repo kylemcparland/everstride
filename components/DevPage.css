@@ -21,6 +21,23 @@
   box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
+.devContainerAdd p,
+.devContainerNotCon p,
+.devContainerCon p {
+  text-align: center;
+}
+
+.devContainerCon button {
+  font-weight: bold;
+  padding: 5px 10px;
+  background-color: rgb(204, 159, 148);
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  border-radius: 5px;
+}
+
 .devContainerAdd form {
   display: flex;
   justify-content: center;
@@ -35,16 +52,18 @@
 }
 
 .devContainerAdd button {
+  font-weight: bold;
   padding: 5px 10px;
   width: 19%;
+  background-color: rgb(204, 159, 148);
+  color: black;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
 }
-
-.devContainerAdd p,
-.devContainerNotCon p,
-.devContainerCon p {
-  text-align: center;
+.devContainerAdd button:not(:disabled):hover {
+  cursor: pointer;
 }
-
-.devContainerCon {
-  background-color: rgba(127, 255, 212, 0.525);
+.devContainerAdd button:disabled {
+  background-color: rgba(210, 210, 210, 0.667);
+  color: white;
 }
