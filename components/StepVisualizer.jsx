@@ -42,7 +42,7 @@ export default function StepVisualizer({
     .replace(/[^a-zA-Z]/g, "")
     .toLowerCase()}.png`;
 
-    console.log(backgroundImage);
+  console.log(backgroundImage);
 
   console.log(
     `${userCharacter.name} has travelled ${userCharacter.total_distance_travelled} and is at the ${location}`
@@ -55,18 +55,25 @@ export default function StepVisualizer({
       style={{ backgroundImage: `url(${backgroundImage})` }} // Apply dynamic background image
     >
       <div className="LocationDiv">
-        <p>{location} | 💰{userCharacter.gold}</p>
+        <div className="StepVisualizer-textbackground">
+          <p>
+            {location} | 💰{userCharacter.gold}
+          </p>
+        </div>
       </div>
       <div className="StepVisualizer-progress">
-        {user_tag === "current_user" ? (
-          <p>
-            Today you have travelled {distance_travelled_today}/{goal_distance}m
-          </p>
-        ) : (
-          <p>
-            Today {name} has travelled {distance_travelled_today}m
-          </p>
-        )}
+        <div className="StepVisualizer-textbackground">
+          {user_tag === "current_user" ? (
+            <p>
+              Today you have travelled {distance_travelled_today}/
+              {goal_distance}m
+            </p>
+          ) : (
+            <p>
+              Today {name} has travelled {distance_travelled_today}m
+            </p>
+          )}
+        </div>
       </div>
       <div className="DivThree"></div>
 

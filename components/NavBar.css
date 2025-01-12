@@ -8,18 +8,33 @@
   background-color: #554c49;
 }
 
+.Logo-box {
+  width: fit-content;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .Logo {
   color: #000000;
-  font-family: "Jacquard 24", serif;
+  font-family: "Jacquard 12", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 3.6em;
+  font-size: 3.5em;
 
-  padding-left: 1em;
   margin: 0;
 }
 
 .UserLogOutContainer {
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 22px;
+
+  font-size: 19px;
+
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 a {

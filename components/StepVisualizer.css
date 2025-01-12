@@ -21,7 +21,7 @@
 .StepVisualizer-character {
   position: absolute;
   top: 44%;
-  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  transform: translate(-50%, -50%);
   height: 100%;
   margin-right: 3em;
 }
@@ -32,12 +32,22 @@
   flex: 1;
   margin: 0;
   justify-items: center;
-  z-index: 1;
+  padding-left: 1em;
+
+  min-width: 220px;
 }
 
-.StepVisualizer-progress {
-  min-width: 350px;
-  font-size: 16px;
+.StepVisualizer-textbackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #dfd9d0;
+  width: fit-content;
+  min-width: fit-content;
+  height: 2.2em;
+  padding: 5px;
+  border-radius: 9px;
 }
 
 .StepVisualizer-goal {

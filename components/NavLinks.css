@@ -10,23 +10,29 @@ a {
   height: 100%;
 }
 
-a, button {
+a,
+button {
   padding: 0;
 }
 /* Fixes the spacing between Avatar Editor and Gold Market */
 
-a{
+a {
   width: 110px;
   height: 100%;
 }
 /* Makes the Avatar Editor box the same size as the other links, but also makes the logo box 110px */
 
 .NavLinks-button {
-  font-family: "Barlow";
-  font-size: 20px;
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
   font-weight: 600;
+  font-style: normal;
+  line-height: 22px;
+
+  font-size: 23px;
+
   background-color: transparent;
-  color: #131212;
+  color: #000000;
   border: none;
   cursor: pointer;
   position: relative;
@@ -42,7 +48,7 @@ a{
   width: 110px;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 1;
-  transition: none; 
+  transition: none;
 }
 
 /* Off-hover */
@@ -55,8 +61,7 @@ a{
   height: 55px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color 0.15s ease-in-out; 
+  transition: background-color 0.15s ease-in-out;
   z-index: 1;
   /* Fade out hover */
 }
-

@@ -15,7 +15,7 @@ const NavBar = ({
 }) => {
   return (
     <div className="NavBar">
-      <Link href="/">
+      <Link href="/" className="Logo-box">
         <p className="Logo">Everstride</p>
       </Link>
       {cookieSession ? (
