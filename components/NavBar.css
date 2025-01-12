@@ -58,3 +58,12 @@
 a {
   text-decoration: none;
 }
+
+@media (max-width: 999px) {
+  .Logo {
+    font-size: calc(5.5vw);
+  }
+  .desktop-username {
+    display: none;
+  }
+}
