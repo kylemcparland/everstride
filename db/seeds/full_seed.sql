@@ -5,8 +5,8 @@ VALUES
     ('Ben Hallam', 'b@b.com', 300, 2000, 0, 0, 'red', 0),
     ('Jon Hiebert', 'j@j.com', 0, 4000, 0, 0, 'green', 0),
     ('Leeroy Walker', 'j@l.com', 324, 0, 0, 324, 'pink', 0),
-    ('Jenna Johnson', 'y@j.com', 44, 0, 0, 44, 'purple', 0),
-    ('Jimmy Jenkins', 'y@q.com', 440, 0, 0, 440, 'turquoise', 0);
+    ('Jenna Johnson', 'y@j.com', 44, 6000, 0, 44, 'purple', 0),
+    ('Jimmy Jenkins', 'y@q.com', 440, 10000, 0, 440, 'turquoise', 0);
 
 INSERT INTO items (name, type, description, price, image) VALUES 
     ('Hat of Wisdom', 'hat', 'Increases wisdom by 5.', 300, 'hat1.png'),
