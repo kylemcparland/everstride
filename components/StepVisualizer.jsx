@@ -42,11 +42,11 @@ export default function StepVisualizer({
     .replace(/[^a-zA-Z]/g, "")
     .toLowerCase()}.png`;
 
-  console.log(backgroundImage);
+  // console.log(backgroundImage);
 
-  console.log(
-    `${userCharacter.name} has travelled ${userCharacter.total_distance_travelled} and is at the ${location}`
-  );
+  // console.log(
+  //   `${userCharacter.name} has travelled ${userCharacter.total_distance_travelled} and is at the ${location}`
+  // );
 
   // Render character's distance travelled...
   return (
@@ -95,7 +95,10 @@ export default function StepVisualizer({
         className="StepVisualizer-goal"
         style={{ left: `calc(${goalPosition}% - 0.8em)` }}
       >
-        {distance_travelled_today !== goal_distance && <GoalIcon />}
+        <GoalIcon
+          distance_travelled_today={distance_travelled_today}
+          goal_distance={goal_distance}
+        />
       </div>
     </div>
   );
