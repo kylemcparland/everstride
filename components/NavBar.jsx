@@ -27,7 +27,7 @@ const NavBar = ({
             allItems={allItems}
           />
           <div className="UserLogOutContainer">
-            {cookieSession}
+            <div className="desktop-username">{cookieSession}</div>
             <Logout />
           </div>
         </>

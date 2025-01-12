@@ -11,6 +11,15 @@ import DevPage from "./DevPage";
 import Friends from "./Friends";
 import { WorldMap } from "./WorldMap";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserPen,
+  faStore,
+  faUserPlus,
+  faMap,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
+
 const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
   const [isAvatarModalOpen, setAvatarModalOpen] = useState(false);
   const [isStoreModalOpen, setStoreModalOpen] = useState(false);
@@ -48,34 +57,83 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
 
   return (
     <div className="NavLinks">
-      <Link href="">
+      {/* AVATAR DESKTOP */}
+      <Link href="" className="desktop-button">
         <button onClick={toggleAvatarModal} className="NavLinks-button">
           <p className="a">Avatar Editor</p>
         </button>
       </Link>
-      {/* The only way to make the styling match in the nav bar was to wrap this button in a link to nothing */}
 
-      <Link href="">
+      {/* AVATAR MOBILE */}
+      <Link href="" className="mobile-button">
+        <button onClick={toggleAvatarModal} className="NavLinks-button">
+          <p className="a">
+            <FontAwesomeIcon icon={faUserPen} />
+          </p>
+        </button>
+      </Link>
+
+      {/* STORE DESKTOP */}
+      <Link href="" className="desktop-button">
         <button onClick={toggleStoreModal} className="NavLinks-button">
           <p className="a">Gold Market</p>
         </button>
       </Link>
 
-      <Link href="">
+      {/* STORE MOBILE */}
+      <Link href="" className="mobile-button">
+        <button onClick={toggleStoreModal} className="NavLinks-button">
+          <p className="a">
+            <FontAwesomeIcon icon={faStore} />
+          </p>
+        </button>
+      </Link>
+
+      {/* FRIENDS DESKTOP */}
+      <Link href="" className="desktop-button">
         <button onClick={toggleFriendsModal} className="NavLinks-button">
           <p className="a">My Friends</p>
         </button>
       </Link>
 
-      <Link href="">
+      {/* FRIENDS MOBILE */}
+      <Link href="" className="mobile-button">
+        <button onClick={toggleFriendsModal} className="NavLinks-button">
+          <p className="a">
+            <FontAwesomeIcon icon={faUserPlus} />
+          </p>
+        </button>
+      </Link>
+
+      {/* MAP DESKTOP */}
+      <Link href="" className="desktop-button">
         <button onClick={toggleMapModal} className="NavLinks-button">
           <p className="a">World Map</p>
         </button>
       </Link>
 
-      <Link href="">
+      {/* MAP MOBILE */}
+      <Link href="" className="mobile-button">
+        <button onClick={toggleMapModal} className="NavLinks-button">
+          <p className="a">
+            <FontAwesomeIcon icon={faMap} />
+          </p>
+        </button>
+      </Link>
+
+      {/* PROGRESS DESKTOP */}
+      <Link href="" className="desktop-button">
         <button onClick={toggleDevModal} className="NavLinks-button">
           <p className="a">Add Progress</p>
+        </button>
+      </Link>
+
+      {/* PROGRESS MOBILE */}
+      <Link href="" className="mobile-button">
+        <button onClick={toggleDevModal} className="NavLinks-button">
+          <p className="a">
+            <FontAwesomeIcon icon={faLocationDot} />
+          </p>
         </button>
       </Link>
 
@@ -105,14 +163,17 @@ const NavLinks = ({ user, userItems, userEquipment, allItems }) => {
         {/* DEV MODAL */}
         {isDevModalOpen && (
           <Modal toggleModal={toggleDevModal}>
-            <DevPage user={user}/>
+            <DevPage user={user} />
           </Modal>
         )}
 
         {/* MAP MODAL */}
         {isMapModalOpen && (
           <Modal toggleModal={toggleMapModal}>
-            <WorldMap steps={user.total_distance_travelled} totalSteps={10000}/>
+            <WorldMap
+              steps={user.total_distance_travelled}
+              totalSteps={10000}
+            />
           </Modal>
         )}
 
