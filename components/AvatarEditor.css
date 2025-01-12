@@ -5,6 +5,12 @@
   height: inherit;
 
   background-color: #dfd9d0;
+
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 25px;
 }
 
 .avatar-display {
@@ -20,13 +26,10 @@
 
 .avatar-editor-title {
   justify-self: center;
+}
 
-  font-family: "Pixelify Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-
-  font-size: 23px;
+.equipment-category h5 {
+  margin-bottom: 5px;
 }
 
 .equipment-layer {
@@ -92,7 +95,7 @@
 }
 
 .equip-button {
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin-top: 40px;
   padding: 10px;
   margin-bottom: 40px;

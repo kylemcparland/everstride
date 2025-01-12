@@ -3,6 +3,10 @@
   align-items: center;
   justify-content: space-evenly; /* Distribute space evenly between ad and button */
   width: 100%;
+
+  background-color: #dfd9d0;
+  border: solid #554c49 8px;
+  border-radius: 15px;
 }
 
 .PurchaseGoldStripe-ad {
@@ -24,9 +28,10 @@
   align-content: center;
   min-width: 350px;
   padding: 10px 20px;
-  font-size: smaller;
 }
 .Store-Stripe-Banner {
   border-radius: 15px;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 

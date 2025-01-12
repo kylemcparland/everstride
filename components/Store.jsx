@@ -28,7 +28,7 @@ const Store = ({ userItems, allItems, user }) => {
 
   return (
     <div className="Store">
-      <h2 className='Title'>Market | 💰{user.gold}</h2>
+      <h2 className='Title'>Gold Market | 💰{user.gold}</h2>
       <div className="Store-body">
         {/* HATS */}
         <h2>Hats</h2>

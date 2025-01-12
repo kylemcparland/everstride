@@ -11,6 +11,10 @@
 
   background-color: #dfd9d0;
   color: #1d1e23;
+
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .QuestInfo-body {
@@ -19,10 +23,16 @@
 }
 
 .QuestInfo-title {
-  font-size: larger;
-  padding-bottom: 1em;
+  color: #000000;
+  font-family: "Jacquard 12", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 35px;
 }
 
 .QuestInfo-description {
   padding-bottom: 1em;
+  font-size: 19px;
+
+  margin: 0;
 }

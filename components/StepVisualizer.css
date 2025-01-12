@@ -15,6 +15,10 @@
   background-repeat: no-repeat;
   overflow: hidden;
 
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
   font-size: calc(0.5rem + 1vh);
 }
 
