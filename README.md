@@ -1,19 +1,43 @@
-# EVERSTRIDE
+# 🗭️ Everstride - A Fitness RPG
 
-1. Install NEXT.JS 13
-2. npm install pg dotenv
-3. startpostgres (every time on computer restart)
-4. create "everstride" db in psql with "create database everstride"
+Everstride is a gamified fitness application designed to motivate users to achieve their step goals through story-based quests. Built with a Next.js framework, the app connects to the Strava API and translates daily steps into progress on a Dungeons and Dragons-inspired adventure map. The app supports individual quests and includes a social aspect where you can add friends to see their progress, fostering collaboration and friendly competition.
 
-One time on project init:
-Initialize .env.local for DB access info
-Initialize db.js file to create new pool to make psql queries to
+## Features
 
-Workflow for db usage:
-1. Import db variable (from db/connection.js) into "api/[NAME OF ROUTE]/route.js" (ex: api/users/route.js) to setup db api.
-2. Create or use existing helper function inside helpers/api to fetch.
-3. Import helper function into component you wish to make db queries (will need to be client side to pull from a form to make queries).
+- **Quest-based Progression:** Users are always on a quest, where they progress based on daily and weekly step goals.
+- **StepVisualizer:** At the center of the app is the StepVisualizer, which translates daily step counts into the avatar's position on the X-axis. The goal is to reach the star at the end of the quest.
+- **Gamified Decisions:** After completing a quest, users face random D&D-style events with interactive choices. Rolling a dice may reward users with gold, adding an element of chance and excitement.
+- **Real-time Updates:** Track step progress through the Strava API, with updates displayed dynamically on the quest map.
+- **Manual Step Input:** For users without Strava, manual step input ensures everyone can participate and enjoy the app.
+- **Social Connectivity:** Add friends to see their progress, maintain motivation, and foster friendly competition.
+- **Avatar Customization:** Personalize your adventure by editing your avatar through the Avatar Editor.
+- **Gold Economy:** Earn gold from quests and spend it in the Gold Market to unlock exclusive items and features.
+- **Payment Integration:** Use Stripe to purchase gold directly, giving users more flexibility to enhance their experience.
+- **Responsive Design:** Works across devices, ensuring a seamless experience on desktop and mobile.
 
-Run "npm run db" to reset the DB and fully seed it.
+## Final Product
 
-If page isn't changing even after modifying, you may need to delete the ".next" folder at the top of the directory, which stores all cache.
+(Screenshots to come!S)
+
+## Dependencies
+
+### Development:
+
+- Next.js ^13.5.7
+- React ^18.2.0
+- Stripe ^17.5.0
+- React-Stripe--js ^3.1.1
+- Stripe-js ^5.4.0
+- PostgreSQL ^14.x
+
+### Dev Tools:
+
+- ESLint and Prettier (for code quality)
+
+## Bugs and Issues
+
+If you encounter any bugs or have suggestions for improvement, please feel free to open an issue on [GitHub](https://github.com/kylemcparland/everstride/issues).
+
+---
+
+#### Thank you for checking out Everstride!
