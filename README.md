@@ -17,7 +17,7 @@ Everstride is a gamified fitness application designed to motivate users to achie
 
 ## Final Product
 
-(Screenshots to come!S)
+(Screenshots to come!)
 
 ## Dependencies
 
@@ -29,10 +29,6 @@ Everstride is a gamified fitness application designed to motivate users to achie
 - React-Stripe--js ^3.1.1
 - Stripe-js ^5.4.0
 - PostgreSQL ^14.x
-
-### Dev Tools:
-
-- ESLint and Prettier (for code quality)
 
 ## Bugs and Issues
 
