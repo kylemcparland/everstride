@@ -46,10 +46,8 @@ export default function StepVisualizer({
     >
       <div className="LocationDiv">
         <div className="StepVisualizer-textbackground">
-            <p>{location}</p>
-        </div>
-        <div className="StepVisualizer-textbackground">
-          <p className='userGoldAmount'>💰{userCharacter.gold}</p>
+          <p>
+            {location}</p><p className="StepVisualizer-gold">&nbsp;&nbsp;💰{userCharacter.gold}</p>
         </div>
       </div>
       <div className="StepVisualizer-progress">
