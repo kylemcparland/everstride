@@ -1,3 +1,4 @@
+/* Map container settings */
 .map-container {
   position: relative;
   width: 100%;
@@ -8,6 +9,7 @@
   overflow: hidden;
 }
 
+/* SVG overlay with map details */
 .svg-map {
   position: absolute;
   width: 100%;
@@ -15,12 +17,14 @@
   pointer-events: none;
 }
 
+/* Background world map image */
 .world-map-image {
   width: 100%;
   height: 100%;
   object-fit: fill;
 }
 
+/* Location image size and positioning */
 .location-image {
   position: absolute;
   width: 10vw;
@@ -29,7 +33,7 @@
   max-height: 120px;
 }
 
-/* Default style for text labels */
+/* Default styling for SVG text labels */
 svg text {
   font-family: "Jacquard 12", serif;
   font-size: 1.5vw;
@@ -39,24 +43,25 @@ svg text {
   transition: font-size 0.3s ease;
 }
 
-/* Ensure the red dot (avatar) is always on top */
+/* Avatar (red dot) styling */
 .avatar {
   position: absolute;
   fill: red;
 }
 
-/* Path styles for location connections */
+/* Path connections between locations */
 .path {
   stroke: red;
   stroke-width: 2;
   stroke-dasharray: 4, 4;
 }
 
-/* Location label styles */
+/* Grouping of location label texts */
 .location-labels {
   pointer-events: none;
 }
 
+/* Location text styling */
 .location-text {
   font-size: 2vw;
   fill: black;
@@ -65,16 +70,16 @@ svg text {
   transition: font-size 0.3s ease;
 }
 
-/* Media query for mobile devices */
-@media (max-width: 750px) {
+/* Mobile-specific adjustments */
+@media (max-width: 850px) {
   .location-image {
-    width: 20vw; /* Double the width */
-    height: 20vw; /* Double the height */
-    max-width: 240px; /* Double the max-width */
-    max-height: 240px; /* Double the max-height */
+    width: 20vw;
+    height: 20vw;
+    max-width: 240px;
+    max-height: 240px;
   }
 
   .location-text {
-    font-size: 4vw; /* Double the font size */
+    font-size: 4vw;
   }
 }
