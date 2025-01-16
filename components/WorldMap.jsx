@@ -100,7 +100,7 @@ export const WorldMap = ({ steps, totalSteps }) => {
     <div className="map-container" ref={containerRef}>
       <svg className="svg-map">
         {drawPath()}
-        <circle cx={avatarPosition.x} cy={avatarPosition.y} r="10" fill="red" className="avatar" />
+        <circle cx={avatarPosition.x} cy={avatarPosition.y} r="15" fill="red" className="avatar" />
       </svg>
       <img
         src="assets/worldmap/worldmap.png"

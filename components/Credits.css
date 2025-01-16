@@ -1,18 +1,34 @@
 .Credits {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-
-  background-color: #dbdee2;
-  border-radius: 8px;
-
-  font-size: 14px;
+  width: 50%;
+  height: fit-content;
+  font-size: 15px;
+  width: fit-content;
+  margin-bottom: 150px;
+  background-color: #f2f4f8a6;
+  padding-bottom: 10px;
+  border-radius: 10px;
 }
 
 .links {
   display: flex;
-  justify-content: center;
-  padding-bottom: 1em;
+  flex-direction: row;
+  width: 100%;
+}
+
+.Credits a,
+b {
+  color: rgb(70, 70, 70);
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 2px;
+  padding-left: 20px;
+}
+
+.Credits h3 {
+  color: rgb(70, 70, 70);
+  align-self: center;
+  padding: 0;
+  margin: 0;
 }

@@ -60,3 +60,13 @@
   transform: translateY(-50%);
   font-size: calc(1em + 4vh);
 }
+
+.LocationDiv .userGoldAmount{
+  justify-items: center;
+  font-size: large;
+}
+
+.LocationDiv{
+  display: flex;
+  gap:1px;
+}
