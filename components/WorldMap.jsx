@@ -10,12 +10,50 @@ const locations = [
   { name: "Cave of the Wandering Wyrm", x: 650, y: 175 },
 ];
 
+const scaleLocation = (x, y, containerDimensions) => ({
+  x: (x / 800) * containerDimensions.width,
+  y: (y / 500) * containerDimensions.height,
+});
+
+const Path = ({ start, end, containerDimensions }) => {
+  const { x: startX, y: startY } = scaleLocation(start.x, start.y, containerDimensions);
+  const { x: endX, y: endY } = scaleLocation(end.x, end.y, containerDimensions);
+  return <line x1={startX} y1={startY} x2={endX} y2={endY} className="path" />;
+};
+
+const LocationLabel = ({ location, containerDimensions }) => {
+  const { x, y } = scaleLocation(location.x, location.y, containerDimensions);
+  const words = location.name.split(' ');
+
+  return (
+    <g className="location-labels">
+      {words.map((word, wordIndex) => (
+        <text key={wordIndex} x={x + 15} y={y - 50 + wordIndex * 20} className="location-text">
+          {word}
+        </text>
+      ))}
+    </g>
+  );
+};
+
+const LocationImage = ({ location, containerDimensions }) => {
+  const { x, y } = scaleLocation(location.x, location.y, containerDimensions);
+  return (
+    <img
+      src={`assets/objects/${location.name}.png`}
+      alt={location.name}
+      className="location-image"
+      style={{ top: `${y - 60}px`, left: `${x - 95}px` }}
+    />
+  );
+};
+
 export const WorldMap = ({ steps, totalSteps }) => {
   const [avatarPosition, setAvatarPosition] = useState({ x: 100, y: 350 });
   const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
   const containerRef = useRef(null);
 
-  // Resize the container on window resize
+  // Adjust container dimensions on window resize
   useEffect(() => {
     const handleResize = () => {
       const { offsetWidth, offsetHeight } = containerRef.current || {};
@@ -23,11 +61,11 @@ export const WorldMap = ({ steps, totalSteps }) => {
     };
 
     window.addEventListener('resize', handleResize);
-    handleResize(); // Initial calculation
+    handleResize(); // Initial dimension calculation
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Update avatar position based on steps
+  // Update avatar position based on the current step and total steps
   useEffect(() => {
     const getAvatarPosition = () => {
       const percentage = Math.min(steps / totalSteps, 1);
@@ -35,91 +73,38 @@ export const WorldMap = ({ steps, totalSteps }) => {
       const start = locations[targetLocationIndex];
       const end = locations[targetLocationIndex + 1] || start;
 
+      // Interpolate position between two locations
       const x = start.x + (end.x - start.x) * (percentage * (locations.length - 1) - targetLocationIndex);
       const y = start.y + (end.y - start.y) * (percentage * (locations.length - 1) - targetLocationIndex);
 
-      return {
-        x: (x / 800) * containerDimensions.width,
-        y: (y / 500) * containerDimensions.height,
-      };
+      return scaleLocation(x, y, containerDimensions);
     };
 
     setAvatarPosition(getAvatarPosition());
   }, [steps, totalSteps, containerDimensions]);
 
-  // Convert location coordinates to scaled coordinates
-  const scaleLocation = (x, y) => ({
-    x: (x / 800) * containerDimensions.width,
-    y: (y / 500) * containerDimensions.height,
-  });
-
-  // Render paths between locations (lines)
-  const renderPaths = () => {
-    return locations.map((start, i) => {
-      const end = locations[i + 1];
-      if (end) {
-        const { x: startX, y: startY } = scaleLocation(start.x, start.y);
-        const { x: endX, y: endY } = scaleLocation(end.x, end.y);
-
-        return (
-          <line key={i} x1={startX} y1={startY} x2={endX} y2={endY} className="path" />
-        );
-      }
-      return null;
-    });
-  };
-
-  // Render stacked labels for each location
-  const renderLocationLabels = () => {
-    return locations.map((location, index) => {
-      const { x, y } = scaleLocation(location.x, location.y);
-      const words = location.name.split(' '); // Split the name into words
-
-      return (
-        <g key={index} className="location-labels">
-          {words.map((word, wordIndex) => {
-            return (
-              <text key={wordIndex} x={x + 15} y={y - 50 + (wordIndex * 20)} className="location-text">
-                {word}
-              </text>
-            );
-          })}
-        </g>
-      );
-    });
-  };
-
-  // Render location images (all locations except "Start")
-  const renderLocationImages = () => {
-    return locations.slice(1).map((location, index) => {
-      const { x, y } = scaleLocation(location.x, location.y);
-      return (
-        <img
-          key={index}
-          src={`assets/objects/${location.name}.png`}  // Ensure the image names match exactly
-          alt={location.name}
-          className="location-image"
-          style={{ top: `${y - 60}px`, left: `${x - 95}px` }}
-        />
-      );
-    });
-  };
-
   return (
     <div className="map-container" ref={containerRef}>
       <img src="assets/worldmap/worldmap.png" alt="World Map" className="world-map-image" />
       
-      {/* Render location images first */}
-      {renderLocationImages()}
-      
+      {/* Render location images */}
+      {locations.slice(1).map((location, index) => (
+        <LocationImage key={index} location={location} containerDimensions={containerDimensions} />
+      ))}
+
       <svg className="svg-map">
-        {/* Render paths first, underneath everything */}
-        {renderPaths()}
+        {/* Render path lines between locations */}
+        {locations.map((start, i) => {
+          const end = locations[i + 1];
+          return end ? <Path key={i} start={start} end={end} containerDimensions={containerDimensions} /> : null;
+        })}
 
-        {/* Render location labels on top of the lines */}
-        {renderLocationLabels()} 
+        {/* Render labels for each location */}
+        {locations.map((location, index) => (
+          <LocationLabel key={index} location={location} containerDimensions={containerDimensions} />
+        ))}
 
-        {/* Avatar should be on top of everything */}
+        {/* Render the avatar on the map */}
         <circle cx={avatarPosition.x} cy={avatarPosition.y} r="10" className="avatar" />
       </svg>
     </div>
