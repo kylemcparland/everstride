@@ -16,9 +16,9 @@
 }
 
 .world-map-image {
-  width: 100%; /* Ensure the image scales with the container */
-  height: 100%; /* Ensure the image scales with the container */
-  object-fit: contain; /* Preserve aspect ratio */
+  width: 100%; /* Ensure the image scales with the container width */
+  height: 100%; /* Ensure the image scales with the container height */
+  object-fit: fill; /* Stretch to fill both width and height, potentially squishing the image */
 }
 
 .location-image {
@@ -29,13 +29,26 @@
   max-height: 120px; /* Set a max size for larger screens */
 }
 
-/* Style for the text labels for each location */
+/* Default style for text labels */
 svg text {
+  font-family: "Jacquard 12", serif;
   font-size: 1.5vw; /* Scale the font size based on the viewport width */
   fill: black;
   text-anchor: middle;
   pointer-events: none;
   transition: font-size 0.3s ease; /* Smooth transition for font size change */
+}
+
+/* Adjust font size for mobile screens */
+@media (max-width: 768px) {
+  svg text {
+    font-size: 4vw; /* Make the font size twice as big on mobile */
+  }
+
+  .location-image {
+    width: 15vw;  /* Double the size for mobile screens */
+    height: 15vw; /* Double the size for mobile screens */
+  }
 }
 
 /* Ensure the red dot (avatar) is always on top */
