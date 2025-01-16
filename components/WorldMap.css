@@ -36,6 +36,8 @@
 /* Default styling for SVG text labels */
 svg text {
   font-family: "Jacquard 12", serif;
+  text-shadow: 1px 1px 0px rgb(255, 190, 86);
+
   font-size: 1.5vw;
   fill: black;
   text-anchor: middle;
