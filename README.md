@@ -1,4 +1,4 @@
-# 🗭️ Everstride - A Fitness RPG
+# Everstride - A Fitness RPG
 
 Everstride is a gamified fitness application designed to motivate users to achieve their step goals through story-based quests. Built with a Next.js framework, the app connects to the Strava API and translates daily steps into progress on a Dungeons and Dragons-inspired adventure map. The app supports individual quests and includes a social aspect where you can add friends to see their progress, fostering collaboration and friendly competition.
 
