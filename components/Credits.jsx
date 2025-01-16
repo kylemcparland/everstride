@@ -36,9 +36,9 @@ const Credits = () => {
       <div className="links">
         <a
           className="link"
-          href="https://www.linkedin.com/in/benjamin-hallam-195a10309/"
+          href="https://www.linkedin.com/in/benjamin-d-hallam/"
         >
-          linkedin/benjamin-hallam
+          linkedin/benjamin-d-hallam
         </a>
         |
         <a className="link" href="https://github.com/bendhallam">
