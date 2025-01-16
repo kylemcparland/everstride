@@ -6,6 +6,15 @@
   flex-direction: column;
 }
 
+.devParent img {
+  max-height: 45px;
+  border: solid 2px #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 75%;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
 .devContainerAdd,
 .devContainerNotCon,
 .devContainerCon {

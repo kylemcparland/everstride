@@ -48,8 +48,9 @@ const DevPage = ({ user }) => {
       {user.name === "Jon Hiebert" ? (
         <div className="devContainerCon">
           <>
-            <p>Strava app connected. Updated on login.</p>
-            <button onClick={handleLoadStrava}>Check Now!</button>
+            <img src="images/strava-1.png" alt="logo" />
+            <p>Strava app is connected. Your workouts updated on login.</p>
+            <button onClick={handleLoadStrava}>Check Now</button>
           </>
         </div>
       ) : (
