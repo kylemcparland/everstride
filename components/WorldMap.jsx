@@ -62,7 +62,7 @@ export const WorldMap = ({ steps, totalSteps }) => {
         const { x: endX, y: endY } = scaleLocation(end.x, end.y);
 
         return (
-          <line key={i} x1={startX} y1={startY} x2={endX} y2={endY} stroke="red" strokeWidth="2" strokeDasharray="4, 4" />
+          <line key={i} x1={startX} y1={startY} x2={endX} y2={endY} className="path" />
         );
       }
       return null;
@@ -76,18 +76,10 @@ export const WorldMap = ({ steps, totalSteps }) => {
       const words = location.name.split(' '); // Split the name into words
 
       return (
-        <g key={index}>
+        <g key={index} className="location-labels">
           {words.map((word, wordIndex) => {
             return (
-              <text
-                key={wordIndex}
-                x={x + 15}
-                y={y - 50 + (wordIndex * 20)} // Stack words with some vertical space
-                fill="black"
-                fontSize={Math.max((containerDimensions.height / 500) * 20, 12)} // Adjusted font size scaling
-                textAnchor="middle"
-                pointerEvents="none"  // Ensures text doesn't interfere with mouse events
-              >
+              <text key={wordIndex} x={x + 15} y={y - 50 + (wordIndex * 20)} className="location-text">
                 {word}
               </text>
             );
@@ -128,7 +120,7 @@ export const WorldMap = ({ steps, totalSteps }) => {
         {renderLocationLabels()} 
 
         {/* Avatar should be on top of everything */}
-        <circle cx={avatarPosition.x} cy={avatarPosition.y} r="10" fill="red" className="avatar" />
+        <circle cx={avatarPosition.x} cy={avatarPosition.y} r="10" className="avatar" />
       </svg>
     </div>
   );
