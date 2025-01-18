@@ -12,7 +12,7 @@ Everstride is a gamified fitness application designed to motivate users to achie
 - **Social Connectivity:** Add friends to see their progress, maintain motivation, and foster friendly competition.
 - **Avatar Customization:** Personalize your adventure by editing your avatar through the Avatar Editor.
 - **Gold Economy:** Earn gold from quests and spend it in the Gold Market to unlock new equipment.
-- **Payment Integration:** Use Stripe to purchase gold directly, giving users more flexibility to enhance their experience.
+- **Payment Integration:** Use Stripe to purchase gold directly with secure payments.
 
 ## Final Product
 
