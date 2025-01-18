@@ -20,6 +20,9 @@ Everstride is a gamified fitness application designed to motivate users to achie
 _No Strava APP? No problem! Manually add your steps to progress on your quest!_
 !["Adding progress to StepVisualizer"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/1E-add-progress.gif "Adding progress to StepVisualizer")
 
+_With your Strava account connected, there is no need for manual updates - just visit the page and see how far you've reached in your quest!_
+!["Strava API implementation"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/8E-strava.png "Strava API implementation")
+
 _Customize your avatar to stand out from your friends!_
 !["Avatar editor menu"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/2E-avatar.png "Avatar editor menu")
 
@@ -37,9 +40,6 @@ _Purchase new equipment using gold earned from quests!_
 
 _Or make a secure payment with Stripe to earn gold the old fashioned way!_
 !["Using the Stripe API"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/7E-stripe.png "Using the Stripe API")
-
-_With your Strava account connected, there is no need for manual updates - just visit the page and see how far you've reached in your quest!_
-!["Strava API implementation"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/8E-strava.png "Strava API implementation")
 
 ## Dependencies
 
