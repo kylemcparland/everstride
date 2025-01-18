@@ -17,7 +17,29 @@ Everstride is a gamified fitness application designed to motivate users to achie
 
 ## Final Product
 
-(Screenshots to come!)
+_No Strava APP? No problem! Manually add your steps to progress on your quest!_
+!["Adding progress to StepVisualizer"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/1E-add-progress.gif "Adding progress to StepVisualizer")
+
+_Customize your avatar to stand out from your friends!_
+!["Avatar editor menu"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/2E-avatar.png "Avatar editor menu")
+
+_Completing a quest leads to a choice - and the roll of a dice! Make your choice wisely!_
+!["Completing a quest"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/3E-complete-quest.gif "Completing a quest")
+
+_The world map shows your meta-progression across all quests. Progress on the world map to update your StepVisualizer's backdrop!_
+!["World map display"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/4E-map.png "World map display")
+
+_Add friends to motivate each other to reach your goals. No scrolling required - the page will change dynamically!_
+!["Adding a friend"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/5E-add-friend.gif "Adding a friend")
+
+_Purchase new equipment using gold earned from quests!_
+!["Store menu"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/6E-store.png "Store menu")
+
+_Or make a secure payment with Stripe to earn gold the old fashioned way!_
+!["Using the Stripe API"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/7E-stripe.png "Using the Stripe API")
+
+_With your Strava account connected, there is no need for manual updates - just visit the page and see how far you've reached in your quest!_
+!["Strava API implementation"](https://raw.githubusercontent.com/kylemcparland/everstride/refs/heads/main/media/8E-strava.png "Strava API implementation")
 
 ## Dependencies
 
