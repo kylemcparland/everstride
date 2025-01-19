@@ -10,10 +10,18 @@ import { fetchAllItems } from "./helpers/itemHelpers";
 import { cookies } from "next/headers";
 import { fetchUserCurrentQuest } from "./helpers/questHelpers";
 
+async function getCookieData() {
+  const cookieData = cookies().get("session")?.value;
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve(cookieData);
+    }, 1000)
+  );
+}
+
 export default async function HomePage() {
   // Retrieve login info if any. Set it as current username...
-  // const cookieSession = (await cookies()).get("session")?.value;
-  const cookieSession = "Kyle McParland";
+  const cookieSession = await getCookieData();
   const username = cookieSession ? cookieSession : undefined;
 
   // DB QUERY: Fetch user & friends data dynamically on the server-side before rendering the homepage...
