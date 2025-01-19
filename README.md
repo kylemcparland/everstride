@@ -6,11 +6,11 @@ Everstride is a gamified fitness application built with Next.js that motivates u
 
 - **Quest-based Progression:** Users are always on a quest, where they progress based on daily and weekly step goals.
 - **StepVisualizer:** At the center of the app is the StepVisualizer, which translates daily step counts into the avatar's position on the X-axis. The goal is to reach the star at the end of the quest.
-- **Gamified Decisions:** After completing a quest, users face random D&D-style events with interactive choices. Rolling a dice may reward users with gold, adding an element of chance and excitement.
+- **Avatar Customization:** Personalize your adventure by editing your avatar through the Avatar Editor.
+- **Gamified Decisions:** After completing a quest, users face random D&D-style events with interactive choices. Rolling a dice may reward users with gold.
 - **Real-time Updates:** Track step progress through the Strava API, with updates displayed dynamically on the quest map.
 - **Manual Step Input:** For users without Strava, manual step input ensures everyone can participate and enjoy the app.
 - **Social Connectivity:** Add friends to see their progress, maintain motivation, and foster friendly competition.
-- **Avatar Customization:** Personalize your adventure by editing your avatar through the Avatar Editor.
 - **Gold Economy:** Earn gold from quests and spend it in the Gold Market to unlock new equipment.
 - **Payment Integration:** Use Stripe to purchase gold directly with secure payments.
 
