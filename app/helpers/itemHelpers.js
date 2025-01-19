@@ -1,26 +1,20 @@
 import db from "@/db/connection";
 
-// Function to get all items in database
+// Function to get all items in the database
 export const fetchAllItems = async () => {
-  const query = encodeURIComponent("SELECT * FROM items");
+  try {
+    const query = "SELECT * FROM items";
+    const result = await db.query(query);
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${query}`,
-    {
-      method: "GET",
-    }
-  );
-
-  if (!res.ok) {
-    console.error("Failed to fetch users. Status code:", res.status);
-    throw new Error("Failed to fetch users");
+    // Return all items
+    return result.rows;
+  } catch (error) {
+    console.error("Error fetching all items:", error);
+    throw new Error("Failed to fetch all items");
   }
-
-  const data = await res.json();
-  return data.data;
 };
 
-// Function to get id for named item
+// Function to get ID for a named item
 export const getItemIdByName = async (itemName) => {
   try {
     // Validate input
@@ -28,14 +22,14 @@ export const getItemIdByName = async (itemName) => {
       throw new Error("itemName is required");
     }
 
-    // Construct the SQL query
+    // Construct the SQL query with parameterized value
     const query = `
       SELECT id
       FROM items
       WHERE name = $1;
     `;
 
-    // Execute the query with parameterized values to prevent SQL injection
+    // Execute the query with parameterized value to prevent SQL injection
     const result = await db.query(query, [itemName]);
 
     // Check if an item was found
@@ -58,25 +52,30 @@ export const getItemIdByName = async (itemName) => {
       message: error.message,
     };
   }
-}
+};
 
+// Function to fetch items by type
 export const fetchItemsByType = async (type) => {
-  const query = encodeURIComponent(
-    `SELECT * FROM items WHERE type = '${type}'`
-  );
-
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${query}`,
-    {
-      method: "GET",
+  try {
+    // Validate input
+    if (!type) {
+      throw new Error("type is required");
     }
-  );
 
-  if (!res.ok) {
-    console.error("Failed to fetch items. Status code:", res.status);
-    throw new Error("Failed to fetch items");
+    // Construct the SQL query with parameterized value
+    const query = `
+      SELECT * 
+      FROM items 
+      WHERE type = $1;
+    `;
+
+    // Execute the query with parameterized value to prevent SQL injection
+    const result = await db.query(query, [type]);
+
+    // Return the filtered items
+    return result.rows;
+  } catch (error) {
+    console.error("Error fetching items by type:", error);
+    throw new Error("Failed to fetch items by type");
   }
-
-  const data = await res.json();
-  return data.data;
 };
