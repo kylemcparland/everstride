@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "db": "PGPASSWORD=labber psql -U labber -d everstride -f ./db/schema/full_schema.sql && PGPASSWORD=labber psql -U labber -d everstride -f ./db/seeds/full_seed.sql"
+    "lint": "next lint"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
