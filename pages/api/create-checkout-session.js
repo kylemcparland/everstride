@@ -19,7 +19,7 @@ export default async function handler(req, res) {
         ],
         mode: "payment",
         ui_mode: "embedded",
-        return_url: "http://localhost:3000/stripe-redirect",
+        return_url: "/stripe-redirect",
       });
 
       res.status(200).json({ clientSecret: session.client_secret });
