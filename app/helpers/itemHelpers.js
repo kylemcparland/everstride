@@ -1,29 +1,23 @@
 import db from "@/db/connection";
 
-// Generic helper function to fetch data from the API
-const fetchFromAPI = async (query) => {
-  const encodedQuery = encodeURIComponent(query);
+// Function to get all items in database
+export const fetchAllItems = async () => {
+  const query = encodeURIComponent("SELECT * FROM items");
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${encodedQuery}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${query}`,
     {
       method: "GET",
     }
   );
 
   if (!res.ok) {
-    console.error("Failed to fetch data. Status code:", res.status);
-    throw new Error("Failed to fetch data");
+    console.error("Failed to fetch users. Status code:", res.status);
+    throw new Error("Failed to fetch users");
   }
 
   const data = await res.json();
   return data.data;
-};
-
-// Function to get all items in the database
-export const fetchAllItems = async () => {
-  const query = "SELECT * FROM items";
-  return await fetchFromAPI(query);
 };
 
 // Function to get id for named item
@@ -64,10 +58,25 @@ export const getItemIdByName = async (itemName) => {
       message: error.message,
     };
   }
-};
+}
 
-// Function to fetch items by type
 export const fetchItemsByType = async (type) => {
-  const query = `SELECT * FROM items WHERE type = '${type}'`;
-  return await fetchFromAPI(query);
+  const query = encodeURIComponent(
+    `SELECT * FROM items WHERE type = '${type}'`
+  );
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${query}`,
+    {
+      method: "GET",
+    }
+  );
+
+  if (!res.ok) {
+    console.error("Failed to fetch items. Status code:", res.status);
+    throw new Error("Failed to fetch items");
+  }
+
+  const data = await res.json();
+  return data.data;
 };
