@@ -19,7 +19,6 @@ export default function Page() {
     loadUserData()
       .then((data) => {
         if (data) {
-          console.log("loadUserData");
           setTotalDistanceToday(data.totalDistanceToday);
           setTotalDistanceThisWeek(data.totalDistanceThisWeek);
           setTotalDistance(data.totalDistance);

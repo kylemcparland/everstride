@@ -58,8 +58,6 @@ const QuestComplete = ({ currentQuest }) => {
 
     const result = await response.json();
     if (result.success) {
-      console.log(result.message);
-
       // Show the outcome of your choice...
       if (outcome) {
         setResultsScreen((prevState) => ({

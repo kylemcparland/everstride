@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState, useEffect } from "react";
 import NavBar from "@/components/NavBar";
 
@@ -35,7 +35,6 @@ const Page = () => {
       });
 
       const result = await response.json();
-      console.log(result.message);
     } catch (error) {
       console.error("Error updating distance:", error);
     }
@@ -43,9 +42,7 @@ const Page = () => {
 
   return (
     <div>
-      <NavBar
-        showLogin={false}
-        />
+      <NavBar showLogin={false} />
       <p>Add Distance / Gold</p>
       <p>Does not affect distance_travelled_today only totals</p>
       <form onSubmit={handleSubmit}>

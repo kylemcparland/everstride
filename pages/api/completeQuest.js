@@ -11,7 +11,6 @@ export default async function handler(req, res) {
 
   // Increment the user's quest up by one...
   let newQuestId = questId + 1;
-  console.log(newQuestId)
 
   if (newQuestId > 7) {
     newQuestId = 1;

@@ -93,7 +93,6 @@ const AvatarEditor = ({
 
     const data = await response.json();
     if (data.message === "Equipment updated successfully!") {
-      console.log("Equipment updated!");
       window.location.reload();
     } else {
       console.error("Error updating equipment:", data.message);

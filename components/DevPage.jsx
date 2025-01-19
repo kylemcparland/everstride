@@ -21,7 +21,6 @@ const DevPage = ({ user }) => {
       });
 
       const result = await response.json();
-      console.log(result.message);
       window.location.href = "/";
     } catch (error) {
       console.error("Error updating distance:", error);

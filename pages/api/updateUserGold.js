@@ -20,7 +20,6 @@ export default async function handler(req, res) {
       }
 
       const updatedUser = result.rows[0];
-      console.log(`Updated gold for user ID ${userId}: ${updatedUser.gold}`);
       res.status(200).json({ gold: updatedUser.gold });
     } catch (error) {
       console.error("Error updating gold:", error);

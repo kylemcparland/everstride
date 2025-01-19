@@ -13,7 +13,6 @@ export default async function fetchGold(req, res) {
     const result = await db.query(selectQuery, [userName]);
     const user = result.rows[0];
 
-    console.log(`Fetched gold for ${userName}: ${user.gold}`);
     res.status(200).json({ gold: user.gold });
   } catch (error) {
     console.error("Error fetching gold:", error);

@@ -3,7 +3,6 @@ import db from "@/db/connection";
 export default async function updateTotalDistance(req, res) {
   try {
     const { userName, totalDistance } = req.body;
-    // console.log("🔵Run updateTotalDistance");
 
     const selectQuery = `
       SELECT last_total_distance, gold

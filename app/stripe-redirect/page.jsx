@@ -26,7 +26,7 @@ export default async function StripeRedirect() {
 
   const userId = userObject.id;
   let userGold = userObject.gold;
-  console.log("User's previous gold:", userGold);
+
   const newGoldAmount = (userGold += 300);
 
   const goldResponse = await fetch("https://everstride.vercel.app/api/updateUserGold", {
@@ -40,7 +40,6 @@ export default async function StripeRedirect() {
   const goldData = await goldResponse.json();
 
   if (goldResponse.ok) {
-    console.log("Gold successfully updated:", goldData.gold);
     redirect("/");
   } else {
     setError(goldData.error || "Failed to update gold");

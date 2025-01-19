@@ -25,18 +25,12 @@ export default function StepVisualizer({
   const goalPosition = 10 + 1 * 80;
 
   // Determine the location based on total_distance (Moved to pages/api location.js)
-  const location = getLocation(userCharacter.total_distance_travelled)
+  const location = getLocation(userCharacter.total_distance_travelled);
 
   // Set the background image URL based on the location
   const backgroundImage = `/assets/scenes/${location
     .replace(/[^a-zA-Z]/g, "")
     .toLowerCase()}.png`;
-
-  // console.log(backgroundImage);
-
-  // console.log(
-  //   `${userCharacter.name} has travelled ${userCharacter.total_distance_travelled} and is at the ${location}`
-  // );
 
   // Render character's distance travelled...
   return (
@@ -46,8 +40,10 @@ export default function StepVisualizer({
     >
       <div className="LocationDiv">
         <div className="StepVisualizer-textbackground">
-          <p>
-            {location}</p><p className="StepVisualizer-gold">&nbsp;&nbsp;💰{userCharacter.gold}</p>
+          <p>{location}</p>
+          <p className="StepVisualizer-gold">
+            &nbsp;&nbsp;💰{userCharacter.gold}
+          </p>
         </div>
       </div>
       <div className="StepVisualizer-progress">

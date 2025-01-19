@@ -24,8 +24,6 @@ const ConfirmButton = ({
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Item successfully purchased:", data.data);
-
         // Deduct the gold by calling updateUserGold
         const newGoldAmount = userGold - itemPrice;
         const goldResponse = await fetch("api/updateUserGold", {
@@ -39,7 +37,6 @@ const ConfirmButton = ({
         const goldData = await goldResponse.json();
 
         if (goldResponse.ok) {
-          console.log("Gold successfully updated:", goldData.gold);
           window.location.reload(); // Reload to reflect updated data
         } else {
           setError(goldData.error || "Failed to update gold");
