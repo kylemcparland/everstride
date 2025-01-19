@@ -25,7 +25,7 @@ const fetchEquippedItem = async (userId, equippedField) => {
   return data.data.length > 0 ? data.data[0] : null;
 };
 
-// Refactored individual functions
+// Refactored individual functions to fetch equipped items
 export const fetchEquippedHat = (userId) => fetchEquippedItem(userId, 'equipped_hat');
 export const fetchEquippedShirt = (userId) => fetchEquippedItem(userId, 'equipped_shirt');
 export const fetchEquippedPants = (userId) => fetchEquippedItem(userId, 'equipped_pants');
@@ -45,6 +45,7 @@ export const fetchEquipmentForUser = async (userId) => {
     };
   }
 
+  // Use Promise.all to fetch all equipment concurrently
   const [hat, shirt, pants, boots, weapon] = await Promise.all([
     fetchEquippedHat(userId),
     fetchEquippedShirt(userId),
@@ -54,4 +55,4 @@ export const fetchEquipmentForUser = async (userId) => {
   ]);
 
   return { hat, shirt, pants, boots, weapon };
-}
+};
