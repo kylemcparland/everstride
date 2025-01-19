@@ -1,6 +1,6 @@
 # Everstride - A Fitness RPG
 
-Everstride is a gamified fitness application designed to motivate users to achieve their step goals through story-based quests. Built with a Next.js framework, the app connects to the Strava API and translates daily steps into progress on a Dungeons and Dragons-inspired adventure map. The app supports individual quests and includes a social aspect where you can add friends to see their progress, fostering collaboration and friendly competition.
+Everstride is a gamified fitness application built with Next.js that motivates users to achieve their step goals through DnD-inspired quests. By integrating the Strava API, the app translates daily steps into progress on an adventure map, where users can embark on dynamic quests to earn gold and customize their in-game Avatar with new equipment. Everstride's social features also allow users to add their friends and track their progress - all without distrupting their own. Additionally, the Stripe API lets users skip the run and make secure payments to purchase gold directly.
 
 ## Features
 
@@ -11,9 +11,8 @@ Everstride is a gamified fitness application designed to motivate users to achie
 - **Manual Step Input:** For users without Strava, manual step input ensures everyone can participate and enjoy the app.
 - **Social Connectivity:** Add friends to see their progress, maintain motivation, and foster friendly competition.
 - **Avatar Customization:** Personalize your adventure by editing your avatar through the Avatar Editor.
-- **Gold Economy:** Earn gold from quests and spend it in the Gold Market to unlock exclusive items and features.
-- **Payment Integration:** Use Stripe to purchase gold directly, giving users more flexibility to enhance their experience.
-- **Responsive Design:** Works across devices, ensuring a seamless experience on desktop and mobile.
+- **Gold Economy:** Earn gold from quests and spend it in the Gold Market to unlock new equipment.
+- **Payment Integration:** Use Stripe to purchase gold directly with secure payments.
 
 ## Final Product
 
