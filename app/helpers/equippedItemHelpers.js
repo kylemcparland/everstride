@@ -17,17 +17,25 @@ const fetchEquippedItem = async (userId, equippedField) => {
     // Return the first item or null if no items are found
     return result.rows.length > 0 ? result.rows[0] : null;
   } catch (error) {
-    console.error(`Error fetching equipped ${equippedField} for user (${userId}):`, error);
+    console.error(
+      `Error fetching equipped ${equippedField} for user (${userId}):`,
+      error
+    );
     return null;
   }
 };
 
 // Refactored individual functions for each equipped item
-export const fetchEquippedHat = (userId) => fetchEquippedItem(userId, 'equipped_hat');
-export const fetchEquippedShirt = (userId) => fetchEquippedItem(userId, 'equipped_shirt');
-export const fetchEquippedPants = (userId) => fetchEquippedItem(userId, 'equipped_pants');
-export const fetchEquippedBoots = (userId) => fetchEquippedItem(userId, 'equipped_boots');
-export const fetchEquippedWeapon = (userId) => fetchEquippedItem(userId, 'equipped_weapon');
+export const fetchEquippedHat = (userId) =>
+  fetchEquippedItem(userId, "equipped_hat");
+export const fetchEquippedShirt = (userId) =>
+  fetchEquippedItem(userId, "equipped_shirt");
+export const fetchEquippedPants = (userId) =>
+  fetchEquippedItem(userId, "equipped_pants");
+export const fetchEquippedBoots = (userId) =>
+  fetchEquippedItem(userId, "equipped_boots");
+export const fetchEquippedWeapon = (userId) =>
+  fetchEquippedItem(userId, "equipped_weapon");
 
 // Helper function to fetch all equipment for a user
 export const fetchEquipmentForUser = async (userId) => {
@@ -38,7 +46,7 @@ export const fetchEquipmentForUser = async (userId) => {
       shirt: null,
       pants: null,
       boots: null,
-      weapon: null
+      weapon: null,
     };
   }
 
@@ -52,4 +60,4 @@ export const fetchEquipmentForUser = async (userId) => {
   ]);
 
   return { hat, shirt, pants, boots, weapon };
-}
+};
