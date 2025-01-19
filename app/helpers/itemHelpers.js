@@ -5,7 +5,7 @@ export const fetchAllItems = async () => {
   const query = encodeURIComponent("SELECT * FROM items");
 
   const res = await fetch(
-    `https://${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${query}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${query}`,
     {
       method: "GET",
     }
@@ -66,7 +66,7 @@ export const fetchItemsByType = async (type) => {
   );
 
   const res = await fetch(
-    `https://${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${query}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api?query=${query}`,
     {
       method: "GET",
     }
