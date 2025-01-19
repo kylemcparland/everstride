@@ -10,7 +10,7 @@ import { fetchAllItems } from "./helpers/itemHelpers";
 import { cookies } from "next/headers";
 import { fetchUserCurrentQuest } from "./helpers/questHelpers";
 
-export async function getServerSideProps(context) {
+export default async function HomePage() {
   // Retrieve login info if any. Set it as current username...
   const cookieSession = (await cookies()).get("session")?.value;
   const username = cookieSession ? cookieSession : undefined;
@@ -32,30 +32,6 @@ export async function getServerSideProps(context) {
   const currentQuest = await fetchUserCurrentQuest(username);
   const goal_distance = currentQuest ? currentQuest.goal_steps : undefined;
 
-  return {
-    props: {
-      cookieSession,
-      user,
-      friends,
-      userItems,
-      userEquipment,
-      allItems,
-      currentQuest,
-      goal_distance,
-    },
-  };
-}
-
-export default async function HomePage({
-  cookieSession,
-  user,
-  friends,
-  userItems,
-  userEquipment,
-  allItems,
-  currentQuest,
-  goal_distance,
-}) {
   return (
     <main className="HomePage">
       <NavBar
