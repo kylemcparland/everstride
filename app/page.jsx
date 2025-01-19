@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import "./page.css";
 import NavBar from "@/components/NavBar";
 import PageBody from "@/components/PageBody";
