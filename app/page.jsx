@@ -13,7 +13,7 @@ import { fetchUserCurrentQuest } from "./helpers/questHelpers";
 export default async function HomePage() {
   // Retrieve login info if any. Set it as current username...
   // const cookieSession = (await cookies()).get("session")?.value;
-  const cookieSession = `Kyle McParland`;
+  const cookieSession = "Kyle McParland";
   const username = cookieSession ? cookieSession : undefined;
 
   // DB QUERY: Fetch user & friends data dynamically on the server-side before rendering the homepage...
