@@ -1,9 +1,18 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
+async function getCookieData() {
+  const cookieData = cookies().get("session")?.value;
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve(cookieData);
+    }, 1000)
+  );
+}
+
 export default async function StripeRedirect() {
   // Get current user...
-  const cookieSession = (await cookies()).get("session")?.value;
+  const cookieSession = await getCookieData();
 
   const userResponse = await fetch(
     `http://localhost:3000/api/getUserByName?name=${cookieSession}`,
